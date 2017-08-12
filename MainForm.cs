@@ -13,6 +13,7 @@ namespace MHXXSaveEditor
         public MainForm()
         {
             InitializeComponent();
+            this.Text = Constants.EDITOR_VERSION; // Changes app title
         }
 
         Player player = new Player();
