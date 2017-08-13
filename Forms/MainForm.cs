@@ -408,6 +408,9 @@ namespace MHXXSaveEditor
 
             Array.Reverse(byteArray);
             Array.Copy(byteArray, 0, saveFile, player.SaveOffset + Offsets.ITEM_BOX_OFFSET, byteArray.Length);
+
+            // Equipment Box
+            Array.Copy(player.equipmentInfo, 0, saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, Constants.SIZEOF_EQUIPBOX);
         }
 
         private void listViewItem_SelectedIndexChanged(object sender, EventArgs e)
