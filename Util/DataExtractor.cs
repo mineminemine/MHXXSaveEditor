@@ -15,14 +15,15 @@ namespace MHXXSaveEditor.Util
             byte[] rankByte = new byte[2];
             byte[] hrPointsByte = new byte[4];
             byte[] acaPointsByte = new byte[4];
-            byte[] skinRGBA = new byte[4];
-            byte[] hairRGBA = new byte[4];
-            byte[] featuresRGBA = new byte[4];
-            byte[] clothingRGBA = new byte[4];
+            byte[] villagePointsByte = new byte[4];
+            player.SkinColorRGBA = new byte[4];
+            player.HairColorRGBA = new byte[4];
+            player.FeaturesColorRGBA = new byte[4];
+            player.ClothingColorRGBA = new byte[4];
+            player.itemId = new string[2300];
+            player.itemCount = new string[2300];
+            player.equipmentInfo = new byte[72000];
             byte[] itemBytes = new byte[5463];
-            string[] itemId = new string[2300];
-            string[] itemCount = new string[2300];
-            string[] item = new string[] { };
 
             if (slot == 1)
             {
@@ -64,6 +65,16 @@ namespace MHXXSaveEditor.Util
             Array.Copy(saveFile, player.SaveOffset + Offsets.ACADEMY_POINTS_OFFSET, acaPointsByte, 0, 4);
             player.AcademyPoints = BitConverter.ToInt32(acaPointsByte, 0);
 
+            // Village Points
+            Array.Copy(saveFile, player.SaveOffset + Offsets.BHERNA_POINTS_OFFSET, villagePointsByte, 0, 4);
+            player.BhernaPoints = BitConverter.ToInt32(villagePointsByte, 0);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.KOKOTO_POINTS_OFFSET, villagePointsByte, 0, 4);
+            player.KokotoPoints = BitConverter.ToInt32(villagePointsByte, 0);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.POKKE_POINTS_OFFSET, villagePointsByte, 0, 4);
+            player.PokkePoints = BitConverter.ToInt32(villagePointsByte, 0);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.YUKUMO_POINTS_OFFSET, villagePointsByte, 0, 4);
+            player.YukumoPoints = BitConverter.ToInt32(villagePointsByte, 0);
+
             // Character Info
             player.Voice = saveFile[player.SaveOffset + Offsets.CHARACTER_VOICE_OFFSET];
             player.EyeColor = saveFile[player.SaveOffset + Offsets.CHARACTER_EYE_COLOR_OFFSET];
@@ -73,28 +84,25 @@ namespace MHXXSaveEditor.Util
             player.Face = saveFile[player.SaveOffset + Offsets.CHARACTER_FACE_OFFSET];
             player.Features = saveFile[player.SaveOffset + Offsets.CHARACTER_FEATURES_OFFSET];
 
-            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_SKIN_COLOR_OFFSET, skinRGBA, 0, 4);
-            player.SkinColorRGBA = skinRGBA;
-            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_HAIR_COLOR_OFFSET, hairRGBA, 0, 4);
-            player.HairColorRGBA = hairRGBA;
-            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_FEATURES_COLOR_OFFSET, featuresRGBA, 0, 4);
-            player.FeaturesColorRGBA = featuresRGBA;
-            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_CLOTHING_COLOR_OFFSET, clothingRGBA, 0, 4);
-            player.ClothingColorRGBA = clothingRGBA;
+            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_SKIN_COLOR_OFFSET, player.SkinColorRGBA, 0, 4);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_HAIR_COLOR_OFFSET, player.HairColorRGBA, 0, 4);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_FEATURES_COLOR_OFFSET, player.FeaturesColorRGBA, 0, 4);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.CHARACTER_CLOTHING_COLOR_OFFSET, player.ClothingColorRGBA, 0, 4);
 
-            // Items
+            // Item Box
             Array.Copy(saveFile, player.SaveOffset + Offsets.ITEM_BOX_OFFSET, itemBytes, 0, Constants.SIZEOF_ITEMBOX);
             Array.Reverse(itemBytes);
             var result = string.Concat(itemBytes.Select(b => Convert.ToString(b, 2).PadLeft(8, '0')));
             result = result.Substring(4,result.Length-4); // To remove the unnecessary/extra '0000'
             for (int a = 2299; a >= 0; a--)
             {
-                itemCount[a] = Convert.ToInt32(result.Substring(0, 7), 2).ToString();
-                itemId[a] = Convert.ToInt32(result.Substring(7, 12), 2).ToString();
+                player.itemCount[a] = Convert.ToInt32(result.Substring(0, 7), 2).ToString();
+                player.itemId[a] = Convert.ToInt32(result.Substring(7, 12), 2).ToString();
                 result = result.Substring(19, result.Length - 19);
             }
-            player.itemCount = itemCount;
-            player.itemId = itemId;
+
+            // Equipment Box
+            Array.Copy(saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, player.equipmentInfo, 0, Constants.SIZEOF_EQUIPBOX);
         }
     }
 }

@@ -48,7 +48,7 @@
 
         // Items & Equips
         public const int ITEM_BOX_OFFSET = 0x0278; //Size 5463 (2300 of them each 19 bits long)
-        //public const int EQUIPMENT_BOX_OFFSET = 0x62EE; //Size 50415 (1400 of them each 36 bytes long)
+        public const int EQUIPMENT_BOX_OFFSET = 0x62EE; //Size 72000 (2000 of them each 36 bytes long)
         //public const int ITEM_SET_OFFSET = 0x0EDE; //Size 1360 (8 of them each 170 bytes long)
         //public const int POUCH_OFFSET = 0x142E; //Size 72 (32 Items each 18 bits long)
         //public const int PALICO_OFFSET = 0x019426; //Size 19140 (60 of them each 319 bytes long)
@@ -86,10 +86,10 @@
         // Points
         public const int HR_POINTS_OFFSET = 0x280B; //Size 4
         public const int ACADEMY_POINTS_OFFSET = 0x2817; //Size 4
-        //public const int BERUNA_POINTS_OFFSET = 0x1486; //Size 4
-        //public const int KOKOTO_POINTS_OFFSET = 0X148A; //Size 4
-        //public const int POKKE_POINTS_OFFSET = 0x148E; //Size 4
-        //public const int YUKUMO_POINTS_OFFSET = 0x1492; //Size 4
+        public const int BHERNA_POINTS_OFFSET = 0x281B; //Size 4
+        public const int KOKOTO_POINTS_OFFSET = 0x281F; //Size 4
+        public const int POKKE_POINTS_OFFSET = 0x2823; //Size 4
+        public const int YUKUMO_POINTS_OFFSET = 0x2827; //Size 4
 
         //public const int SHOP_OFFSETS = 0x1D76;
         //public const int CRAFTABLE_WEAPONS_OFFSET = 0x20BE;

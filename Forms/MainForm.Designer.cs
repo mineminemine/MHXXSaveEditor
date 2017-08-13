@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveSlot1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveSlot2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSaveSlot3 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maxAmountItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.generalTab = new System.Windows.Forms.TabPage();
             this.labelConvTime = new System.Windows.Forms.Label();
             this.numericUpDownTime = new System.Windows.Forms.NumericUpDown();
@@ -104,8 +105,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.equipTab = new System.Windows.Forms.TabPage();
-            this.label29 = new System.Windows.Forms.Label();
             this.itemBoxTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -118,14 +117,32 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pouchTab = new System.Windows.Forms.TabPage();
-            this.label30 = new System.Windows.Forms.Label();
+            this.equipTab = new System.Windows.Forms.TabPage();
+            this.numericUpDownEquipLevel = new System.Windows.Forms.NumericUpDown();
+            this.buttonEditKinsect = new System.Windows.Forms.Button();
+            this.comboBoxEquipDeco3 = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.comboBoxEquipDeco2 = new System.Windows.Forms.ComboBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.comboBoxEquipDeco1 = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.comboBoxEquipName = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.comboBoxEquipType = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.listViewEquipment = new System.Windows.Forms.ListView();
+            this.columnHeaderEquipSlot = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderEquipType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderEquipName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.palicoTab = new System.Windows.Forms.TabPage();
             this.label31 = new System.Windows.Forms.Label();
             this.palicoEquipTab = new System.Windows.Forms.TabPage();
             this.label32 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonEditTalisman = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYuk)).BeginInit();
@@ -159,12 +176,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFeatures)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHair)).BeginInit();
-            this.equipTab.SuspendLayout();
             this.itemBoxTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).BeginInit();
-            this.pouchTab.SuspendLayout();
+            this.equipTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).BeginInit();
             this.palicoTab.SuspendLayout();
             this.palicoEquipTab.SuspendLayout();
             this.SuspendLayout();
@@ -187,7 +204,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectSaveToolStripMenuItem,
             this.loadToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItemSave});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -195,56 +212,57 @@
             // selectSaveToolStripMenuItem
             // 
             this.selectSaveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.toolStripMenuItemSaveSlot1,
+            this.toolStripMenuItemSaveSlot2,
+            this.toolStripMenuItemSaveSlot3});
             this.selectSaveToolStripMenuItem.Name = "selectSaveToolStripMenuItem";
-            this.selectSaveToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.selectSaveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.selectSaveToolStripMenuItem.Text = "Select Save";
             // 
-            // toolStripMenuItem2
+            // toolStripMenuItemSaveSlot1
             // 
-            this.toolStripMenuItem2.Enabled = false;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(92, 26);
-            this.toolStripMenuItem2.Text = "1";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.toolStripMenuItemSaveSlot1.Enabled = false;
+            this.toolStripMenuItemSaveSlot1.Name = "toolStripMenuItemSaveSlot1";
+            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot1.Text = "1";
+            this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot1_Click);
             // 
-            // toolStripMenuItem3
+            // toolStripMenuItemSaveSlot2
             // 
-            this.toolStripMenuItem3.Enabled = false;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(92, 26);
-            this.toolStripMenuItem3.Text = "2";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.toolStripMenuItemSaveSlot2.Enabled = false;
+            this.toolStripMenuItemSaveSlot2.Name = "toolStripMenuItemSaveSlot2";
+            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot2.Text = "2";
+            this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot2_Click);
             // 
-            // toolStripMenuItem4
+            // toolStripMenuItemSaveSlot3
             // 
-            this.toolStripMenuItem4.Enabled = false;
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(92, 26);
-            this.toolStripMenuItem4.Text = "3";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            this.toolStripMenuItemSaveSlot3.Enabled = false;
+            this.toolStripMenuItemSaveSlot3.Name = "toolStripMenuItemSaveSlot3";
+            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot3.Text = "3";
+            this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot3_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // saveToolStripMenuItem
+            // saveToolStripMenuItemSave
             // 
-            this.saveToolStripMenuItem.Enabled = false;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItemSave.Enabled = false;
+            this.saveToolStripMenuItemSave.Name = "saveToolStripMenuItemSave";
+            this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(181, 26);
+            this.saveToolStripMenuItemSave.Text = "Save";
+            this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemBoxToolStripMenuItem});
+            this.editToolStripMenuItem.Enabled = false;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.editToolStripMenuItem.Text = "Edit";
@@ -254,13 +272,13 @@
             this.itemBoxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maxAmountItemsToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
-            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
             // 
             // maxAmountItemsToolStripMenuItem
             // 
             this.maxAmountItemsToolStripMenuItem.Name = "maxAmountItemsToolStripMenuItem";
-            this.maxAmountItemsToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.maxAmountItemsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.maxAmountItemsToolStripMenuItem.Text = "Max Amount";
             this.maxAmountItemsToolStripMenuItem.Click += new System.EventHandler(this.maxAmountItemsToolStripMenuItem_Click);
             // 
@@ -275,24 +293,24 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // tabControl1
+            // tabControlMain
             // 
-            this.tabControl1.Controls.Add(this.generalTab);
-            this.tabControl1.Controls.Add(this.playerTab);
-            this.tabControl1.Controls.Add(this.equipTab);
-            this.tabControl1.Controls.Add(this.itemBoxTab);
-            this.tabControl1.Controls.Add(this.pouchTab);
-            this.tabControl1.Controls.Add(this.palicoTab);
-            this.tabControl1.Controls.Add(this.palicoEquipTab);
-            this.tabControl1.Location = new System.Drawing.Point(13, 32);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(707, 359);
-            this.tabControl1.TabIndex = 1;
+            this.tabControlMain.Controls.Add(this.generalTab);
+            this.tabControlMain.Controls.Add(this.playerTab);
+            this.tabControlMain.Controls.Add(this.itemBoxTab);
+            this.tabControlMain.Controls.Add(this.equipTab);
+            this.tabControlMain.Controls.Add(this.palicoTab);
+            this.tabControlMain.Controls.Add(this.palicoEquipTab);
+            this.tabControlMain.Enabled = false;
+            this.tabControlMain.Location = new System.Drawing.Point(13, 32);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
+            this.tabControlMain.Size = new System.Drawing.Size(707, 359);
+            this.tabControlMain.TabIndex = 1;
             // 
             // generalTab
             // 
@@ -339,7 +357,7 @@
             this.numericUpDownTime.Location = new System.Drawing.Point(9, 182);
             this.numericUpDownTime.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownTime.Maximum = new decimal(new int[] {
-            9999999,
+            999999999,
             0,
             0,
             0});
@@ -369,7 +387,6 @@
             // 
             // numericUpDownYuk
             // 
-            this.numericUpDownYuk.Enabled = false;
             this.numericUpDownYuk.Location = new System.Drawing.Point(513, 126);
             this.numericUpDownYuk.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownYuk.Maximum = new decimal(new int[] {
@@ -378,13 +395,11 @@
             0,
             0});
             this.numericUpDownYuk.Name = "numericUpDownYuk";
-            this.numericUpDownYuk.ReadOnly = true;
             this.numericUpDownYuk.Size = new System.Drawing.Size(160, 22);
             this.numericUpDownYuk.TabIndex = 16;
             // 
             // numericUpDownPok
             // 
-            this.numericUpDownPok.Enabled = false;
             this.numericUpDownPok.Location = new System.Drawing.Point(345, 126);
             this.numericUpDownPok.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownPok.Maximum = new decimal(new int[] {
@@ -393,7 +408,6 @@
             0,
             0});
             this.numericUpDownPok.Name = "numericUpDownPok";
-            this.numericUpDownPok.ReadOnly = true;
             this.numericUpDownPok.Size = new System.Drawing.Size(160, 22);
             this.numericUpDownPok.TabIndex = 15;
             // 
@@ -408,7 +422,6 @@
             // 
             // numericUpDownKok
             // 
-            this.numericUpDownKok.Enabled = false;
             this.numericUpDownKok.Location = new System.Drawing.Point(177, 126);
             this.numericUpDownKok.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownKok.Maximum = new decimal(new int[] {
@@ -417,7 +430,6 @@
             0,
             0});
             this.numericUpDownKok.Name = "numericUpDownKok";
-            this.numericUpDownKok.ReadOnly = true;
             this.numericUpDownKok.Size = new System.Drawing.Size(160, 22);
             this.numericUpDownKok.TabIndex = 13;
             // 
@@ -432,7 +444,6 @@
             // 
             // numericUpDownBhe
             // 
-            this.numericUpDownBhe.Enabled = false;
             this.numericUpDownBhe.Location = new System.Drawing.Point(9, 126);
             this.numericUpDownBhe.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownBhe.Maximum = new decimal(new int[] {
@@ -441,7 +452,6 @@
             0,
             0});
             this.numericUpDownBhe.Name = "numericUpDownBhe";
-            this.numericUpDownBhe.ReadOnly = true;
             this.numericUpDownBhe.Size = new System.Drawing.Size(160, 22);
             this.numericUpDownBhe.TabIndex = 11;
             // 
@@ -548,7 +558,7 @@
             // 
             // charNameBox
             // 
-            this.charNameBox.Location = new System.Drawing.Point(57, 11);
+            this.charNameBox.Location = new System.Drawing.Point(57, 16);
             this.charNameBox.MaxLength = 32;
             this.charNameBox.Name = "charNameBox";
             this.charNameBox.Size = new System.Drawing.Size(239, 22);
@@ -557,7 +567,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 14);
+            this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 0;
@@ -1040,27 +1050,6 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Gender";
             // 
-            // equipTab
-            // 
-            this.equipTab.Controls.Add(this.label29);
-            this.equipTab.Location = new System.Drawing.Point(4, 25);
-            this.equipTab.Name = "equipTab";
-            this.equipTab.Padding = new System.Windows.Forms.Padding(3);
-            this.equipTab.Size = new System.Drawing.Size(699, 330);
-            this.equipTab.TabIndex = 3;
-            this.equipTab.Text = "Equipment";
-            this.equipTab.UseVisualStyleBackColor = true;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(124, 103);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(452, 135);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "Soon ™";
-            // 
             // itemBoxTab
             // 
             this.itemBoxTab.Controls.Add(this.groupBox1);
@@ -1123,7 +1112,6 @@
             this.numericUpDownItemID.ReadOnly = true;
             this.numericUpDownItemID.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownItemID.TabIndex = 7;
-            //this.numericUpDownItemID.ValueChanged += new System.EventHandler(this.numericUpDownItemID_ValueChanged);
             // 
             // label12
             // 
@@ -1160,11 +1148,11 @@
             this.columnHeader3});
             this.listViewItem.FullRowSelect = true;
             this.listViewItem.GridLines = true;
-            this.listViewItem.Location = new System.Drawing.Point(3, 3);
+            this.listViewItem.Location = new System.Drawing.Point(7, 7);
             this.listViewItem.Margin = new System.Windows.Forms.Padding(4);
             this.listViewItem.MultiSelect = false;
             this.listViewItem.Name = "listViewItem";
-            this.listViewItem.Size = new System.Drawing.Size(693, 257);
+            this.listViewItem.Size = new System.Drawing.Size(685, 253);
             this.listViewItem.TabIndex = 2;
             this.listViewItem.UseCompatibleStateImageBehavior = false;
             this.listViewItem.View = System.Windows.Forms.View.Details;
@@ -1184,26 +1172,204 @@
             this.columnHeader3.Text = "Amount";
             this.columnHeader3.Width = 105;
             // 
-            // pouchTab
+            // equipTab
             // 
-            this.pouchTab.Controls.Add(this.label30);
-            this.pouchTab.Location = new System.Drawing.Point(4, 25);
-            this.pouchTab.Name = "pouchTab";
-            this.pouchTab.Padding = new System.Windows.Forms.Padding(3);
-            this.pouchTab.Size = new System.Drawing.Size(699, 330);
-            this.pouchTab.TabIndex = 5;
-            this.pouchTab.Text = "Pouch";
-            this.pouchTab.UseVisualStyleBackColor = true;
+            this.equipTab.Controls.Add(this.numericUpDownEquipLevel);
+            this.equipTab.Controls.Add(this.buttonEditTalisman);
+            this.equipTab.Controls.Add(this.buttonEditKinsect);
+            this.equipTab.Controls.Add(this.comboBoxEquipDeco3);
+            this.equipTab.Controls.Add(this.label35);
+            this.equipTab.Controls.Add(this.comboBoxEquipDeco2);
+            this.equipTab.Controls.Add(this.label36);
+            this.equipTab.Controls.Add(this.comboBoxEquipDeco1);
+            this.equipTab.Controls.Add(this.label37);
+            this.equipTab.Controls.Add(this.label34);
+            this.equipTab.Controls.Add(this.comboBoxEquipName);
+            this.equipTab.Controls.Add(this.label33);
+            this.equipTab.Controls.Add(this.comboBoxEquipType);
+            this.equipTab.Controls.Add(this.label29);
+            this.equipTab.Controls.Add(this.listViewEquipment);
+            this.equipTab.Location = new System.Drawing.Point(4, 25);
+            this.equipTab.Name = "equipTab";
+            this.equipTab.Padding = new System.Windows.Forms.Padding(3);
+            this.equipTab.Size = new System.Drawing.Size(699, 330);
+            this.equipTab.TabIndex = 3;
+            this.equipTab.Text = "Equipment";
+            this.equipTab.UseVisualStyleBackColor = true;
             // 
-            // label30
+            // numericUpDownEquipLevel
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(123, 98);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(452, 135);
-            this.label30.TabIndex = 1;
-            this.label30.Text = "Soon ™";
+            this.numericUpDownEquipLevel.Enabled = false;
+            this.numericUpDownEquipLevel.Location = new System.Drawing.Point(97, 285);
+            this.numericUpDownEquipLevel.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDownEquipLevel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownEquipLevel.Name = "numericUpDownEquipLevel";
+            this.numericUpDownEquipLevel.ReadOnly = true;
+            this.numericUpDownEquipLevel.Size = new System.Drawing.Size(180, 22);
+            this.numericUpDownEquipLevel.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.numericUpDownEquipLevel, "Please refer to Kiranico for the levels of your equipment");
+            this.numericUpDownEquipLevel.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // buttonEditKinsect
+            // 
+            this.buttonEditKinsect.Enabled = false;
+            this.buttonEditKinsect.Location = new System.Drawing.Point(556, 217);
+            this.buttonEditKinsect.Name = "buttonEditKinsect";
+            this.buttonEditKinsect.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditKinsect.TabIndex = 13;
+            this.buttonEditKinsect.Text = "Edit Kinsect";
+            this.buttonEditKinsect.UseVisualStyleBackColor = true;
+            this.buttonEditKinsect.Click += new System.EventHandler(this.buttonEditKinsect_Click);
+            // 
+            // comboBoxEquipDeco3
+            // 
+            this.comboBoxEquipDeco3.Enabled = false;
+            this.comboBoxEquipDeco3.FormattingEnabled = true;
+            this.comboBoxEquipDeco3.Location = new System.Drawing.Point(357, 284);
+            this.comboBoxEquipDeco3.Name = "comboBoxEquipDeco3";
+            this.comboBoxEquipDeco3.Size = new System.Drawing.Size(170, 24);
+            this.comboBoxEquipDeco3.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.comboBoxEquipDeco3, "Please refer to Kiranico for the amount of decoration slots for your equipment");
+            this.comboBoxEquipDeco3.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco3_SelectedIndexChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(294, 287);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(53, 17);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "Deco 3";
+            // 
+            // comboBoxEquipDeco2
+            // 
+            this.comboBoxEquipDeco2.Enabled = false;
+            this.comboBoxEquipDeco2.FormattingEnabled = true;
+            this.comboBoxEquipDeco2.Location = new System.Drawing.Point(357, 254);
+            this.comboBoxEquipDeco2.Name = "comboBoxEquipDeco2";
+            this.comboBoxEquipDeco2.Size = new System.Drawing.Size(170, 24);
+            this.comboBoxEquipDeco2.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.comboBoxEquipDeco2, "Please refer to Kiranico for the amount of decoration slots for your equipment");
+            this.comboBoxEquipDeco2.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco2_SelectedIndexChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(294, 257);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(53, 17);
+            this.label36.TabIndex = 9;
+            this.label36.Text = "Deco 2";
+            // 
+            // comboBoxEquipDeco1
+            // 
+            this.comboBoxEquipDeco1.Enabled = false;
+            this.comboBoxEquipDeco1.FormattingEnabled = true;
+            this.comboBoxEquipDeco1.Location = new System.Drawing.Point(357, 221);
+            this.comboBoxEquipDeco1.Name = "comboBoxEquipDeco1";
+            this.comboBoxEquipDeco1.Size = new System.Drawing.Size(170, 24);
+            this.comboBoxEquipDeco1.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.comboBoxEquipDeco1, "Please refer to Kiranico for the amount of decoration slots for your equipment");
+            this.comboBoxEquipDeco1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco1_SelectedIndexChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(294, 224);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(53, 17);
+            this.label37.TabIndex = 7;
+            this.label37.Text = "Deco 1";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(6, 287);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(42, 17);
+            this.label34.TabIndex = 5;
+            this.label34.Text = "Level";
+            // 
+            // comboBoxEquipName
+            // 
+            this.comboBoxEquipName.Enabled = false;
+            this.comboBoxEquipName.FormattingEnabled = true;
+            this.comboBoxEquipName.Location = new System.Drawing.Point(97, 254);
+            this.comboBoxEquipName.Name = "comboBoxEquipName";
+            this.comboBoxEquipName.Size = new System.Drawing.Size(180, 24);
+            this.comboBoxEquipName.TabIndex = 4;
+            this.comboBoxEquipName.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipName_SelectedIndexChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 257);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(75, 17);
+            this.label33.TabIndex = 3;
+            this.label33.Text = "Equipment";
+            // 
+            // comboBoxEquipType
+            // 
+            this.comboBoxEquipType.Enabled = false;
+            this.comboBoxEquipType.FormattingEnabled = true;
+            this.comboBoxEquipType.Location = new System.Drawing.Point(97, 221);
+            this.comboBoxEquipType.Name = "comboBoxEquipType";
+            this.comboBoxEquipType.Size = new System.Drawing.Size(180, 24);
+            this.comboBoxEquipType.TabIndex = 2;
+            this.comboBoxEquipType.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipType_SelectedIndexChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 224);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(40, 17);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "Type";
+            // 
+            // listViewEquipment
+            // 
+            this.listViewEquipment.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderEquipSlot,
+            this.columnHeaderEquipType,
+            this.columnHeaderEquipName});
+            this.listViewEquipment.FullRowSelect = true;
+            this.listViewEquipment.GridLines = true;
+            this.listViewEquipment.Location = new System.Drawing.Point(6, 6);
+            this.listViewEquipment.MultiSelect = false;
+            this.listViewEquipment.Name = "listViewEquipment";
+            this.listViewEquipment.Size = new System.Drawing.Size(687, 196);
+            this.listViewEquipment.TabIndex = 0;
+            this.listViewEquipment.UseCompatibleStateImageBehavior = false;
+            this.listViewEquipment.View = System.Windows.Forms.View.Details;
+            this.listViewEquipment.SelectedIndexChanged += new System.EventHandler(this.listViewEquipment_SelectedIndexChanged);
+            // 
+            // columnHeaderEquipSlot
+            // 
+            this.columnHeaderEquipSlot.Text = "Slot";
+            // 
+            // columnHeaderEquipType
+            // 
+            this.columnHeaderEquipType.Text = "Type";
+            this.columnHeaderEquipType.Width = 164;
+            // 
+            // columnHeaderEquipName
+            // 
+            this.columnHeaderEquipName.Text = "Equipment Name";
+            this.columnHeaderEquipName.Width = 435;
             // 
             // palicoTab
             // 
@@ -1247,12 +1413,23 @@
             this.label32.TabIndex = 1;
             this.label32.Text = "Soon ™";
             // 
+            // buttonEditTalisman
+            // 
+            this.buttonEditTalisman.Enabled = false;
+            this.buttonEditTalisman.Location = new System.Drawing.Point(556, 253);
+            this.buttonEditTalisman.Name = "buttonEditTalisman";
+            this.buttonEditTalisman.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditTalisman.TabIndex = 14;
+            this.buttonEditTalisman.Text = "Edit Talisman";
+            this.buttonEditTalisman.UseVisualStyleBackColor = true;
+            this.buttonEditTalisman.Click += new System.EventHandler(this.buttonEditTalisman_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(732, 403);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.menuStripMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1263,7 +1440,7 @@
             this.Text = "MHXX Save Editor";
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlMain.ResumeLayout(false);
             this.generalTab.ResumeLayout(false);
             this.generalTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTime)).EndInit();
@@ -1299,15 +1476,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFeatures)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHair)).EndInit();
-            this.equipTab.ResumeLayout(false);
-            this.equipTab.PerformLayout();
             this.itemBoxTab.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).EndInit();
-            this.pouchTab.ResumeLayout(false);
-            this.pouchTab.PerformLayout();
+            this.equipTab.ResumeLayout(false);
+            this.equipTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).EndInit();
             this.palicoTab.ResumeLayout(false);
             this.palicoTab.PerformLayout();
             this.palicoEquipTab.ResumeLayout(false);
@@ -1322,9 +1498,9 @@
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItemSave;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage generalTab;
         private System.Windows.Forms.TabPage playerTab;
         private System.Windows.Forms.TabPage equipTab;
@@ -1349,13 +1525,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox charNameBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage pouchTab;
         private System.Windows.Forms.TabPage palicoTab;
         private System.Windows.Forms.TabPage palicoEquipTab;
         private System.Windows.Forms.ToolStripMenuItem selectSaveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveSlot1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveSlot2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveSlot3;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ListView listViewItem;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -1408,12 +1583,29 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label labelConvTime;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.ToolStripMenuItem itemBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maxAmountItemsToolStripMenuItem;
+        private System.Windows.Forms.ListView listViewEquipment;
+        private System.Windows.Forms.ColumnHeader columnHeaderEquipSlot;
+        private System.Windows.Forms.ColumnHeader columnHeaderEquipType;
+        private System.Windows.Forms.ColumnHeader columnHeaderEquipName;
+        private System.Windows.Forms.ComboBox comboBoxEquipType;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox comboBoxEquipDeco3;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ComboBox comboBoxEquipDeco2;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox comboBoxEquipDeco1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.ComboBox comboBoxEquipName;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button buttonEditKinsect;
+        private System.Windows.Forms.NumericUpDown numericUpDownEquipLevel;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button buttonEditTalisman;
     }
 }
 
