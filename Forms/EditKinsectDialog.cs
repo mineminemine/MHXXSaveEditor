@@ -13,17 +13,18 @@ namespace MHXXSaveEditor.Forms
             InitializeComponent();
             this.mainForm = mainForm;
             this.Text = "Editing Kinsect - " + eqpName;
+            comboBoxKinsectType.Items.AddRange(GameConstants.KinsectNames);
 
             comboBoxKinsectType.SelectedIndex = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 12]);
-            numericUpDownLevel.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 13]);
-            numericUpDownPowerLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 14]);
-            numericUpDownWeightLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 15]);
-            numericUpDownSpeedLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 16]);
-            numericUpDownFireLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 17]);
-            numericUpDownWaterLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 18]);
-            numericUpDownThunderLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 19]);
-            numericUpDownIceLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 20]);
-            numericUpDownDragonLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 21]);
+            numericUpDownLevel.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 13]) + 1;
+            numericUpDownPowerLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 14]) + 1;
+            numericUpDownWeightLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 15]) + 1;
+            numericUpDownSpeedLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 16]) + 1;
+            numericUpDownFireLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 17]) + 1;
+            numericUpDownWaterLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 18]) + 1;
+            numericUpDownThunderLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 19]) + 1;
+            numericUpDownIceLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 20]) + 1;
+            numericUpDownDragonLv.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 21]) + 1;
             numericUpDownPowerExp.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 24]);
             numericUpDownWeightExp.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 25]);
             numericUpDownSpeedExp.Value = Convert.ToInt32(mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 26]);
@@ -42,15 +43,15 @@ namespace MHXXSaveEditor.Forms
         private void buttonOk_Click(object sender, EventArgs e)
         {
             mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 12] = Convert.ToByte(comboBoxKinsectType.SelectedIndex);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 13] = Convert.ToByte(numericUpDownLevel.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 14] = Convert.ToByte(numericUpDownPowerLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 15] = Convert.ToByte(numericUpDownWeightLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 16] = Convert.ToByte(numericUpDownSpeedLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 17] = Convert.ToByte(numericUpDownFireLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 18] = Convert.ToByte(numericUpDownWaterLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 19] = Convert.ToByte(numericUpDownThunderLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 20] = Convert.ToByte(numericUpDownIceLv.Value);
-            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 21] = Convert.ToByte(numericUpDownDragonLv.Value);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 13] = Convert.ToByte(numericUpDownLevel.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 14] = Convert.ToByte(numericUpDownPowerLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 15] = Convert.ToByte(numericUpDownWeightLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 16] = Convert.ToByte(numericUpDownSpeedLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 17] = Convert.ToByte(numericUpDownFireLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 18] = Convert.ToByte(numericUpDownWaterLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 19] = Convert.ToByte(numericUpDownThunderLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 20] = Convert.ToByte(numericUpDownIceLv.Value - 1);
+            mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 21] = Convert.ToByte(numericUpDownDragonLv.Value - 1);
             mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 24] = Convert.ToByte(numericUpDownPowerExp.Value);
             mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 25] = Convert.ToByte(numericUpDownWeightExp.Value);
             mainForm.player.equipmentInfo[(mainForm.equipSelectedSlot * 36) + 26] = Convert.ToByte(numericUpDownSpeedExp.Value);

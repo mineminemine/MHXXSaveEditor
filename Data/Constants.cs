@@ -2,11 +2,13 @@
 {
     class Constants
     {
-        public const string EDITOR_VERSION = "MHXX Save Editor v0.02";
+        public const string EDITOR_VERSION = "MHXX Save Editor v0.02b";
 
         public const int SIZEOF_NAME = 32;
         public const int SIZEOF_ITEMBOX = 5463;
+        public const int SIZEOF_ITEMSLOTS = 2300;
         public const int SIZEOF_EQUIPBOX = 72000;
+        public const int SIZEOF_EQUIPSLOTS = 2000;
         public const int SIZEOF_EQUIPMENT = 36;
 
         //public const int TOTAL_ITEM_BOX_SLOTS = 2300;

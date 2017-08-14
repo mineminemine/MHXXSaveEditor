@@ -188,6 +188,11 @@
             // numericUpDownPowerLv
             // 
             this.numericUpDownPowerLv.Location = new System.Drawing.Point(102, 28);
+            this.numericUpDownPowerLv.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownPowerLv.Name = "numericUpDownPowerLv";
             this.numericUpDownPowerLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownPowerLv.TabIndex = 12;
@@ -195,6 +200,11 @@
             // numericUpDownWeightLv
             // 
             this.numericUpDownWeightLv.Location = new System.Drawing.Point(102, 59);
+            this.numericUpDownWeightLv.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownWeightLv.Name = "numericUpDownWeightLv";
             this.numericUpDownWeightLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownWeightLv.TabIndex = 13;
@@ -202,6 +212,11 @@
             // numericUpDownSpeedLv
             // 
             this.numericUpDownSpeedLv.Location = new System.Drawing.Point(102, 91);
+            this.numericUpDownSpeedLv.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownSpeedLv.Name = "numericUpDownSpeedLv";
             this.numericUpDownSpeedLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownSpeedLv.TabIndex = 14;
@@ -209,6 +224,11 @@
             // numericUpDownFireLv
             // 
             this.numericUpDownFireLv.Location = new System.Drawing.Point(102, 29);
+            this.numericUpDownFireLv.Maximum = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
             this.numericUpDownFireLv.Name = "numericUpDownFireLv";
             this.numericUpDownFireLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownFireLv.TabIndex = 15;
@@ -216,6 +236,11 @@
             // numericUpDownWaterLv
             // 
             this.numericUpDownWaterLv.Location = new System.Drawing.Point(102, 61);
+            this.numericUpDownWaterLv.Maximum = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
             this.numericUpDownWaterLv.Name = "numericUpDownWaterLv";
             this.numericUpDownWaterLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownWaterLv.TabIndex = 16;
@@ -223,6 +248,11 @@
             // numericUpDownThunderLv
             // 
             this.numericUpDownThunderLv.Location = new System.Drawing.Point(102, 94);
+            this.numericUpDownThunderLv.Maximum = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
             this.numericUpDownThunderLv.Name = "numericUpDownThunderLv";
             this.numericUpDownThunderLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownThunderLv.TabIndex = 17;
@@ -230,6 +260,11 @@
             // numericUpDownIceLv
             // 
             this.numericUpDownIceLv.Location = new System.Drawing.Point(102, 125);
+            this.numericUpDownIceLv.Maximum = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
             this.numericUpDownIceLv.Name = "numericUpDownIceLv";
             this.numericUpDownIceLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownIceLv.TabIndex = 18;
@@ -237,6 +272,11 @@
             // numericUpDownDragonLv
             // 
             this.numericUpDownDragonLv.Location = new System.Drawing.Point(102, 157);
+            this.numericUpDownDragonLv.Maximum = new decimal(new int[] {
+            37,
+            0,
+            0,
+            0});
             this.numericUpDownDragonLv.Name = "numericUpDownDragonLv";
             this.numericUpDownDragonLv.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownDragonLv.TabIndex = 19;
@@ -298,19 +338,21 @@
             // comboBoxKinsectType
             // 
             this.comboBoxKinsectType.FormattingEnabled = true;
-            this.comboBoxKinsectType.Items.AddRange(new object[] {
-            "Cutting",
-            "Blunt"});
-            this.comboBoxKinsectType.Location = new System.Drawing.Point(101, 25);
+            this.comboBoxKinsectType.Location = new System.Drawing.Point(75, 25);
             this.comboBoxKinsectType.Name = "comboBoxKinsectType";
-            this.comboBoxKinsectType.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxKinsectType.Size = new System.Drawing.Size(147, 24);
             this.comboBoxKinsectType.TabIndex = 24;
             // 
             // numericUpDownLevel
             // 
-            this.numericUpDownLevel.Location = new System.Drawing.Point(101, 60);
+            this.numericUpDownLevel.Location = new System.Drawing.Point(75, 60);
+            this.numericUpDownLevel.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             this.numericUpDownLevel.Name = "numericUpDownLevel";
-            this.numericUpDownLevel.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownLevel.Size = new System.Drawing.Size(146, 22);
             this.numericUpDownLevel.TabIndex = 11;
             // 
             // groupBox3

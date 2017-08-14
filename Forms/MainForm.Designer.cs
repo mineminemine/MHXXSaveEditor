@@ -119,6 +119,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.equipTab = new System.Windows.Forms.TabPage();
             this.numericUpDownEquipLevel = new System.Windows.Forms.NumericUpDown();
+            this.buttonEditTalisman = new System.Windows.Forms.Button();
             this.buttonEditKinsect = new System.Windows.Forms.Button();
             this.comboBoxEquipDeco3 = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -140,7 +141,6 @@
             this.palicoEquipTab = new System.Windows.Forms.TabPage();
             this.label32 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonEditTalisman = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -216,14 +216,14 @@
             this.toolStripMenuItemSaveSlot2,
             this.toolStripMenuItemSaveSlot3});
             this.selectSaveToolStripMenuItem.Name = "selectSaveToolStripMenuItem";
-            this.selectSaveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.selectSaveToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.selectSaveToolStripMenuItem.Text = "Select Save";
             // 
             // toolStripMenuItemSaveSlot1
             // 
             this.toolStripMenuItemSaveSlot1.Enabled = false;
             this.toolStripMenuItemSaveSlot1.Name = "toolStripMenuItemSaveSlot1";
-            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot1.Text = "1";
             this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot1_Click);
             // 
@@ -231,7 +231,7 @@
             // 
             this.toolStripMenuItemSaveSlot2.Enabled = false;
             this.toolStripMenuItemSaveSlot2.Name = "toolStripMenuItemSaveSlot2";
-            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot2.Text = "2";
             this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot2_Click);
             // 
@@ -239,14 +239,14 @@
             // 
             this.toolStripMenuItemSaveSlot3.Enabled = false;
             this.toolStripMenuItemSaveSlot3.Name = "toolStripMenuItemSaveSlot3";
-            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot3.Text = "3";
             this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot3_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
@@ -254,7 +254,7 @@
             // 
             this.saveToolStripMenuItemSave.Enabled = false;
             this.saveToolStripMenuItemSave.Name = "saveToolStripMenuItemSave";
-            this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(181, 26);
+            this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(159, 26);
             this.saveToolStripMenuItemSave.Text = "Save";
             this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
             // 
@@ -272,13 +272,13 @@
             this.itemBoxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maxAmountItemsToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
-            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
             // 
             // maxAmountItemsToolStripMenuItem
             // 
             this.maxAmountItemsToolStripMenuItem.Name = "maxAmountItemsToolStripMenuItem";
-            this.maxAmountItemsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.maxAmountItemsToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.maxAmountItemsToolStripMenuItem.Text = "Max Amount";
             this.maxAmountItemsToolStripMenuItem.Click += new System.EventHandler(this.maxAmountItemsToolStripMenuItem_Click);
             // 
@@ -293,7 +293,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -908,13 +908,23 @@
             // 
             this.numericUpDownClothing.Location = new System.Drawing.Point(361, 89);
             this.numericUpDownClothing.Maximum = new decimal(new int[] {
-            6,
+            7,
+            0,
+            0,
+            0});
+            this.numericUpDownClothing.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownClothing.Name = "numericUpDownClothing";
             this.numericUpDownClothing.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownClothing.TabIndex = 13;
+            this.numericUpDownClothing.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label18
             // 
@@ -929,13 +939,23 @@
             // 
             this.numericUpDownEyeColor.Location = new System.Drawing.Point(182, 89);
             this.numericUpDownEyeColor.Maximum = new decimal(new int[] {
-            9,
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownEyeColor.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownEyeColor.Name = "numericUpDownEyeColor";
             this.numericUpDownEyeColor.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownEyeColor.TabIndex = 11;
+            this.numericUpDownEyeColor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label19
             // 
@@ -950,13 +970,23 @@
             // 
             this.numericUpDownVoice.Location = new System.Drawing.Point(9, 89);
             this.numericUpDownVoice.Maximum = new decimal(new int[] {
-            19,
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDownVoice.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownVoice.Name = "numericUpDownVoice";
             this.numericUpDownVoice.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownVoice.TabIndex = 9;
+            this.numericUpDownVoice.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label20
             // 
@@ -971,13 +1001,23 @@
             // 
             this.numericUpDownFeatures.Location = new System.Drawing.Point(534, 34);
             this.numericUpDownFeatures.Maximum = new decimal(new int[] {
-            14,
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDownFeatures.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownFeatures.Name = "numericUpDownFeatures";
             this.numericUpDownFeatures.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownFeatures.TabIndex = 7;
+            this.numericUpDownFeatures.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label17
             // 
@@ -992,13 +1032,23 @@
             // 
             this.numericUpDownFace.Location = new System.Drawing.Point(361, 34);
             this.numericUpDownFace.Maximum = new decimal(new int[] {
-            17,
+            18,
+            0,
+            0,
+            0});
+            this.numericUpDownFace.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownFace.Name = "numericUpDownFace";
             this.numericUpDownFace.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownFace.TabIndex = 5;
+            this.numericUpDownFace.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label16
             // 
@@ -1013,13 +1063,23 @@
             // 
             this.numericUpDownHair.Location = new System.Drawing.Point(182, 34);
             this.numericUpDownHair.Maximum = new decimal(new int[] {
-            29,
+            30,
+            0,
+            0,
+            0});
+            this.numericUpDownHair.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numericUpDownHair.Name = "numericUpDownHair";
             this.numericUpDownHair.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownHair.TabIndex = 3;
+            this.numericUpDownHair.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label15
             // 
@@ -1199,7 +1259,6 @@
             // 
             // numericUpDownEquipLevel
             // 
-            this.numericUpDownEquipLevel.Enabled = false;
             this.numericUpDownEquipLevel.Location = new System.Drawing.Point(97, 285);
             this.numericUpDownEquipLevel.Maximum = new decimal(new int[] {
             20,
@@ -1212,7 +1271,6 @@
             0,
             0});
             this.numericUpDownEquipLevel.Name = "numericUpDownEquipLevel";
-            this.numericUpDownEquipLevel.ReadOnly = true;
             this.numericUpDownEquipLevel.Size = new System.Drawing.Size(180, 22);
             this.numericUpDownEquipLevel.TabIndex = 15;
             this.toolTip1.SetToolTip(this.numericUpDownEquipLevel, "Please refer to Kiranico for the levels of your equipment");
@@ -1221,6 +1279,18 @@
             0,
             0,
             0});
+            this.numericUpDownEquipLevel.ValueChanged += new System.EventHandler(this.numericUpDownEquipLevel_ValueChanged);
+            // 
+            // buttonEditTalisman
+            // 
+            this.buttonEditTalisman.Enabled = false;
+            this.buttonEditTalisman.Location = new System.Drawing.Point(556, 253);
+            this.buttonEditTalisman.Name = "buttonEditTalisman";
+            this.buttonEditTalisman.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditTalisman.TabIndex = 14;
+            this.buttonEditTalisman.Text = "Edit Talisman";
+            this.buttonEditTalisman.UseVisualStyleBackColor = true;
+            this.buttonEditTalisman.Click += new System.EventHandler(this.buttonEditTalisman_Click);
             // 
             // buttonEditKinsect
             // 
@@ -1412,17 +1482,6 @@
             this.label32.Size = new System.Drawing.Size(452, 135);
             this.label32.TabIndex = 1;
             this.label32.Text = "Soon ™";
-            // 
-            // buttonEditTalisman
-            // 
-            this.buttonEditTalisman.Enabled = false;
-            this.buttonEditTalisman.Location = new System.Drawing.Point(556, 253);
-            this.buttonEditTalisman.Name = "buttonEditTalisman";
-            this.buttonEditTalisman.Size = new System.Drawing.Size(120, 30);
-            this.buttonEditTalisman.TabIndex = 14;
-            this.buttonEditTalisman.Text = "Edit Talisman";
-            this.buttonEditTalisman.UseVisualStyleBackColor = true;
-            this.buttonEditTalisman.Click += new System.EventHandler(this.buttonEditTalisman_Click);
             // 
             // MainForm
             // 
