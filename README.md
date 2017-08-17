@@ -7,7 +7,7 @@ A save editor for Monster Hunter XX for the Nintendo 3DS/2DS, not the Switch ver
 - General Editor
 - Character Editor
 - Item Box Editor
-- Equipment Editor (Talisman, Kinsect editing are kept at minimal however)
+- Equipment Editor (Talisman/Charm, Kinsect)
 - Palico Equipment Editor
 - Palico Editor
 
@@ -26,6 +26,6 @@ Looking for a better talisman/charm editor? Look [here](https://gbatemp.net/thre
 - Your MHXX `system` file obtained from your prefered save manager
 
 ## Credits
-- **APM** - For her initial work on a save editor for MHGen/MHX, a percentage of the source code and GUI for this save editor is based off hers, see [here](https://github.com/ezapm/APMMHXSaveEditor)  
+- **APM** - For her initial work on a save editor for MHGen/MHX, some of the source code and GUI for this save editor is based off hers, see [here](https://github.com/ezapm/APMMHXSaveEditor)  
 - **svanheulen** - For his research on the save file format/structure, see [here](https://github.com/svanheulen/mhff/wiki)
 - MHX/MHGen/MHXX Save Editing threads in GBATemp
