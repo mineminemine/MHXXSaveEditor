@@ -43,5 +43,11 @@
 
         //Equipment Box
         public byte[] equipmentInfo { get; set; }
+
+        // Palico Equipment Box
+        public byte[] equipmentPalico { get; set; }
+
+        // Palico
+        public byte[] PalicoData { get; set; }
     }
 }

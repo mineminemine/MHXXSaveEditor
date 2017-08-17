@@ -2,24 +2,30 @@
 {
     class Constants
     {
-        public const string EDITOR_VERSION = "MHXX Save Editor v0.02b";
+        public const string EDITOR_VERSION = "MHXX Save Editor v0.03";
 
         public const int SIZEOF_NAME = 32;
-        public const int SIZEOF_ITEMBOX = 5463;
-        public const int SIZEOF_ITEMSLOTS = 2300;
-        public const int SIZEOF_EQUIPBOX = 72000;
-        public const int SIZEOF_EQUIPSLOTS = 2000;
-        public const int SIZEOF_EQUIPMENT = 36;
 
-        //public const int TOTAL_ITEM_BOX_SLOTS = 2300;
+        public const int SIZEOF_ITEMBOX = 5463;
+        public const int TOTAL_ITEM_SLOTS = 2300;
+
+        public const int SIZEOF_EQUIPBOX = 72000;
+        public const int TOTAL_EQUIP_SLOTS = 2000;
+        public const int SIZEOF_EQUIPMENT = 36;
+        public const int SIZEOF_PALICOEQUIPBOX = 36000;
+        public const int TOTAL_PALICO_EQUIP = 1000;
+
+        public const int SIZEOF_PALICOES = 27216;
+        public const int SIZEOF_PALICO = 324;
+        public const int TOTAL_PALICO_SLOTS = 84;
+        public const int TOTAL_PALICO_GREETING = 60;
+
         //public const int TOTAL_PALICO_EQUIPMENT_SLOTS = 700;
         //public const int TOTAL_ITEM_SETS = 24;
         //public const int INVENTORY_ITEM_SLOTS = 32;
-        //public const int TOTAL_PALICOS = 60;
         //public const int SIZEOF_PALICO_GREETINGS = 60;
         //public const int SIZEOF_ITEM = 19;
         //public const int SIZEOF_ITEMPOUCH = 72;
-        //public const int SIZEOF_PALICO = 319;
         //public const int SIZEOF_GUILD_CARD = 5208;
         //public const int SIZEOF_CRAFTABLE_ARMOR = 392;
         //public const int SIZEOF_CRAFTABLE_WEAPON = 40;

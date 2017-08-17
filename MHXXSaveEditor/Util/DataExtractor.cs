@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using MHXXSaveEditor.Data;
 
 namespace MHXXSaveEditor.Util
@@ -20,10 +21,12 @@ namespace MHXXSaveEditor.Util
             player.HairColorRGBA = new byte[4];
             player.FeaturesColorRGBA = new byte[4];
             player.ClothingColorRGBA = new byte[4];
-            player.itemId = new string[2300];
-            player.itemCount = new string[2300];
-            player.equipmentInfo = new byte[72000];
-            byte[] itemBytes = new byte[5463];
+            player.itemId = new string[Constants.TOTAL_ITEM_SLOTS];
+            player.itemCount = new string[Constants.TOTAL_ITEM_SLOTS];
+            player.equipmentInfo = new byte[Constants.SIZEOF_EQUIPBOX];
+            player.equipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
+            player.PalicoData = new byte[Constants.SIZEOF_PALICOES];
+            byte[] itemBytes = new byte[Constants.SIZEOF_ITEMBOX];
 
             if (slot == 1)
             {
@@ -103,6 +106,12 @@ namespace MHXXSaveEditor.Util
 
             // Equipment Box
             Array.Copy(saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, player.equipmentInfo, 0, Constants.SIZEOF_EQUIPBOX);
+
+            // Palico Equipment Box
+            Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_EQUIPMENT_OFFSET, player.equipmentPalico, 0, Constants.SIZEOF_PALICOEQUIPBOX);
+
+            // Palico
+            Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, player.PalicoData, 0, Constants.SIZEOF_PALICOES);
         }
     }
 }

@@ -44,15 +44,16 @@
         //public const int WAIST_ARMOR_PIGMENT_OFFSET = 0x0270;  //Size 4
         //public const int LEG_ARMOR_PIGMENT_OFFSET = 0x0274; //Size 4
         //public const int HEAD_ARMOR_PIGMENT_OFFSET = 0x0278; //Size 4
-        //public const int CHARACTER_SKIN_COLOR_OFFSET = 0x027C; //Size 4 ;This only used in loading screen
 
-        // Items & Equips
+        // Palico
+        public const int PALICO_OFFSET = 0x23BB6; //Size 27216 (84 of them each 324 bytes long)
+
+        // Items, Equips, Pouch
         public const int ITEM_BOX_OFFSET = 0x0278; //Size 5463 (2300 of them each 19 bits long)
         public const int EQUIPMENT_BOX_OFFSET = 0x62EE; //Size 72000 (2000 of them each 36 bytes long)
         //public const int ITEM_SET_OFFSET = 0x0EDE; //Size 1360 (8 of them each 170 bytes long)
         //public const int POUCH_OFFSET = 0x142E; //Size 72 (32 Items each 18 bits long)
-        //public const int PALICO_OFFSET = 0x019426; //Size 19140 (60 of them each 319 bytes long)
-        //public const int PALICO_EQUIPMENT_OFFSET = 0x10B47; //Size 25200 (700 of them 36 bytes long)
+        public const int PALICO_EQUIPMENT_OFFSET = 0x17C2E; //Size 36000 (1000 of them 36 bytes long)
 
         // Secondary offsets ??
         public const int NAME_OFFSET2 = 0x23B7E; // size 4

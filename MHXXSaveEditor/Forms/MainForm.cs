@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using MHXXSaveEditor.Data;
 using MHXXSaveEditor.Util;
-using System.Linq;
 using MHXXSaveEditor.Forms;
 
 namespace MHXXSaveEditor
@@ -21,7 +21,7 @@ namespace MHXXSaveEditor
         string filePath;
         byte[] saveFile;
         int currentPlayer, itemSelectedSlot;
-        public int equipSelectedSlot;
+        public int equipSelectedSlot, palicoEqpSelectedSlot;
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -143,11 +143,16 @@ namespace MHXXSaveEditor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Made by Ukee for GBATemp\nBased off APM's MHX/MHGen Save editor\nAlso thanks to Seth VanHeulen", "About");
+            MessageBox.Show("Made by Ukee for GBATemp\nBased off APM's MHX/MHGen Save Editor\nAlso thanks to Seth VanHeulen for the Save File structure\nAnd some threads in GBATemp", "About");
         }
 
         public void loadSave()
         {
+            // Item Box // Equipment Box // Palico Equipment Box
+            LoadItemBox();
+            LoadEquipmentBox();
+            LoadPalicoEquipmentBox();
+
             // General Info
             charNameBox.Text = player.Name;
             numericUpDownTime.Value = player.PlayTime;
@@ -190,10 +195,37 @@ namespace MHXXSaveEditor
             numericUpDownClothesB.Value = player.ClothingColorRGBA[2];
             numericUpDownClothesA.Value = player.ClothingColorRGBA[3];
 
-            // Item Box
-            for (int a = 0; a < Constants.SIZEOF_ITEMSLOTS; a++) // 2300 slots for 2300 items
+            // Palico
+            listViewPalico.Items.Clear();
+            for (int a = 0; a < Constants.TOTAL_PALICO_SLOTS; a++)
             {
-                string itemName = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList , Convert.ToInt32(player.itemId[a]))];
+                if (Convert.ToInt32(player.PalicoData[(a * Constants.SIZEOF_PALICO) + 36]) != 0) // check if palic level is not zero, if zero == empty palico slot and we dont want that
+                {
+                    byte[] palicoNameByte = new byte[32];
+                    string palicoName, palicoType;
+
+                    Array.Copy(player.PalicoData, a * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
+                    palicoName = Encoding.UTF8.GetString(palicoNameByte);
+                    palicoType = GameConstants.PalicoForte[Convert.ToInt32(player.PalicoData[(a * Constants.SIZEOF_PALICO) + 37])];
+
+                    string[] arr = new string[3];
+                    arr[0] = (a + 1).ToString();
+                    arr[1] = palicoName;
+                    arr[2] = palicoType;
+                    ListViewItem plc = new ListViewItem(arr);
+                    listViewPalico.Items.Add(plc);
+                }
+            }
+            listViewPalico.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewPalico.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public void LoadItemBox()
+        {
+            listViewItem.Items.Clear();
+            for (int a = 0; a < Constants.TOTAL_ITEM_SLOTS; a++) // 2300 slots for 2300 items
+            {
+                string itemName = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, Convert.ToInt32(player.itemId[a]))];
                 string[] arr = new string[3];
                 arr[0] = (a + 1).ToString();
                 arr[1] = itemName;
@@ -204,9 +236,12 @@ namespace MHXXSaveEditor
             listViewItem.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewItem.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             comboBoxItem.Items.AddRange(GameConstants.ItemNameList);
+        }
 
-            // Equipment Box
-            for (int a = 0; a < Constants.SIZEOF_EQUIPSLOTS; a++) // 2000 slots for 2000 equips
+        public void LoadEquipmentBox()
+        {
+            listViewEquipment.Items.Clear();
+            for (int a = 0; a < Constants.TOTAL_EQUIP_SLOTS; a++) // 2000 slots for 2000 equips
             {
                 int eqID = Convert.ToInt32(player.equipmentInfo[(a * 36) + 1].ToString() + player.equipmentInfo[(a * 36) + 2].ToString());
                 string typeLevelBits = Convert.ToString(player.equipmentInfo[a * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 3 bits level, 5 bits eq type
@@ -214,7 +249,7 @@ namespace MHXXSaveEditor
                 string eqName = "(None)";
 
                 switch (Convert.ToInt32(typeLevelBits.Substring(3, 5), 2))
-                {       
+                {
                     case 0:
                         break;
                     case 1:
@@ -296,13 +331,53 @@ namespace MHXXSaveEditor
             comboBoxEquipDeco3.Items.AddRange(GameConstants.JwlNames);
         }
 
+        public void LoadPalicoEquipmentBox()
+        {
+            listViewPalicoEquipment.Items.Clear();
+            for (int a = 0; a < Constants.TOTAL_PALICO_EQUIP; a++) // 1000 slots
+            {
+                int eqID = Convert.ToInt32(player.equipmentPalico[(a * 36) + 1].ToString() + player.equipmentPalico[(a * 36) + 2].ToString());
+                int equipType = Convert.ToInt32(player.equipmentPalico[(a * 36)]);
+                string typeName = "(None)";
+                string eqName = "(None)";
+
+                switch (equipType)
+                {
+                    case 22:
+                        eqName = GameConstants.PalicoWeaponNames[eqID];
+                        typeName = GameConstants.PalicoEquip[1];
+                        break;
+                    case 23:
+                        eqName = GameConstants.PalicoHeadNames[eqID];
+                        typeName = GameConstants.PalicoEquip[2];
+                        break;
+                    case 24:
+                        eqName = GameConstants.PalicoArmorNames[eqID];
+                        typeName = GameConstants.PalicoEquip[3];
+                        break;
+                    default:
+                        typeName = GameConstants.PalicoEquip[0];
+                        break;
+                }
+
+                string[] arr = new string[3];
+                arr[0] = (a + 1).ToString();
+                arr[1] = typeName;
+                arr[2] = eqName;
+                ListViewItem eqp = new ListViewItem(arr);
+                listViewPalicoEquipment.Items.Add(eqp);
+            }
+            listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
         public void packSaveFile()
         {
             // Char Name
-            byte[] charNameByte = new byte[32];
-            byte[] convName = Encoding.UTF8.GetBytes(charNameBox.Text);
-            Array.Copy(convName, 0, charNameByte, 0, convName.Length);
-            Array.Copy(charNameByte, 0, saveFile, player.SaveOffset, Constants.SIZEOF_NAME);
+            byte[] charNameByte = new byte[Constants.SIZEOF_NAME]; // create byte array with size of 32
+            byte[] convName = Encoding.UTF8.GetBytes(charNameBox.Text); // get bytes from text box
+            Array.Copy(convName, 0, charNameByte, 0, convName.Length); // copy from convname into the charnamebyte (which also leaves the other empty spaces as 00)
+            Array.Copy(charNameByte, 0, saveFile, player.SaveOffset, Constants.SIZEOF_NAME); // copy into save file
 
             // HR Points
             byte[] hrPoints = BitConverter.GetBytes((int)numericUpDownHRP.Value);
@@ -412,6 +487,12 @@ namespace MHXXSaveEditor
 
             // Equipment Box
             Array.Copy(player.equipmentInfo, 0, saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, Constants.SIZEOF_EQUIPBOX);
+
+            // Palico Equipment Box
+            Array.Copy(player.equipmentPalico, 0, saveFile, player.SaveOffset + Offsets.PALICO_EQUIPMENT_OFFSET, Constants.SIZEOF_PALICOEQUIPBOX);
+
+            // Palico
+            Array.Copy(player.PalicoData, 0, saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, Constants.SIZEOF_PALICOES);
         }
 
         private void listViewItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -750,6 +831,157 @@ namespace MHXXSaveEditor
             }
         }
 
+        private void buttonEditPalico_Click(object sender, EventArgs e)
+        {
+            if (listViewPalico.SelectedItems.Count > 0)
+            {
+                int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
+                EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
+                MessageBox.Show("Edit at your own risk", "WARNING");
+                editPalico.ShowDialog();
+                editPalico.Dispose();
+
+                byte[] palicoNameByte = new byte[32];
+                Array.Copy(player.PalicoData, selectedSlot * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
+                listViewPalico.SelectedItems[0].SubItems[1].Text = Encoding.UTF8.GetString(palicoNameByte);
+                listViewPalico.SelectedItems[0].SubItems[2].Text = GameConstants.PalicoForte[Convert.ToInt32(player.PalicoData[(selectedSlot * Constants.SIZEOF_PALICO) + 37])];
+            }
+        }
+
+        private void listViewPalico_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewPalico.SelectedItems.Count > 0)
+            {
+                int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
+                EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
+                MessageBox.Show("Edit at your own risk", "WARNING");
+                editPalico.ShowDialog();
+                editPalico.Dispose();
+
+                byte[] palicoNameByte = new byte[32];
+                Array.Copy(player.PalicoData, selectedSlot * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
+                listViewPalico.SelectedItems[0].SubItems[1].Text = Encoding.UTF8.GetString(palicoNameByte);
+                listViewPalico.SelectedItems[0].SubItems[2].Text = GameConstants.PalicoForte[Convert.ToInt32(player.PalicoData[(selectedSlot * Constants.SIZEOF_PALICO) + 37])];
+            }
+        }
+
+        private void comboBoxPalicoEqpType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
+                return;
+            else
+            {
+                ComboBox cb = (ComboBox)sender;
+                if (!cb.Focused)
+                {
+                    return;
+                }
+
+                comboBoxPalicoEquip.Items.Clear();
+                listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text = comboBoxPalicoEqpType.Text;
+                switch(comboBoxPalicoEqpType.SelectedIndex)
+                {
+                    case 1:
+                        player.equipmentPalico[palicoEqpSelectedSlot * 36] = 22;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
+                        listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        break;
+                    case 2:
+                        player.equipmentPalico[palicoEqpSelectedSlot * 36] = 23;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
+                        listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        break;
+                    case 3:
+                        player.equipmentPalico[palicoEqpSelectedSlot * 36] = 24;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
+                        listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        break;
+                    default:
+                        player.equipmentPalico[palicoEqpSelectedSlot * 36] = 0;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
+                        player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
+                        listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
+                        comboBoxPalicoEquip.Items.Add("(None)");
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        break;
+                }
+            }
+        }
+
+        private void comboBoxPalicoEquip_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
+                return;
+            else
+            {
+                ComboBox cb = (ComboBox)sender;
+                if (!cb.Focused)
+                {
+                    return;
+                }
+
+                listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = comboBoxPalicoEquip.Text;
+                byte[] idBytes = BitConverter.GetBytes(comboBoxPalicoEquip.SelectedIndex);
+                player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = idBytes[1];
+                player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = idBytes[0];
+            }
+        }
+
+        private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
+                return;
+            else
+            {
+                ListView ls = (ListView)sender;
+                if (!ls.Focused)
+                {
+                    return;
+                }
+
+                comboBoxPalicoEquip.Items.Clear();
+                comboBoxPalicoEqpType.Items.Clear();
+                comboBoxPalicoEqpType.Items.AddRange(GameConstants.PalicoEquip);
+                comboBoxPalicoEqpType.Enabled = true;
+
+                palicoEqpSelectedSlot = Convert.ToInt32(listViewPalicoEquipment.SelectedItems[0].SubItems[0].Text) - 1;
+                comboBoxPalicoEqpType.SelectedIndex = comboBoxPalicoEqpType.FindStringExact(listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text);
+                if(comboBoxPalicoEqpType.SelectedIndex == 1)
+                {
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
+                    comboBoxPalicoEquip.Enabled = true;
+                }
+                else if(comboBoxPalicoEqpType.SelectedIndex == 2)
+                {
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
+                    comboBoxPalicoEquip.Enabled = true;
+                }
+                else if(comboBoxPalicoEqpType.SelectedIndex == 3)
+                {
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
+                    comboBoxPalicoEquip.Enabled = true;
+                }
+                else
+                {
+                    comboBoxPalicoEquip.Items.Clear();
+                    comboBoxPalicoEquip.Items.Add("(None)");
+                    comboBoxPalicoEquip.Enabled = false;
+                }
+
+                int eqID = Convert.ToInt32(player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 1].ToString("X2") + player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2].ToString("X2"), 16);
+                comboBoxPalicoEquip.SelectedIndex = eqID;
+            }
+        }
+
         private void listViewEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
@@ -785,6 +1017,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = false;
                     buttonEditKinsect.Enabled = false;
                     buttonEditTalisman.Enabled = false;
+                    numericUpDownEquipLevel.Enabled = false;
                 }
                 else if (comboBoxEquipType.SelectedIndex == 20)
                 {
@@ -794,6 +1027,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditKinsect.Enabled = true;
                     buttonEditTalisman.Enabled = false;
+                    numericUpDownEquipLevel.Enabled = true;
                 }
                 else if (comboBoxEquipType.SelectedIndex == 6)
                 {
@@ -803,6 +1037,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditTalisman.Enabled = true;
                     buttonEditKinsect.Enabled = false;
+                    numericUpDownEquipLevel.Enabled = false;
                 }
                 else
                 {
@@ -812,6 +1047,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditKinsect.Enabled = false;
                     buttonEditTalisman.Enabled = false;
+                    numericUpDownEquipLevel.Enabled = true;
                 }
 
                 switch (Convert.ToInt32(typeLevelBits.Substring(3, 5), 2))
