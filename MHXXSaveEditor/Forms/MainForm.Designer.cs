@@ -138,20 +138,20 @@
             this.columnHeaderEquipName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.palicoTab = new System.Windows.Forms.TabPage();
             this.buttonEditPalico = new System.Windows.Forms.Button();
+            this.listViewPalico = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.palicoEquipTab = new System.Windows.Forms.TabPage();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.listViewPalicoEquipment = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBoxPalicoEquip = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.comboBoxPalicoEqpType = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewPalico = new System.Windows.Forms.ListView();
+            this.listViewPalicoEquipment = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -283,7 +283,7 @@
             this.itemBoxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maxAmountItemsToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
-            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
             // 
             // maxAmountItemsToolStripMenuItem
@@ -1475,6 +1475,37 @@
             this.buttonEditPalico.UseVisualStyleBackColor = true;
             this.buttonEditPalico.Click += new System.EventHandler(this.buttonEditPalico_Click);
             // 
+            // listViewPalico
+            // 
+            this.listViewPalico.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewPalico.FullRowSelect = true;
+            this.listViewPalico.GridLines = true;
+            this.listViewPalico.Location = new System.Drawing.Point(6, 6);
+            this.listViewPalico.MultiSelect = false;
+            this.listViewPalico.Name = "listViewPalico";
+            this.listViewPalico.Size = new System.Drawing.Size(687, 282);
+            this.listViewPalico.TabIndex = 1;
+            this.listViewPalico.UseCompatibleStateImageBehavior = false;
+            this.listViewPalico.View = System.Windows.Forms.View.Details;
+            this.listViewPalico.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPalico_MouseDoubleClick);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Slot";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Name";
+            this.columnHeader5.Width = 164;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Forte";
+            this.columnHeader6.Width = 435;
+            // 
             // palicoEquipTab
             // 
             this.palicoEquipTab.Controls.Add(this.comboBoxPalicoEquip);
@@ -1489,37 +1520,6 @@
             this.palicoEquipTab.TabIndex = 7;
             this.palicoEquipTab.Text = "Palico Equip";
             this.palicoEquipTab.UseVisualStyleBackColor = true;
-            // 
-            // listViewPalicoEquipment
-            // 
-            this.listViewPalicoEquipment.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-            this.listViewPalicoEquipment.FullRowSelect = true;
-            this.listViewPalicoEquipment.GridLines = true;
-            this.listViewPalicoEquipment.Location = new System.Drawing.Point(6, 6);
-            this.listViewPalicoEquipment.MultiSelect = false;
-            this.listViewPalicoEquipment.Name = "listViewPalicoEquipment";
-            this.listViewPalicoEquipment.Size = new System.Drawing.Size(687, 275);
-            this.listViewPalicoEquipment.TabIndex = 1;
-            this.listViewPalicoEquipment.UseCompatibleStateImageBehavior = false;
-            this.listViewPalicoEquipment.View = System.Windows.Forms.View.Details;
-            this.listViewPalicoEquipment.SelectedIndexChanged += new System.EventHandler(this.listViewPalicoEquipment_SelectedIndexChanged);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Slot";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Type";
-            this.columnHeader8.Width = 164;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Equipment Name";
-            this.columnHeader9.Width = 435;
             // 
             // comboBoxPalicoEquip
             // 
@@ -1559,36 +1559,36 @@
             this.label31.TabIndex = 5;
             this.label31.Text = "Type";
             // 
-            // columnHeader4
+            // listViewPalicoEquipment
             // 
-            this.columnHeader4.Text = "Slot";
+            this.listViewPalicoEquipment.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listViewPalicoEquipment.FullRowSelect = true;
+            this.listViewPalicoEquipment.GridLines = true;
+            this.listViewPalicoEquipment.Location = new System.Drawing.Point(6, 6);
+            this.listViewPalicoEquipment.MultiSelect = false;
+            this.listViewPalicoEquipment.Name = "listViewPalicoEquipment";
+            this.listViewPalicoEquipment.Size = new System.Drawing.Size(687, 275);
+            this.listViewPalicoEquipment.TabIndex = 1;
+            this.listViewPalicoEquipment.UseCompatibleStateImageBehavior = false;
+            this.listViewPalicoEquipment.View = System.Windows.Forms.View.Details;
+            this.listViewPalicoEquipment.SelectedIndexChanged += new System.EventHandler(this.listViewPalicoEquipment_SelectedIndexChanged);
             // 
-            // columnHeader5
+            // columnHeader7
             // 
-            this.columnHeader5.Text = "Name";
-            this.columnHeader5.Width = 164;
+            this.columnHeader7.Text = "Slot";
             // 
-            // columnHeader6
+            // columnHeader8
             // 
-            this.columnHeader6.Text = "Forte";
-            this.columnHeader6.Width = 435;
+            this.columnHeader8.Text = "Type";
+            this.columnHeader8.Width = 164;
             // 
-            // listViewPalico
+            // columnHeader9
             // 
-            this.listViewPalico.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listViewPalico.FullRowSelect = true;
-            this.listViewPalico.GridLines = true;
-            this.listViewPalico.Location = new System.Drawing.Point(6, 6);
-            this.listViewPalico.MultiSelect = false;
-            this.listViewPalico.Name = "listViewPalico";
-            this.listViewPalico.Size = new System.Drawing.Size(687, 282);
-            this.listViewPalico.TabIndex = 1;
-            this.listViewPalico.UseCompatibleStateImageBehavior = false;
-            this.listViewPalico.View = System.Windows.Forms.View.Details;
-            this.listViewPalico.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPalico_MouseDoubleClick);
+            this.columnHeader9.Text = "Equipment Name";
+            this.columnHeader9.Width = 435;
             // 
             // MainForm
             // 

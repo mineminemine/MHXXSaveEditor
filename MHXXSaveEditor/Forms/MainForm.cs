@@ -199,7 +199,7 @@ namespace MHXXSaveEditor
             listViewPalico.Items.Clear();
             for (int a = 0; a < Constants.TOTAL_PALICO_SLOTS; a++)
             {
-                if (Convert.ToInt32(player.PalicoData[(a * Constants.SIZEOF_PALICO) + 36]) != 0) // check if palic level is not zero, if zero == empty palico slot and we dont want that
+                if (Convert.ToInt32(player.PalicoData[(a * Constants.SIZEOF_PALICO) + 0x58]) != 0 && Convert.ToInt32(player.PalicoData[(a * Constants.SIZEOF_PALICO) + 0x59]) != 0) // check if palico original owner ID != 00, else means that palico block is empty
                 {
                     byte[] palicoNameByte = new byte[32];
                     string palicoName, palicoType;
@@ -223,6 +223,7 @@ namespace MHXXSaveEditor
         public void LoadItemBox()
         {
             listViewItem.Items.Clear();
+            Console.WriteLine("Here: " + GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, 1714)]);
             for (int a = 0; a < Constants.TOTAL_ITEM_SLOTS; a++) // 2300 slots for 2300 items
             {
                 string itemName = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, Convert.ToInt32(player.itemId[a]))];

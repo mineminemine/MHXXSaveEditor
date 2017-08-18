@@ -45,9 +45,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxNameGiver = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxLearnedSkillRNG = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxLearnedActionRNG = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDownEnthusiasm = new System.Windows.Forms.NumericUpDown();
@@ -103,6 +101,8 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxActionRNG = new System.Windows.Forms.ComboBox();
+            this.comboBoxSkillRNG = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnthusiasm)).BeginInit();
@@ -131,6 +131,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBoxSkillRNG);
+            this.tabPage1.Controls.Add(this.comboBoxActionRNG);
             this.tabPage1.Controls.Add(this.textBoxGreeting);
             this.tabPage1.Controls.Add(this.comboBoxTarget);
             this.tabPage1.Controls.Add(this.label25);
@@ -146,9 +148,7 @@
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.textBoxNameGiver);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.textBoxLearnedSkillRNG);
             this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.textBoxLearnedActionRNG);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.numericUpDownEnthusiasm);
@@ -297,14 +297,6 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Name Giver";
             // 
-            // textBoxLearnedSkillRNG
-            // 
-            this.textBoxLearnedSkillRNG.Location = new System.Drawing.Point(233, 194);
-            this.textBoxLearnedSkillRNG.MaxLength = 4;
-            this.textBoxLearnedSkillRNG.Name = "textBoxLearnedSkillRNG";
-            this.textBoxLearnedSkillRNG.Size = new System.Drawing.Size(200, 22);
-            this.textBoxLearnedSkillRNG.TabIndex = 15;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -313,14 +305,6 @@
             this.label8.Size = new System.Drawing.Size(125, 17);
             this.label8.TabIndex = 14;
             this.label8.Text = "Learned Skill RNG";
-            // 
-            // textBoxLearnedActionRNG
-            // 
-            this.textBoxLearnedActionRNG.Location = new System.Drawing.Point(9, 194);
-            this.textBoxLearnedActionRNG.MaxLength = 4;
-            this.textBoxLearnedActionRNG.Name = "textBoxLearnedActionRNG";
-            this.textBoxLearnedActionRNG.Size = new System.Drawing.Size(200, 22);
-            this.textBoxLearnedActionRNG.TabIndex = 13;
             // 
             // label7
             // 
@@ -889,6 +873,22 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonCancel_MouseClick);
             // 
+            // comboBoxActionRNG
+            // 
+            this.comboBoxActionRNG.FormattingEnabled = true;
+            this.comboBoxActionRNG.Location = new System.Drawing.Point(9, 194);
+            this.comboBoxActionRNG.Name = "comboBoxActionRNG";
+            this.comboBoxActionRNG.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxActionRNG.TabIndex = 32;
+            // 
+            // comboBoxSkillRNG
+            // 
+            this.comboBoxSkillRNG.FormattingEnabled = true;
+            this.comboBoxSkillRNG.Location = new System.Drawing.Point(233, 194);
+            this.comboBoxSkillRNG.Name = "comboBoxSkillRNG";
+            this.comboBoxSkillRNG.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxSkillRNG.TabIndex = 33;
+            // 
             // EditPalicoDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -928,9 +928,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxNameGiver;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBoxLearnedSkillRNG;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxLearnedActionRNG;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDownEnthusiasm;
@@ -996,5 +994,7 @@
         private System.Windows.Forms.ComboBox comboBoxLearnedSkills;
         private System.Windows.Forms.ComboBox comboBoxTarget;
         private System.Windows.Forms.TextBox textBoxGreeting;
+        private System.Windows.Forms.ComboBox comboBoxSkillRNG;
+        private System.Windows.Forms.ComboBox comboBoxActionRNG;
     }
 }

@@ -34,16 +34,16 @@ namespace MHXXSaveEditor.Forms
             palicoExpByte = palicoOriginalOwnerIDByte = new byte[4];
             byte[] palicoForteSpecificIDByte = new byte[3];
             byte[] palicoGreetingByte = new byte[Constants.TOTAL_PALICO_GREETING];
-            string palicoName, palicoNameGiver, palicoPreviousOwner, palicoGreeting;
+            string palicoName, palicoNameGiver, palicoPreviousOwner, palicoGreeting, palicoActionRNG, palicoSkillRNG;
             string palicoForteSpecificID = "", palicoOriginalOwnerID = "";
-            int palicoType, palicoExp, palicoLevel, palicoEnthusiasm, palicoTarget, palicoUniqueID;
+            int palicoForte, palicoExp, palicoLevel, palicoEnthusiasm, palicoTarget, palicoUniqueID;
 
             Array.Copy(mainForm.player.PalicoData, selectedPalico * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
             palicoName = Encoding.UTF8.GetString(palicoNameByte);
             Array.Copy(mainForm.player.PalicoData, (selectedPalico * Constants.SIZEOF_PALICO) + 0x20, palicoExpByte, 0, 4);
             palicoExp = (int)BitConverter.ToUInt32(palicoExpByte, 0);
             palicoLevel = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x24]);
-            palicoType = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25]);
+            palicoForte = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25]);
             palicoEnthusiasm = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x26]);
             palicoTarget = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x27]);
             Array.Copy(mainForm.player.PalicoData, (selectedPalico * Constants.SIZEOF_PALICO) + 0x58, palicoOriginalOwnerIDByte, 0, 4);
@@ -66,17 +66,34 @@ namespace MHXXSaveEditor.Forms
             Array.Copy(mainForm.player.PalicoData, (selectedPalico * Constants.SIZEOF_PALICO) + 0xbc, palicoPreviousOwnerByte, 0, Constants.SIZEOF_NAME);
             palicoPreviousOwner = Encoding.UTF8.GetString(palicoPreviousOwnerByte);
 
+            palicoActionRNG = mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x54].ToString("X2") + mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x55].ToString("X2");
+            palicoSkillRNG = mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x56].ToString("X2") + mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x57].ToString("X2");
+            int pAR, pSR;
+
+            if (palicoForte == 0)
+            {
+                pAR = Array.IndexOf(GameConstants.PalicoCharismaActionRNG, palicoActionRNG);
+                comboBoxActionRNG.Items.AddRange(GameConstants.PalicoCharismaActionRNGAbbv);
+            }
+            else
+            {
+                pAR = Array.IndexOf(GameConstants.PalicoActionRNG, palicoActionRNG);
+                comboBoxActionRNG.Items.AddRange(GameConstants.PalicoActionRNGAbbv);
+            }
+            comboBoxSkillRNG.Items.AddRange(GameConstants.PalicoSkillRNGAbbv);
+            pSR = Array.IndexOf(GameConstants.PalicoSkillRNG, palicoSkillRNG);
+            comboBoxActionRNG.SelectedIndex = pAR;
+            comboBoxSkillRNG.SelectedIndex = pSR;
+
             textBoxName.Text = palicoName;
             numericUpDownExp.Value = palicoExp;
             numericUpDownLevel.Value = palicoLevel;
-            comboBoxForte.SelectedIndex = palicoType;
+            comboBoxForte.SelectedIndex = palicoForte;
             numericUpDownEnthusiasm.Value = palicoEnthusiasm;
             comboBoxTarget.SelectedIndex = palicoTarget;
             textBoxOriginalOwnerID.Text = palicoOriginalOwnerID.ToString();
             textBoxForteSpecificID.Text = palicoForteSpecificID.ToString();
             textBoxUniquePalicoID.Text = palicoUniqueID.ToString();
-            textBoxLearnedActionRNG.Text = mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x54].ToString("X2") + mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x55].ToString("X2");
-            textBoxLearnedSkillRNG.Text = mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x56].ToString("X2") + mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x57].ToString("X2");
             textBoxNameGiver.Text = palicoNameGiver;
             textBoxPreviousOwner.Text = palicoPreviousOwner;
             textBoxGreeting.Text = palicoGreeting;
@@ -519,16 +536,30 @@ namespace MHXXSaveEditor.Forms
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25] = (byte)comboBoxForte.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x26] = (byte)numericUpDownEnthusiasm.Value;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x27] = (byte)comboBoxTarget.SelectedIndex;
-            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x54] = (byte)int.Parse(textBoxLearnedActionRNG.Text.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x55] = (byte)int.Parse(textBoxLearnedActionRNG.Text.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x56] = (byte)int.Parse(textBoxLearnedSkillRNG.Text.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x57] = (byte)int.Parse(textBoxLearnedSkillRNG.Text.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x10f] = (byte)comboBoxVoice.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x110] = (byte)comboBoxEyes.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x111] = (byte)comboBoxClothing.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x114] = (byte)comboBoxCoat.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x115] = (byte)comboBoxEars.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x116] = (byte)comboBoxTail.SelectedIndex;
+
+            // Action & Skill 
+            int pAR = comboBoxActionRNG.SelectedIndex;
+            int pSR = comboBoxSkillRNG.SelectedIndex;
+            if (comboBoxForte.SelectedIndex == 0)
+            {
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x54] = (byte)int.Parse(GameConstants.PalicoCharismaActionRNG[pAR].Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x55] = (byte)int.Parse(GameConstants.PalicoCharismaActionRNG[pAR].Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x56] = (byte)int.Parse(GameConstants.PalicoSkillRNG[pSR].Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x57] = (byte)int.Parse(GameConstants.PalicoSkillRNG[pSR].Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+            else
+            {
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x54] = (byte)int.Parse(GameConstants.PalicoActionRNG[pAR].Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x55] = (byte)int.Parse(GameConstants.PalicoActionRNG[pAR].Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x56] = (byte)int.Parse(GameConstants.PalicoSkillRNG[pSR].Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x57] = (byte)int.Parse(GameConstants.PalicoSkillRNG[pSR].Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            }
 
             // Greeting
             byte[] greetingByte = new byte[Constants.TOTAL_PALICO_GREETING];
