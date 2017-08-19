@@ -223,7 +223,6 @@ namespace MHXXSaveEditor
         public void LoadItemBox()
         {
             listViewItem.Items.Clear();
-            Console.WriteLine("Here: " + GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, 1714)]);
             for (int a = 0; a < Constants.TOTAL_ITEM_SLOTS; a++) // 2300 slots for 2300 items
             {
                 string itemName = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, Convert.ToInt32(player.itemId[a]))];

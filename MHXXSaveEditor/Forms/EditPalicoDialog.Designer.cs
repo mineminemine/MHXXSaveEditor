@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBoxSkillRNG = new System.Windows.Forms.ComboBox();
+            this.comboBoxActionRNG = new System.Windows.Forms.ComboBox();
             this.textBoxGreeting = new System.Windows.Forms.TextBox();
             this.comboBoxTarget = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -101,8 +103,6 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.comboBoxActionRNG = new System.Windows.Forms.ComboBox();
-            this.comboBoxSkillRNG = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnthusiasm)).BeginInit();
@@ -168,6 +168,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxSkillRNG
+            // 
+            this.comboBoxSkillRNG.FormattingEnabled = true;
+            this.comboBoxSkillRNG.Location = new System.Drawing.Point(233, 194);
+            this.comboBoxSkillRNG.Name = "comboBoxSkillRNG";
+            this.comboBoxSkillRNG.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxSkillRNG.TabIndex = 33;
+            this.comboBoxSkillRNG.SelectedIndexChanged += new System.EventHandler(this.comboBoxSkillRNG_SelectedIndexChanged);
+            // 
+            // comboBoxActionRNG
+            // 
+            this.comboBoxActionRNG.FormattingEnabled = true;
+            this.comboBoxActionRNG.Location = new System.Drawing.Point(9, 194);
+            this.comboBoxActionRNG.Name = "comboBoxActionRNG";
+            this.comboBoxActionRNG.Size = new System.Drawing.Size(200, 24);
+            this.comboBoxActionRNG.TabIndex = 32;
+            this.comboBoxActionRNG.SelectedIndexChanged += new System.EventHandler(this.comboBoxActionRNG_SelectedIndexChanged);
             // 
             // textBoxGreeting
             // 
@@ -872,22 +890,6 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonCancel_MouseClick);
-            // 
-            // comboBoxActionRNG
-            // 
-            this.comboBoxActionRNG.FormattingEnabled = true;
-            this.comboBoxActionRNG.Location = new System.Drawing.Point(9, 194);
-            this.comboBoxActionRNG.Name = "comboBoxActionRNG";
-            this.comboBoxActionRNG.Size = new System.Drawing.Size(200, 24);
-            this.comboBoxActionRNG.TabIndex = 32;
-            // 
-            // comboBoxSkillRNG
-            // 
-            this.comboBoxSkillRNG.FormattingEnabled = true;
-            this.comboBoxSkillRNG.Location = new System.Drawing.Point(233, 194);
-            this.comboBoxSkillRNG.Name = "comboBoxSkillRNG";
-            this.comboBoxSkillRNG.Size = new System.Drawing.Size(200, 24);
-            this.comboBoxSkillRNG.TabIndex = 33;
             // 
             // EditPalicoDialog
             // 

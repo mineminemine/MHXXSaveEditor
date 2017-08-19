@@ -42,7 +42,7 @@ namespace MHXXSaveEditor.Forms
             palicoName = Encoding.UTF8.GetString(palicoNameByte);
             Array.Copy(mainForm.player.PalicoData, (selectedPalico * Constants.SIZEOF_PALICO) + 0x20, palicoExpByte, 0, 4);
             palicoExp = (int)BitConverter.ToUInt32(palicoExpByte, 0);
-            palicoLevel = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x24]);
+            palicoLevel = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x24]) + 1;
             palicoForte = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25]);
             palicoEnthusiasm = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x26]);
             palicoTarget = Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x27]);
@@ -203,6 +203,7 @@ namespace MHXXSaveEditor.Forms
 
         public void LoadLearnedActions()
         {
+            listViewLearnedActions.Items.Clear();
             string hexValue, actionName;
             int intValue;
             for (int a = 0; a < 16; a++)
@@ -243,6 +244,7 @@ namespace MHXXSaveEditor.Forms
 
         public void LoadLearnedSkills()
         {
+            listViewLearnedSkills.Items.Clear();
             string hexValue, skillName;
             int intValue;
             for (int a = 0; a < 12; a++)
@@ -371,8 +373,8 @@ namespace MHXXSaveEditor.Forms
 
         public void updateListViewLearnedActions()
         {
-            int actionSelectedSlot;
-            actionSelectedSlot = Convert.ToInt32(listViewLearnedActions.SelectedItems[0].SubItems[0].Text) - 1;
+            string actionRNG = comboBoxActionRNG.Text;
+            int actionSelectedSlot = Convert.ToInt32(listViewLearnedActions.SelectedItems[0].SubItems[0].Text) - 1;
 
             comboBoxLearnedActions.Items.Clear();
 
@@ -382,8 +384,23 @@ namespace MHXXSaveEditor.Forms
                     comboBoxLearnedActions.Enabled = false;
                 else
                 {
-                    comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves);
-                    comboBoxLearnedActions.Enabled = true;
+                    if (actionSelectedSlot < (comboBoxActionRNG.Text.Length + 3))
+                    {
+                        char RNG = comboBoxActionRNG.Text[actionSelectedSlot - 3];
+                        if(RNG == 'A')
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves3);
+                        else if (RNG == 'B')
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves2);
+                        else
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves1);
+
+                        comboBoxLearnedActions.Enabled = true;
+                    }
+                    else
+                    {
+                        comboBoxLearnedActions.Items.Add("-----");
+                        comboBoxLearnedActions.Enabled = false;
+                    }
                 }
                 comboBoxLearnedActions.SelectedIndex = comboBoxLearnedActions.FindStringExact(listViewLearnedActions.SelectedItems[0].SubItems[1].Text);
             }
@@ -432,8 +449,23 @@ namespace MHXXSaveEditor.Forms
                 }
                 else
                 {
-                    comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves);
-                    comboBoxLearnedActions.Enabled = true;
+                    if (actionSelectedSlot < (comboBoxActionRNG.Text.Length + 4))
+                    {
+                        char RNG = comboBoxActionRNG.Text[actionSelectedSlot - 4];
+                        if (RNG == 'A')
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves3);
+                        else if (RNG == 'B')
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves2);
+                        else
+                            comboBoxLearnedActions.Items.AddRange(GameConstants.PalicoSupportMoves1);
+
+                        comboBoxLearnedActions.Enabled = true;
+                    }
+                    else
+                    {
+                        comboBoxLearnedActions.Items.Add("-----");
+                        comboBoxLearnedActions.Enabled = false;
+                    }
                 }
                 comboBoxLearnedActions.SelectedIndex = comboBoxLearnedActions.FindStringExact(listViewLearnedActions.SelectedItems[0].SubItems[1].Text);
             }
@@ -478,8 +510,30 @@ namespace MHXXSaveEditor.Forms
         {
             comboBoxLearnedSkills.Items.Clear();
 
-            comboBoxLearnedSkills.Items.AddRange(GameConstants.PalicoSkills);
-            comboBoxLearnedSkills.Enabled = true;
+            int skillSelectedSlot = Convert.ToInt32(listViewLearnedSkills.SelectedItems[0].SubItems[0].Text) - 1;
+
+            if (skillSelectedSlot == 0 || skillSelectedSlot == 1)
+                comboBoxLearnedSkills.Enabled = false;
+            else
+            {
+                if (skillSelectedSlot < comboBoxSkillRNG.Text.Length + 2)
+                {
+                    char RNG = comboBoxSkillRNG.Text[skillSelectedSlot - 2];
+                    if (RNG == 'A')
+                        comboBoxLearnedSkills.Items.AddRange(GameConstants.PalicoSkills3);
+                    else if (RNG == 'B')
+                        comboBoxLearnedSkills.Items.AddRange(GameConstants.PalicoSkills2);
+                    else
+                        comboBoxLearnedSkills.Items.AddRange(GameConstants.PalicoSkills1);
+
+                    comboBoxLearnedSkills.Enabled = true;
+                }
+                else
+                {
+                    comboBoxLearnedSkills.Items.Add("-----");
+                    comboBoxLearnedSkills.Enabled = false;
+                }
+            }
             comboBoxLearnedSkills.SelectedIndex = comboBoxLearnedSkills.FindStringExact(listViewLearnedSkills.SelectedItems[0].SubItems[1].Text);
         }
 
@@ -532,7 +586,7 @@ namespace MHXXSaveEditor.Forms
                 mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x20 + ex] = expByte[ex];
             }
 
-            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x24] = (byte)numericUpDownLevel.Value;
+            mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x24] = (byte)(numericUpDownLevel.Value - 1);
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25] = (byte)comboBoxForte.SelectedIndex;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x26] = (byte)numericUpDownEnthusiasm.Value;
             mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x27] = (byte)comboBoxTarget.SelectedIndex;
@@ -622,6 +676,49 @@ namespace MHXXSaveEditor.Forms
             }
 
             this.Close();
+        }
+
+        private void comboBoxActionRNG_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            if (!cb.Focused)
+            {
+                return;
+            }
+
+            if(comboBoxForte.SelectedIndex == 0)
+            {
+                for (int a = 3; a < 3 + comboBoxActionRNG.Text.Length; a++)
+                    listViewLearnedActions.Items[a].SubItems[1].Text = "-----";
+                for (int a = 3 + comboBoxActionRNG.Text.Length; a < 6 + comboBoxActionRNG.Text.Length; a++)
+                    listViewLearnedActions.Items[a].SubItems[1].Text = "-----";
+                for (int a = 5 + comboBoxActionRNG.Text.Length; a < 16; a++)
+                    listViewLearnedActions.Items[a].SubItems[1].Text = "NULL [57]";
+            }
+            else
+            {
+                for (int a = 4; a < 4 + comboBoxActionRNG.Text.Length; a++)
+                        listViewLearnedActions.Items[a].SubItems[1].Text = "-----";
+                for (int a = 4 + comboBoxActionRNG.Text.Length; a < 7 + comboBoxActionRNG.Text.Length; a++)
+                    listViewLearnedActions.Items[a].SubItems[1].Text = "-----";
+                for (int a = 6 + comboBoxActionRNG.Text.Length; a < 16; a++)
+                    listViewLearnedActions.Items[a].SubItems[1].Text = "NULL [57]";
+            }
+        }
+
+        private void comboBoxSkillRNG_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            if (!cb.Focused)
+            {
+                return;
+            }
+            for (int a = 2; a < 8; a++)
+            {
+                if (listViewLearnedSkills.Items[a].SubItems[1].Text != "-----" || !listViewLearnedSkills.Items[a].SubItems[1].Text.Contains("NULL"))
+                    listViewLearnedSkills.Items[a].SubItems[1].Text = "-----";
+            }
+
         }
     }
 }

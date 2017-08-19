@@ -570,7 +570,7 @@
             // charNameBox
             // 
             this.charNameBox.Location = new System.Drawing.Point(57, 16);
-            this.charNameBox.MaxLength = 32;
+            this.charNameBox.MaxLength = 16;
             this.charNameBox.Name = "charNameBox";
             this.charNameBox.Size = new System.Drawing.Size(239, 22);
             this.charNameBox.TabIndex = 1;
