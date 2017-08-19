@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Diagnostics;
 using MHXXSaveEditor.Data;
 
 namespace MHXXSaveEditor.Util
@@ -26,6 +25,8 @@ namespace MHXXSaveEditor.Util
             player.equipmentInfo = new byte[Constants.SIZEOF_EQUIPBOX];
             player.equipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
             player.PalicoData = new byte[Constants.SIZEOF_PALICOES];
+            player.ManualShoutouts = new byte[Constants.SIZEOF_MANUAL_SHOUTOUTS];
+            player.AutomaticShoutouts = new byte[Constants.SIZEOF_AUTOMATIC_SHOUTOUTS];
             byte[] itemBytes = new byte[Constants.SIZEOF_ITEMBOX];
 
             if (slot == 1)
@@ -112,6 +113,10 @@ namespace MHXXSaveEditor.Util
 
             // Palico
             Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, player.PalicoData, 0, Constants.SIZEOF_PALICOES);
+
+            // Shoutouts
+            Array.Copy(saveFile, player.SaveOffset + Offsets.MANUAL_SHOUTOUT_OFFSETS, player.ManualShoutouts, 0, Constants.SIZEOF_MANUAL_SHOUTOUTS);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.AUTOMATIC_SHOUTOUT_OFFSETS, player.AutomaticShoutouts, 0, Constants.SIZEOF_AUTOMATIC_SHOUTOUTS);
         }
     }
 }

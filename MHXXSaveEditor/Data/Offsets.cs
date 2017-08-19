@@ -92,6 +92,10 @@
         public const int POKKE_POINTS_OFFSET = 0x2823; //Size 4
         public const int YUKUMO_POINTS_OFFSET = 0x2827; //Size 4
 
+        // Shoutouts
+        public const int MANUAL_SHOUTOUT_OFFSETS = 0x11D629;
+        public const int AUTOMATIC_SHOUTOUT_OFFSETS = 0x11E169;
+
         //public const int SHOP_OFFSETS = 0x1D76;
         //public const int CRAFTABLE_WEAPONS_OFFSET = 0x20BE;
         //public const int CRAFTABLE_ARMOR_SHOP_OFFSET = 0x2316;
@@ -107,7 +111,5 @@
         //public const int MONSTERHUNT_OFFSETS = 0x42E7; //71 Monsters 2 bytes each
         //public const int MONSTERCAPTURE_OFFSETS = 0x43C7; //71 Monsters 2 bytes each
 
-        //public const int SHOUTOUT_OFFSETS = 0xEAD6E;
-        //public const int AUTOMATIC_SHOUTOUT_OFFSETS = 0xEB72E;
     }
 }

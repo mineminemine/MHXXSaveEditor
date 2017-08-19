@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 using MHXXSaveEditor.Data;
+using MHXXSaveEditor.Util;
 
 namespace MHXXSaveEditor.Forms
 {
@@ -137,7 +138,7 @@ namespace MHXXSaveEditor.Forms
                     labelStatusDetail.Text = "Not sure what this palico is doing..";
                 else if (palicoTraining == 16)
                     labelStatusDetail.Text = "This palico is selected for Normal Traning";
-                else if (palicoJob == 0 && palicoTraining == 0)
+                else if (palicoJob == 0 && palicoTraining == 0 || palicoTraining == 5 || palicoTraining == 21)
                 {
                     switch (palicoStatus)
                     {
@@ -177,7 +178,7 @@ namespace MHXXSaveEditor.Forms
                     }
                 }
                 else
-                    labelStatusDetail.Text = "How did I get here.. [" + palicoJob + "] [" + palicoTraining + "]";
+                    labelStatusDetail.Text = "How did I get here.. PalicoJob: " + palicoJob + " PalicoTraining: " + palicoTraining + " PalicoStatus: " + palicoStatus;
             }
         }
 
@@ -719,6 +720,58 @@ namespace MHXXSaveEditor.Forms
                     listViewLearnedSkills.Items[a].SubItems[1].Text = "-----";
             }
 
+        }
+
+        private void textBoxGreeting_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!tb.Focused)
+            {
+                return;
+            }
+
+            var mlc = new MaxLengthChecker();
+            if(mlc.getMaxLength(textBoxGreeting.Text, 60))
+                textBoxGreeting.MaxLength = textBoxGreeting.Text.Length;
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!tb.Focused)
+            {
+                return;
+            }
+
+            var mlc = new MaxLengthChecker();
+            if (mlc.getMaxLength(textBoxName.Text, 32))
+                textBoxName.MaxLength = textBoxName.Text.Length;
+        }
+
+        private void textBoxNameGiver_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!tb.Focused)
+            {
+                return;
+            }
+
+            var mlc = new MaxLengthChecker();
+            if (mlc.getMaxLength(textBoxNameGiver.Text, 32))
+                textBoxNameGiver.MaxLength = textBoxNameGiver.Text.Length;
+        }
+
+        private void textBoxPreviousOwner_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (!tb.Focused)
+            {
+                return;
+            }
+
+            var mlc = new MaxLengthChecker();
+            if (mlc.getMaxLength(textBoxPreviousOwner.Text, 32))
+                textBoxPreviousOwner.MaxLength = textBoxPreviousOwner.Text.Length;
         }
     }
 }

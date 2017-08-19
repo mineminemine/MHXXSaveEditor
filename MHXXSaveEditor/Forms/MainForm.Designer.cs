@@ -45,6 +45,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.generalTab = new System.Windows.Forms.TabPage();
+            this.buttonEditShoutouts = new System.Windows.Forms.Button();
             this.labelConvTime = new System.Windows.Forms.Label();
             this.numericUpDownTime = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -118,6 +119,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.equipTab = new System.Windows.Forms.TabPage();
+            this.numericUpDownEquipID = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownEquipLevel = new System.Windows.Forms.NumericUpDown();
             this.buttonEditTalisman = new System.Windows.Forms.Button();
             this.buttonEditKinsect = new System.Windows.Forms.Button();
@@ -128,7 +130,6 @@
             this.comboBoxEquipDeco1 = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.comboBoxEquipName = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
             this.comboBoxEquipType = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -143,7 +144,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.palicoEquipTab = new System.Windows.Forms.TabPage();
-            this.comboBoxPalicoEquip = new System.Windows.Forms.ComboBox();
+            this.numericUpDownEquipPalicoID = new System.Windows.Forms.NumericUpDown();
             this.label30 = new System.Windows.Forms.Label();
             this.comboBoxPalicoEqpType = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -192,9 +193,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).BeginInit();
             this.equipTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).BeginInit();
             this.palicoTab.SuspendLayout();
             this.palicoEquipTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipPalicoID)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -325,6 +328,7 @@
             // 
             // generalTab
             // 
+            this.generalTab.Controls.Add(this.buttonEditShoutouts);
             this.generalTab.Controls.Add(this.labelConvTime);
             this.generalTab.Controls.Add(this.numericUpDownTime);
             this.generalTab.Controls.Add(this.label10);
@@ -353,6 +357,16 @@
             this.generalTab.TabIndex = 1;
             this.generalTab.Text = "General";
             this.generalTab.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditShoutouts
+            // 
+            this.buttonEditShoutouts.Location = new System.Drawing.Point(573, 294);
+            this.buttonEditShoutouts.Name = "buttonEditShoutouts";
+            this.buttonEditShoutouts.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditShoutouts.TabIndex = 21;
+            this.buttonEditShoutouts.Text = "Edit Shoutouts";
+            this.buttonEditShoutouts.UseVisualStyleBackColor = true;
+            this.buttonEditShoutouts.Click += new System.EventHandler(this.buttonEditShoutouts_Click);
             // 
             // labelConvTime
             // 
@@ -574,6 +588,7 @@
             this.charNameBox.Name = "charNameBox";
             this.charNameBox.Size = new System.Drawing.Size(239, 22);
             this.charNameBox.TabIndex = 1;
+            this.charNameBox.TextChanged += new System.EventHandler(this.charNameBox_TextChanged);
             // 
             // label1
             // 
@@ -1245,6 +1260,7 @@
             // 
             // equipTab
             // 
+            this.equipTab.Controls.Add(this.numericUpDownEquipID);
             this.equipTab.Controls.Add(this.numericUpDownEquipLevel);
             this.equipTab.Controls.Add(this.buttonEditTalisman);
             this.equipTab.Controls.Add(this.buttonEditKinsect);
@@ -1255,7 +1271,6 @@
             this.equipTab.Controls.Add(this.comboBoxEquipDeco1);
             this.equipTab.Controls.Add(this.label37);
             this.equipTab.Controls.Add(this.label34);
-            this.equipTab.Controls.Add(this.comboBoxEquipName);
             this.equipTab.Controls.Add(this.label33);
             this.equipTab.Controls.Add(this.comboBoxEquipType);
             this.equipTab.Controls.Add(this.label29);
@@ -1267,6 +1282,20 @@
             this.equipTab.TabIndex = 3;
             this.equipTab.Text = "Equipment";
             this.equipTab.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownEquipID
+            // 
+            this.numericUpDownEquipID.Enabled = false;
+            this.numericUpDownEquipID.Location = new System.Drawing.Point(97, 254);
+            this.numericUpDownEquipID.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownEquipID.Name = "numericUpDownEquipID";
+            this.numericUpDownEquipID.Size = new System.Drawing.Size(180, 22);
+            this.numericUpDownEquipID.TabIndex = 16;
+            this.numericUpDownEquipID.ValueChanged += new System.EventHandler(this.numericUpDownEquipID_ValueChanged);
             // 
             // numericUpDownEquipLevel
             // 
@@ -1384,16 +1413,6 @@
             this.label34.TabIndex = 5;
             this.label34.Text = "Level";
             // 
-            // comboBoxEquipName
-            // 
-            this.comboBoxEquipName.Enabled = false;
-            this.comboBoxEquipName.FormattingEnabled = true;
-            this.comboBoxEquipName.Location = new System.Drawing.Point(97, 254);
-            this.comboBoxEquipName.Name = "comboBoxEquipName";
-            this.comboBoxEquipName.Size = new System.Drawing.Size(180, 24);
-            this.comboBoxEquipName.TabIndex = 4;
-            this.comboBoxEquipName.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipName_SelectedIndexChanged);
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
@@ -1450,7 +1469,7 @@
             // 
             // columnHeaderEquipName
             // 
-            this.columnHeaderEquipName.Text = "Equipment Name";
+            this.columnHeaderEquipName.Text = "Equipment ID";
             this.columnHeaderEquipName.Width = 435;
             // 
             // palicoTab
@@ -1508,7 +1527,7 @@
             // 
             // palicoEquipTab
             // 
-            this.palicoEquipTab.Controls.Add(this.comboBoxPalicoEquip);
+            this.palicoEquipTab.Controls.Add(this.numericUpDownEquipPalicoID);
             this.palicoEquipTab.Controls.Add(this.label30);
             this.palicoEquipTab.Controls.Add(this.comboBoxPalicoEqpType);
             this.palicoEquipTab.Controls.Add(this.label31);
@@ -1521,30 +1540,34 @@
             this.palicoEquipTab.Text = "Palico Equip";
             this.palicoEquipTab.UseVisualStyleBackColor = true;
             // 
-            // comboBoxPalicoEquip
+            // numericUpDownEquipPalicoID
             // 
-            this.comboBoxPalicoEquip.Enabled = false;
-            this.comboBoxPalicoEquip.FormattingEnabled = true;
-            this.comboBoxPalicoEquip.Location = new System.Drawing.Point(447, 296);
-            this.comboBoxPalicoEquip.Name = "comboBoxPalicoEquip";
-            this.comboBoxPalicoEquip.Size = new System.Drawing.Size(180, 24);
-            this.comboBoxPalicoEquip.TabIndex = 8;
-            this.comboBoxPalicoEquip.SelectedIndexChanged += new System.EventHandler(this.comboBoxPalicoEquip_SelectedIndexChanged);
+            this.numericUpDownEquipPalicoID.Enabled = false;
+            this.numericUpDownEquipPalicoID.Location = new System.Drawing.Point(483, 297);
+            this.numericUpDownEquipPalicoID.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDownEquipPalicoID.Name = "numericUpDownEquipPalicoID";
+            this.numericUpDownEquipPalicoID.Size = new System.Drawing.Size(150, 22);
+            this.numericUpDownEquipPalicoID.TabIndex = 9;
+            this.numericUpDownEquipPalicoID.ValueChanged += new System.EventHandler(this.numericUpDownEquipPalicoID_ValueChanged);
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(366, 299);
+            this.label30.Location = new System.Drawing.Point(385, 299);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(75, 17);
+            this.label30.Size = new System.Drawing.Size(92, 17);
             this.label30.TabIndex = 7;
-            this.label30.Text = "Equipment";
+            this.label30.Text = "Equipment ID";
             // 
             // comboBoxPalicoEqpType
             // 
             this.comboBoxPalicoEqpType.Enabled = false;
             this.comboBoxPalicoEqpType.FormattingEnabled = true;
-            this.comboBoxPalicoEqpType.Location = new System.Drawing.Point(76, 296);
+            this.comboBoxPalicoEqpType.Location = new System.Drawing.Point(114, 297);
             this.comboBoxPalicoEqpType.Name = "comboBoxPalicoEqpType";
             this.comboBoxPalicoEqpType.Size = new System.Drawing.Size(180, 24);
             this.comboBoxPalicoEqpType.TabIndex = 6;
@@ -1553,7 +1576,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(30, 299);
+            this.label31.Location = new System.Drawing.Point(68, 300);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(40, 17);
             this.label31.TabIndex = 5;
@@ -1587,7 +1610,7 @@
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "Equipment Name";
+            this.columnHeader9.Text = "Equipment ID";
             this.columnHeader9.Width = 435;
             // 
             // MainForm
@@ -1649,10 +1672,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).EndInit();
             this.equipTab.ResumeLayout(false);
             this.equipTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).EndInit();
             this.palicoTab.ResumeLayout(false);
             this.palicoEquipTab.ResumeLayout(false);
             this.palicoEquipTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipPalicoID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1763,14 +1788,12 @@
         private System.Windows.Forms.ComboBox comboBoxEquipDeco1;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.ComboBox comboBoxEquipName;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button buttonEditKinsect;
         private System.Windows.Forms.NumericUpDown numericUpDownEquipLevel;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button buttonEditTalisman;
         private System.Windows.Forms.Button buttonEditPalico;
-        private System.Windows.Forms.ComboBox comboBoxPalicoEquip;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.ComboBox comboBoxPalicoEqpType;
         private System.Windows.Forms.Label label31;
@@ -1782,6 +1805,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button buttonEditShoutouts;
+        private System.Windows.Forms.NumericUpDown numericUpDownEquipID;
+        private System.Windows.Forms.NumericUpDown numericUpDownEquipPalicoID;
     }
 }
 

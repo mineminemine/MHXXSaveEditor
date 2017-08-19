@@ -9,9 +9,6 @@
         public int PlayTime { get; set; }
         public int Funds { get; set; }
         public int HunterRank { get; set; }
-        //public int HunterArt1 { get; set; }
-        //public int HunterArt2 { get; set; }
-        //public int HunterArt3 { get; set; }
 
         //Character Details
         public byte Voice { get; set; }
@@ -49,5 +46,9 @@
 
         // Palico
         public byte[] PalicoData { get; set; }
+
+        // Shoutouts
+        public byte[] AutomaticShoutouts { get; set; }
+        public byte[] ManualShoutouts { get; set; }
     }
 }

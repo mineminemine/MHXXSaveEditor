@@ -190,15 +190,16 @@
             // textBoxGreeting
             // 
             this.textBoxGreeting.Location = new System.Drawing.Point(9, 303);
-            this.textBoxGreeting.MaxLength = 16;
+            this.textBoxGreeting.MaxLength = 60;
             this.textBoxGreeting.Name = "textBoxGreeting";
-            this.textBoxGreeting.Size = new System.Drawing.Size(485, 22);
+            this.textBoxGreeting.Size = new System.Drawing.Size(523, 22);
             this.textBoxGreeting.TabIndex = 31;
+            this.textBoxGreeting.TextChanged += new System.EventHandler(this.textBoxGreeting_TextChanged);
             // 
             // comboBoxTarget
             // 
             this.comboBoxTarget.FormattingEnabled = true;
-            this.comboBoxTarget.Location = new System.Drawing.Point(447, 76);
+            this.comboBoxTarget.Location = new System.Drawing.Point(459, 76);
             this.comboBoxTarget.Name = "comboBoxTarget";
             this.comboBoxTarget.Size = new System.Drawing.Size(150, 24);
             this.comboBoxTarget.TabIndex = 30;
@@ -223,7 +224,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(444, 117);
+            this.label24.Location = new System.Drawing.Point(456, 117);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(119, 17);
             this.label24.TabIndex = 27;
@@ -231,7 +232,7 @@
             // 
             // textBoxOriginalOwnerID
             // 
-            this.textBoxOriginalOwnerID.Location = new System.Drawing.Point(447, 137);
+            this.textBoxOriginalOwnerID.Location = new System.Drawing.Point(459, 137);
             this.textBoxOriginalOwnerID.Name = "textBoxOriginalOwnerID";
             this.textBoxOriginalOwnerID.ReadOnly = true;
             this.textBoxOriginalOwnerID.Size = new System.Drawing.Size(200, 22);
@@ -284,10 +285,11 @@
             // textBoxPreviousOwner
             // 
             this.textBoxPreviousOwner.Location = new System.Drawing.Point(233, 246);
-            this.textBoxPreviousOwner.MaxLength = 16;
+            this.textBoxPreviousOwner.MaxLength = 32;
             this.textBoxPreviousOwner.Name = "textBoxPreviousOwner";
             this.textBoxPreviousOwner.Size = new System.Drawing.Size(200, 22);
             this.textBoxPreviousOwner.TabIndex = 19;
+            this.textBoxPreviousOwner.TextChanged += new System.EventHandler(this.textBoxPreviousOwner_TextChanged);
             // 
             // label10
             // 
@@ -301,10 +303,11 @@
             // textBoxNameGiver
             // 
             this.textBoxNameGiver.Location = new System.Drawing.Point(9, 246);
-            this.textBoxNameGiver.MaxLength = 16;
+            this.textBoxNameGiver.MaxLength = 32;
             this.textBoxNameGiver.Name = "textBoxNameGiver";
             this.textBoxNameGiver.Size = new System.Drawing.Size(200, 22);
             this.textBoxNameGiver.TabIndex = 17;
+            this.textBoxNameGiver.TextChanged += new System.EventHandler(this.textBoxNameGiver_TextChanged);
             // 
             // label9
             // 
@@ -336,7 +339,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(444, 57);
+            this.label5.Location = new System.Drawing.Point(456, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 17);
             this.label5.TabIndex = 10;
@@ -382,7 +385,7 @@
             // 
             // numericUpDownExp
             // 
-            this.numericUpDownExp.Location = new System.Drawing.Point(447, 24);
+            this.numericUpDownExp.Location = new System.Drawing.Point(459, 24);
             this.numericUpDownExp.Maximum = new decimal(new int[] {
             -1,
             0,
@@ -395,7 +398,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 3);
+            this.label3.Location = new System.Drawing.Point(456, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 17);
             this.label3.TabIndex = 4;
@@ -430,10 +433,11 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(9, 23);
-            this.textBoxName.MaxLength = 16;
+            this.textBoxName.MaxLength = 32;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(200, 22);
             this.textBoxName.TabIndex = 1;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label1
             // 
@@ -903,6 +907,7 @@
             this.MaximizeBox = false;
             this.Name = "EditPalicoDialog";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editing Palico";
             this.tabControl1.ResumeLayout(false);
