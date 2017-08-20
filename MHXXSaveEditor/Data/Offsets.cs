@@ -15,7 +15,6 @@
         public const int PLAY_TIME_OFFSET = 0x20; //Size 4
         public const int FUNDS_OFFSET = 0x24; //Size 4 ;
         public const int HUNTER_RANK_OFFSET = 0x28; //Size 2 
-        public const int HUNTER_GENDER_OFFSET = 0x2A;
         //public const int CHARACTER_HUNTING_STYLE_OFFSET = 0x0261; //Size 1
         //public const int HUNTER_ART_1_OFFSET = 0x2C; //Size 2
         //public const int HUNTER_ART_2_OFFSET = 0x2E; //Size 2
@@ -32,6 +31,7 @@
         public const int CHARACTER_EYE_COLOR_OFFSET = 0x242; //Size 1
         public const int CHARACTER_CLOTHING_OFFSET = 0x243; //Size 1
         public const int CHARACTER_GENDER_OFFSET = 0x244;  //Size 1
+        public const int CHARACTER_HUNTINGSTYLE_OFFSET = 0x245; //Size 1
         public const int CHARACTER_HAIRSTYLE_OFFSET = 0x246; //Size 1
         public const int CHARACTER_FACE_OFFSET = 0x247; //Size 1
         public const int CHARACTER_FEATURES_OFFSET = 0x248; //Size 1
@@ -63,17 +63,19 @@
         public const int CHARACTER_EYE_COLOR_OFFSET2 = 0x23B49; //Size 1
         public const int CHARACTER_CLOTHING_OFFSET2 = 0x23B4A; //Size 1
         public const int CHARACTER_GENDER_OFFSET2 = 0x23B4B; // Size 1
+        public const int CHARACTER_HUNTINGSTYLE_OFFSET2 = 0x23B4C; // Size 1
         public const int CHARACTER_HAIRSTYLE_OFFSET2 = 0x23B4D; //Size 1
         public const int CHARACTER_FACE_OFFSET2 = 0x23B4E; //Size 1
         public const int CHARACTER_FEATURES_OFFSET2 = 0x23B4F; //Size 1
 
-        public const int CHARACTER_VOICE_OFFSET3 = 0XC71D7; //Size 1
-        public const int CHARACTER_EYE_COLOR_OFFSET3 = 0XC71D8; //Size 1
-        public const int CHARACTER_CLOTHING_OFFSET3 = 0XC71D9; //Size 1
-        public const int CHARACTER_GENDER_OFFSET3 = 0xC71DA; // Size 1
-        public const int CHARACTER_HAIRSTYLE_OFFSET3 = 0xC71DC; //Size 1
-        public const int CHARACTER_FACE_OFFSET3 = 0xC71DD; //Size 1
-        public const int CHARACTER_FEATURES_OFFSET3 = 0xC71DE; //Size 1
+        public const int CHARACTER_VOICE_OFFSET3 = 0XC71D6; //Size 1
+        public const int CHARACTER_EYE_COLOR_OFFSET3 = 0XC71D7; //Size 1
+        public const int CHARACTER_CLOTHING_OFFSET3 = 0XC71D8; //Size 1
+        public const int CHARACTER_GENDER_OFFSET3 = 0XC71D9; // Size 1
+        public const int CHARACTER_HUNTINGSTYLE_OFFSET3 = 0xC71DA; // Size 1
+        public const int CHARACTER_HAIRSTYLE_OFFSET3 = 0xC71DB; //Size 1
+        public const int CHARACTER_FACE_OFFSET3 = 0xC71DC; //Size 1
+        public const int CHARACTER_FEATURES_OFFSET3 = 0xC71DD; //Size 1
 
         public const int CHARACTER_SKIN_COLOR_OFFSET2 = 0x23B67; //Size 4 
         public const int CHARACTER_HAIR_COLOR_OFFSET2 = 0X23B6B; //Size 4

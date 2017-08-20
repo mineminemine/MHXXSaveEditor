@@ -226,16 +226,18 @@ namespace MHXXSaveEditor
             string itemName;
             for (int a = 0; a < Constants.TOTAL_ITEM_SLOTS; a++) // 2300 slots for 2300 items
             {
-
                 try
                 {
-                    itemName = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemIDList, Convert.ToInt32(player.itemId[a]))];
+                    itemName = GameConstants.ItemNameList[Convert.ToInt32(player.itemId[a])];
                 }
                 catch
                 {
-                    itemName = "Unknown [" + Convert.ToInt32(player.itemId[a]) + "]";
-                    MessageBox.Show("Unknown Item Found: " + Convert.ToInt32(player.itemId[a]) + "\nPlease report this to the thread so OP can improve it", "Error");
+                    MessageBox.Show("An unknown item was found at slot: " + (a + 1).ToString() + "\nYou may have an invalid item in your item box\nIf you proceed to try and edit it, you may get a crash", "Item Error");
+                    if (MessageBox.Show("Item ID: " + player.itemId[a], "Click OK to copy this message", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        Clipboard.SetText("Item ID: " + player.itemId[a]);
+                    itemName = "Unknown [" + player.itemId[a].ToString() + "]";
                 }
+
                 string[] arr = new string[3];
                 arr[0] = (a + 1).ToString();
                 arr[1] = itemName;
@@ -257,87 +259,93 @@ namespace MHXXSaveEditor
                 string typeLevelBits = Convert.ToString(player.equipmentInfo[(a * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.equipmentInfo[a * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
                 string equipType = GameConstants.EquipmentTypes[Convert.ToInt32(typeLevelBits.Substring(7, 5), 2)];
 
-                //string eqName = "(None)";
-                //try
-                //{
-                //    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
-                //    {
-                //        case 0:
-                //            break;
-                //        case 1:
-                //            eqName = GameConstants.EquipHeadNames[eqID];
-                //            break;
-                //        case 2:
-                //            eqName = GameConstants.EquipChestNames[eqID];
-                //            break;
-                //        case 3:
-                //            eqName = GameConstants.EquipArmsNames[eqID];
-                //            break;
-                //        case 4:
-                //            eqName = GameConstants.EquipWaistNames[eqID];
-                //            break;
-                //        case 5:
-                //            eqName = GameConstants.EquipLegsNames[eqID];
-                //            break;
-                //        case 6:
-                //            eqName = GameConstants.EquipTalismanNames[eqID];
-                //            break;
-                //        case 7:
-                //            eqName = GameConstants.EquipGreatSwordNames[eqID];
-                //            break;
-                //        case 8:
-                //            eqName = GameConstants.EquipSwordnShieldNames[eqID];
-                //            break;
-                //        case 9:
-                //            eqName = GameConstants.EquipHammerNames[eqID];
-                //            break;
-                //        case 10:
-                //            eqName = GameConstants.EquipLanceNames[eqID];
-                //            break;
-                //        case 11:
-                //            eqName = GameConstants.EquipHeavyBowgunNames[eqID];
-                //            break;
-                //        case 12:
-                //            break;
-                //        case 13:
-                //            eqName = GameConstants.EquipLightBowgunNames[eqID];
-                //            break;
-                //        case 14:
-                //            eqName = GameConstants.EquipLongswordNames[eqID];
-                //            break;
-                //        case 15:
-                //            eqName = GameConstants.EquipSwitchAxeNames[eqID];
-                //            break;
-                //        case 16:
-                //            eqName = GameConstants.EquipGunlanceNames[eqID];
-                //            break;
-                //        case 17:
-                //            eqName = GameConstants.EquipBowNames[eqID];
-                //            break;
-                //        case 18:
-                //            eqName = GameConstants.EquipDualBladesNames[eqID];
-                //            break;
-                //        case 19:
-                //            eqName = GameConstants.EquipHuntingHornNames[eqID];
-                //            break;
-                //        case 20:
-                //            eqName = GameConstants.EquipInsectGlaiveNames[eqID];
-                //            break;
-                //        case 21:
-                //            eqName = GameConstants.EquipChargeBladeNames[eqID];
-                //            break;
-                //    }
-                //}
-                //catch
-                //{
-                //    eqName = "Unknown [" + eqID.ToString() + "]";
-                //    MessageBox.Show("Unknown Equipment Found: " + eqID.ToString() + "\nPlease report this to the thread so OP can improve it", "Error");
-                //}
+                string eqName = "(None)";
+                try
+                {
+                    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            eqName = GameConstants.EquipHeadNames[eqID];
+                            break;
+                        case 2:
+                            eqName = GameConstants.EquipChestNames[eqID];
+                            break;
+                        case 3:
+                            eqName = GameConstants.EquipArmsNames[eqID];
+                            break;
+                        case 4:
+                            eqName = GameConstants.EquipWaistNames[eqID];
+                            break;
+                        case 5:
+                            eqName = GameConstants.EquipLegsNames[eqID];
+                            break;
+                        case 6:
+                            eqName = GameConstants.EquipTalismanNames[eqID];
+                            break;
+                        case 7:
+                            eqName = GameConstants.EquipGreatSwordNames[eqID];
+                            break;
+                        case 8:
+                            eqName = GameConstants.EquipSwordnShieldNames[eqID];
+                            break;
+                        case 9:
+                            eqName = GameConstants.EquipHammerNames[eqID];
+                            break;
+                        case 10:
+                            eqName = GameConstants.EquipLanceNames[eqID];
+                            break;
+                        case 11:
+                            eqName = GameConstants.EquipHeavyBowgunNames[eqID];
+                            break;
+                        case 12:
+                            break;
+                        case 13:
+                            eqName = GameConstants.EquipLightBowgunNames[eqID];
+                            break;
+                        case 14:
+                            eqName = GameConstants.EquipLongswordNames[eqID];
+                            break;
+                        case 15:
+                            eqName = GameConstants.EquipSwitchAxeNames[eqID];
+                            break;
+                        case 16:
+                            eqName = GameConstants.EquipGunlanceNames[eqID];
+                            break;
+                        case 17:
+                            eqName = GameConstants.EquipBowNames[eqID];
+                            break;
+                        case 18:
+                            eqName = GameConstants.EquipDualBladesNames[eqID];
+                            break;
+                        case 19:
+                            eqName = GameConstants.EquipHuntingHornNames[eqID];
+                            break;
+                        case 20:
+                            eqName = GameConstants.EquipInsectGlaiveNames[eqID];
+                            break;
+                        case 21:
+                            eqName = GameConstants.EquipChargeBladeNames[eqID];
+                            break;
+                    }
+                }
+                catch
+                {
+                    string hexes = "";
+                    MessageBox.Show("An unknown equipment was found at slot: " + (a + 1).ToString() + "\nYou may have an invalid equipment in your equipment box\nIf you proceed to try and edit it, you may get a crash", "Equipment Error");
+                    for(int b = 0; b <36; b++)
+                    {
+                        hexes += player.equipmentInfo[(a * 36) + b].ToString("X2") + " ";
+                    }
+                    if (MessageBox.Show(hexes, "Click OK to copy this message", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        Clipboard.SetText(hexes);
+                }
 
                 string[] arr = new string[3];
                 arr[0] = (a + 1).ToString();
                 arr[1] = equipType;
-                arr[2] = eqID.ToString();
+                arr[2] = eqName;
                 ListViewItem itm = new ListViewItem(arr);
                 listViewEquipment.Items.Add(itm);
             }
@@ -357,20 +365,20 @@ namespace MHXXSaveEditor
                 int eqID = Convert.ToInt32(player.equipmentPalico[(a * 36) + 3].ToString("X2") + player.equipmentPalico[(a * 36) + 2].ToString("X2"), 16);
                 int equipType = Convert.ToInt32(player.equipmentPalico[(a * 36)]);
                 string typeName = "(None)";
-                string eqName = eqID.ToString();
+                string eqName = "(None)";
 
                 switch (equipType)
                 {
                     case 22:
-                        //eqName = GameConstants.PalicoWeaponNames[eqID];
+                        eqName = GameConstants.PalicoWeaponNames[eqID];
                         typeName = GameConstants.PalicoEquip[1];
                         break;
                     case 23:
-                        //eqName = GameConstants.PalicoHeadNames[eqID];
+                        eqName = GameConstants.PalicoHeadNames[eqID];
                         typeName = GameConstants.PalicoEquip[2];
                         break;
                     case 24:
-                        //eqName = GameConstants.PalicoArmorNames[eqID];
+                        eqName = GameConstants.PalicoArmorNames[eqID];
                         typeName = GameConstants.PalicoEquip[3];
                         break;
                     default:
@@ -485,7 +493,7 @@ namespace MHXXSaveEditor
             {
                 int iteration = Convert.ToInt32(i.SubItems[0].Text) - 1;
                 
-                player.itemId[iteration] = (GameConstants.ItemIDList[Array.IndexOf(GameConstants.ItemNameList, i.SubItems[1].Text)]).ToString();
+                player.itemId[iteration] = Array.IndexOf(GameConstants.ItemNameList, i.SubItems[1].Text).ToString();
                 player.itemCount[iteration] = i.SubItems[2].Text;
             }
             for (int a = 2299; a >= 0; a--)
@@ -526,7 +534,7 @@ namespace MHXXSaveEditor
                 itemSelectedSlot = Convert.ToInt32(listViewItem.SelectedItems[0].SubItems[0].Text) - 1;
                 numericUpDownItemID.Value = Convert.ToInt32(player.itemId[itemSelectedSlot]);
                 numericUpDownItemAmount.Value = Convert.ToInt32(player.itemCount[itemSelectedSlot]);
-                comboBoxItem.SelectedIndex = Array.IndexOf(GameConstants.ItemIDList, Convert.ToInt32(player.itemId[itemSelectedSlot]));
+                comboBoxItem.SelectedIndex = Convert.ToInt32(player.itemId[itemSelectedSlot]);
             }
         }
 
@@ -536,7 +544,7 @@ namespace MHXXSaveEditor
                 return;
             else
             {
-                int index = GameConstants.ItemIDList[Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text)];
+                int index = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text);
                 numericUpDownItemID.Value = index;
                 listViewItem.SelectedItems[0].SubItems[1].Text = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text)];
 
@@ -554,7 +562,7 @@ namespace MHXXSaveEditor
                 }
 
                 player.itemCount[itemSelectedSlot] = listViewItem.SelectedItems[0].SubItems[2].Text;
-                player.itemId[itemSelectedSlot] = GameConstants.ItemIDList[Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text)].ToString();
+                player.itemId[itemSelectedSlot] = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text).ToString();
             }
         }
 
@@ -605,8 +613,7 @@ namespace MHXXSaveEditor
                     return;
                 }
 
-                //comboBoxEquipName.Items.Clear();
-                numericUpDownEquipID.Value = 0;
+                comboBoxEquipName.Items.Clear();
                 numericUpDownEquipLevel.Value = 1;
                 comboBoxEquipDeco1.SelectedIndex = 0;
                 comboBoxEquipDeco2.SelectedIndex = 0;
@@ -614,10 +621,9 @@ namespace MHXXSaveEditor
 
                 if (comboBoxEquipType.SelectedIndex == 0 || comboBoxEquipType.SelectedIndex == 12)
                 {
-                    //comboBoxEquipName.Items.Clear();
-                    //comboBoxEquipName.Items.Add("(None)");
-                    //comboBoxEquipName.Enabled = false;
-                    numericUpDownEquipID.Enabled = false;
+                    comboBoxEquipName.Items.Clear();
+                    comboBoxEquipName.Items.Add("(None)");
+                    comboBoxEquipName.Enabled = false;
                     comboBoxEquipDeco1.Enabled = false;
                     comboBoxEquipDeco2.Enabled = false;
                     comboBoxEquipDeco3.Enabled = false;
@@ -626,8 +632,7 @@ namespace MHXXSaveEditor
                 }
                 else if (comboBoxEquipType.SelectedIndex == 20)
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -635,8 +640,7 @@ namespace MHXXSaveEditor
                 }
                 else if (comboBoxEquipType.SelectedIndex == 6)
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -645,8 +649,7 @@ namespace MHXXSaveEditor
                 }
                 else
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -654,76 +657,76 @@ namespace MHXXSaveEditor
                     buttonEditTalisman.Enabled = false;
                 }
 
-                //switch (comboBoxEquipType.SelectedIndex)
-                //{
-                //    case 1:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
-                //        break;
-                //    case 2:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipChestNames);
-                //        break;
-                //    case 3:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipArmsNames);
-                //        break;
-                //    case 4:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipWaistNames);
-                //        break;
-                //    case 5:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipLegsNames);
-                //        break;
-                //    case 6:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipTalismanNames);
-                //        break;
-                //    case 7:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipGreatSwordNames);
-                //        break;
-                //    case 8:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipSwordnShieldNames);
-                //        break;
-                //    case 9:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipHammerNames);
-                //        break;
-                //    case 10:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipLanceNames);
-                //        break;
-                //    case 11:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipHeavyBowgunNames);
-                //        break;
-                //    case 13:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipLightBowgunNames);
-                //        break;
-                //    case 14:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipLongswordNames);
-                //        break;
-                //    case 15:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipSwitchAxeNames);
-                //        break;
-                //    case 16:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipGunlanceNames);
-                //        break;
-                //    case 17:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipBowNames);
-                //        break;
-                //    case 18:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipDualBladesNames);
-                //        break;
-                //    case 19:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipHuntingHornNames);
-                //        break;
-                //    case 20:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipInsectGlaiveNames);
-                //        break;
-                //    case 21:
-                //        comboBoxEquipName.Items.AddRange(GameConstants.EquipChargeBladeNames);
-                //        break;
-                //}
-                //if (comboBoxEquipType.SelectedIndex == 0 || comboBoxEquipType.SelectedIndex == 12)
-                //    comboBoxEquipName.SelectedIndex = 0;
-                //else
-                //    comboBoxEquipName.SelectedIndex = 1;
+                switch (comboBoxEquipType.SelectedIndex)
+                {
+                    case 1:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
+                        break;
+                    case 2:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipChestNames);
+                        break;
+                    case 3:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipArmsNames);
+                        break;
+                    case 4:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipWaistNames);
+                        break;
+                    case 5:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipLegsNames);
+                        break;
+                    case 6:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipTalismanNames);
+                        break;
+                    case 7:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipGreatSwordNames);
+                        break;
+                    case 8:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipSwordnShieldNames);
+                        break;
+                    case 9:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipHammerNames);
+                        break;
+                    case 10:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipLanceNames);
+                        break;
+                    case 11:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipHeavyBowgunNames);
+                        break;
+                    case 13:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipLightBowgunNames);
+                        break;
+                    case 14:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipLongswordNames);
+                        break;
+                    case 15:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipSwitchAxeNames);
+                        break;
+                    case 16:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipGunlanceNames);
+                        break;
+                    case 17:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipBowNames);
+                        break;
+                    case 18:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipDualBladesNames);
+                        break;
+                    case 19:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipHuntingHornNames);
+                        break;
+                    case 20:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipInsectGlaiveNames);
+                        break;
+                    case 21:
+                        comboBoxEquipName.Items.AddRange(GameConstants.EquipChargeBladeNames);
+                        break;
+                }
+                if (comboBoxEquipType.SelectedIndex == 0 || comboBoxEquipType.SelectedIndex == 12)
+                    comboBoxEquipName.SelectedIndex = 0;
+                else
+                    comboBoxEquipName.SelectedIndex = 1;
 
                 listViewEquipment.SelectedItems[0].SubItems[1].Text = comboBoxEquipType.Text;
-                listViewEquipment.SelectedItems[0].SubItems[2].Text = numericUpDownEquipID.Text;
+                listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
 
                 // Change the equipment type to selected equip in combobox
                 string typeLevelBits = Convert.ToString(player.equipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.equipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
@@ -903,7 +906,7 @@ namespace MHXXSaveEditor
                     return;
                 }
 
-                //comboBoxPalicoEquip.Items.Clear();
+                comboBoxPalicoEquip.Items.Clear();
                 listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text = comboBoxPalicoEqpType.Text;
                 switch(comboBoxPalicoEqpType.SelectedIndex)
                 {
@@ -913,8 +916,9 @@ namespace MHXXSaveEditor
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
-                        //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
-                        //comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Enabled = true;
                         break;
                     case 2:
                         player.equipmentPalico[palicoEqpSelectedSlot * 36] = 23;
@@ -922,8 +926,9 @@ namespace MHXXSaveEditor
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
-                        //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
-                        //comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Enabled = true;
                         break;
                     case 3:
                         player.equipmentPalico[palicoEqpSelectedSlot * 36] = 24;
@@ -931,8 +936,9 @@ namespace MHXXSaveEditor
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
-                        //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
-                        //comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Enabled = true;
                         break;
                     default:
                         player.equipmentPalico[palicoEqpSelectedSlot * 36] = 0;
@@ -940,8 +946,9 @@ namespace MHXXSaveEditor
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
-                        //comboBoxPalicoEquip.Items.Add("(None)");
-                        //comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Items.Add("(None)");
+                        comboBoxPalicoEquip.SelectedIndex = 0;
+                        comboBoxPalicoEquip.Enabled = false;
                         break;
                 }
             }
@@ -967,39 +974,39 @@ namespace MHXXSaveEditor
                 charNameBox.MaxLength = charNameBox.Text.Length;
         }
 
-        private void numericUpDownEquipID_ValueChanged(object sender, EventArgs e)
+        private void comboBoxEquipName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
             else
             {
-                NumericUpDown nmup = (NumericUpDown)sender;
-                if (!nmup.Focused)
+                ComboBox cb = (ComboBox)sender;
+                if (!cb.Focused)
                 {
                     return;
                 }
 
-                listViewEquipment.SelectedItems[0].SubItems[2].Text = numericUpDownEquipID.Value.ToString();
-                byte[] idBytes = BitConverter.GetBytes((int)numericUpDownEquipID.Value);
+                listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
+                byte[] idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
                 player.equipmentInfo[(equipSelectedSlot * 36) + 2] = idBytes[0];
                 player.equipmentInfo[(equipSelectedSlot * 36) + 3] = idBytes[1];
             }
         }
 
-        private void numericUpDownEquipPalicoID_ValueChanged(object sender, EventArgs e)
+        private void comboBoxPalicoEquip_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
             else
             {
-                NumericUpDown nmup = (NumericUpDown)sender;
-                if (!nmup.Focused)
+                ComboBox cb = (ComboBox)sender;
+                if (!cb.Focused)
                 {
                     return;
                 }
 
-                listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = numericUpDownEquipPalicoID.Value.ToString();
-                byte[] idBytes = BitConverter.GetBytes((int)numericUpDownEquipPalicoID.Value);
+                listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = comboBoxPalicoEquip.Text;
+                byte[] idBytes = BitConverter.GetBytes(comboBoxPalicoEquip.SelectedIndex);
                 player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = idBytes[0];
                 player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = idBytes[1];
             }
@@ -1017,7 +1024,7 @@ namespace MHXXSaveEditor
                     return;
                 }
 
-                //comboBoxPalicoEquip.Items.Clear();
+                comboBoxPalicoEquip.Items.Clear();
                 comboBoxPalicoEqpType.Items.Clear();
                 comboBoxPalicoEqpType.Items.AddRange(GameConstants.PalicoEquip);
                 comboBoxPalicoEqpType.Enabled = true;
@@ -1026,33 +1033,28 @@ namespace MHXXSaveEditor
                 comboBoxPalicoEqpType.SelectedIndex = comboBoxPalicoEqpType.FindStringExact(listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text);
                 if(comboBoxPalicoEqpType.SelectedIndex == 1)
                 {
-                    //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
-                    //comboBoxPalicoEquip.Enabled = true;
-                    numericUpDownEquipPalicoID.Enabled = true;
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
+                    comboBoxPalicoEquip.Enabled = true;
                 }
                 else if(comboBoxPalicoEqpType.SelectedIndex == 2)
                 {
-                    //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
-                    //comboBoxPalicoEquip.Enabled = true;
-                    numericUpDownEquipPalicoID.Enabled = true;
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
+                    comboBoxPalicoEquip.Enabled = true;
                 }
                 else if(comboBoxPalicoEqpType.SelectedIndex == 3)
                 {
-                    //comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
-                    //comboBoxPalicoEquip.Enabled = true;
-                    numericUpDownEquipPalicoID.Enabled = true;
+                    comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
+                    comboBoxPalicoEquip.Enabled = true;
                 }
                 else
                 {
-                    //comboBoxPalicoEquip.Items.Clear();
-                    //comboBoxPalicoEquip.Items.Add("(None)");
-                    //comboBoxPalicoEquip.Enabled = false;
-                    numericUpDownEquipPalicoID.Enabled = false;
+                    comboBoxPalicoEquip.Items.Clear();
+                    comboBoxPalicoEquip.Items.Add("(None)");
+                    comboBoxPalicoEquip.Enabled = false;
                 }
 
                 int eqID = Convert.ToInt32(player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3].ToString("X2") + player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2].ToString("X2"), 16);
-                //comboBoxPalicoEquip.SelectedIndex = eqID;
-                numericUpDownEquipPalicoID.Value = eqID;
+                comboBoxPalicoEquip.SelectedIndex = eqID;
             }
         }
 
@@ -1068,7 +1070,7 @@ namespace MHXXSaveEditor
                     return;
                 }
 
-                //comboBoxEquipName.Items.Clear();
+                comboBoxEquipName.Items.Clear();
                 comboBoxEquipType.Enabled = true;
 
                 equipSelectedSlot = Convert.ToInt32(listViewEquipment.SelectedItems[0].SubItems[0].Text) - 1;
@@ -1083,10 +1085,9 @@ namespace MHXXSaveEditor
 
                 if (comboBoxEquipType.SelectedIndex == 0 || comboBoxEquipType.SelectedIndex == 12)
                 {
-                    //comboBoxEquipName.Items.Clear();
-                    //comboBoxEquipName.Text = "(None)";
-                    //comboBoxEquipName.Enabled = false;
-                    numericUpDownEquipID.Enabled = false;
+                    comboBoxEquipName.Items.Clear();
+                    comboBoxEquipName.Text = "(None)";
+                    comboBoxEquipName.Enabled = false;
                     comboBoxEquipDeco1.Enabled = false;
                     comboBoxEquipDeco2.Enabled = false;
                     comboBoxEquipDeco3.Enabled = false;
@@ -1096,8 +1097,7 @@ namespace MHXXSaveEditor
                 }
                 else if (comboBoxEquipType.SelectedIndex == 20)
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -1107,8 +1107,7 @@ namespace MHXXSaveEditor
                 }
                 else if (comboBoxEquipType.SelectedIndex == 6)
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -1118,8 +1117,7 @@ namespace MHXXSaveEditor
                 }
                 else
                 {
-                    //comboBoxEquipName.Enabled = true;
-                    numericUpDownEquipID.Enabled = true;
+                    comboBoxEquipName.Enabled = true;
                     comboBoxEquipDeco1.Enabled = true;
                     comboBoxEquipDeco2.Enabled = true;
                     comboBoxEquipDeco3.Enabled = true;
@@ -1128,99 +1126,98 @@ namespace MHXXSaveEditor
                     numericUpDownEquipLevel.Enabled = true;
                 }
 
-                //try
-                //{
-                //    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
-                //    {
-                //        case 1:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 2:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipChestNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 3:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipArmsNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 4:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipWaistNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 5:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipLegsNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 6:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipTalismanNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 7:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipGreatSwordNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 8:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipSwordnShieldNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 9:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipHammerNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 10:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipLanceNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 11:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipHeavyBowgunNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 13:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipLightBowgunNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 14:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipLongswordNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 15:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipSwitchAxeNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 16:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipGunlanceNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 17:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipBowNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 18:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipDualBladesNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 19:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipHuntingHornNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 20:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipInsectGlaiveNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //        case 21:
-                //            comboBoxEquipName.Items.AddRange(GameConstants.EquipChargeBladeNames);
-                //            comboBoxEquipName.SelectedIndex = eqID;
-                //            break;
-                //    }
-                //}
-                //catch
-                //{
-                //    comboBoxEquipName.Items.Add("Unknown [" + eqID + "]");
-                //    comboBoxEquipName.SelectedIndex = 0;
-                //}
+                try
+                {
+                    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
+                    {
+                        case 1:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 2:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipChestNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 3:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipArmsNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 4:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipWaistNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 5:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipLegsNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 6:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipTalismanNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 7:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipGreatSwordNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 8:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipSwordnShieldNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 9:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipHammerNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 10:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipLanceNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 11:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipHeavyBowgunNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 13:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipLightBowgunNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 14:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipLongswordNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 15:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipSwitchAxeNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 16:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipGunlanceNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 17:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipBowNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 18:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipDualBladesNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 19:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipHuntingHornNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 20:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipInsectGlaiveNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                        case 21:
+                            comboBoxEquipName.Items.AddRange(GameConstants.EquipChargeBladeNames);
+                            comboBoxEquipName.SelectedIndex = eqID;
+                            break;
+                    }
+                }
+                catch
+                {
+                    comboBoxEquipName.Items.Add("Unknown [" + eqID + "]");
+                    comboBoxEquipName.SelectedIndex = 0;
+                }
 
-                numericUpDownEquipID.Value = eqID;
                 numericUpDownEquipLevel.Value = eqLevel + 1;
                 comboBoxEquipDeco1.SelectedIndex = Array.IndexOf(GameConstants.JwlIDs ,deco1);
                 comboBoxEquipDeco2.SelectedIndex = Array.IndexOf(GameConstants.JwlIDs, deco2);
