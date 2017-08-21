@@ -2,7 +2,7 @@
 {
     class Constants
     {
-        public const string EDITOR_VERSION = "MHXX Save Editor v0.04b";
+        public const string EDITOR_VERSION = "MHXX Save Editor v0.04c";
 
         public const int SIZEOF_NAME = 32;
 

@@ -112,6 +112,5 @@
 
         //public const int MONSTERHUNT_OFFSETS = 0x42E7; //71 Monsters 2 bytes each
         //public const int MONSTERCAPTURE_OFFSETS = 0x43C7; //71 Monsters 2 bytes each
-
     }
 }

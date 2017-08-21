@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using MHXXSaveEditor.Data;
 using MHXXSaveEditor.Util;
 using MHXXSaveEditor.Forms;
+using System.Collections.Generic;
 
 namespace MHXXSaveEditor
 {
@@ -30,7 +31,7 @@ namespace MHXXSaveEditor
             toolStripMenuItemSaveSlot3.Enabled = false;
 
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "MHXX System File|system|All files (*.*)|*.*";
+            ofd.Filter = "All files (*.*)|*.*";
             ofd.FilterIndex = 1;
 
             if (ofd.ShowDialog() != DialogResult.OK)
@@ -40,21 +41,14 @@ namespace MHXXSaveEditor
             }
 
             filePath = ofd.FileName;
-            this.Text = string.Format("{0} [{1}]", Constants.EDITOR_VERSION, ofd.SafeFileName); // Changes app title
+            Text = string.Format("{0} [{1}]", Constants.EDITOR_VERSION, ofd.SafeFileName); // Changes app title
             saveFile = File.ReadAllBytes(ofd.FileName); // Read all bytes from file into memory buffer
             ofd.Dispose();
 
             if (saveFile.Length != 4726152) // Check if save file is correct or not
             {
-                MessageBox.Show("This is not a MHXX save file, program will now exit.", "Error !");
-                if (Application.MessageLoop)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    Environment.Exit(1);
-                }
+                MessageBox.Show("This is not a MHXX save file.", "Error");
+                return;
             }
 
             // To see which character slots are enabled
@@ -143,7 +137,7 @@ namespace MHXXSaveEditor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Made by Ukee for GBATemp\nBased off APM's MHX/MHGen Save Editor\nAlso thanks to Seth VanHeulen for the Save File structure\nAnd some threads in GBATemp", "About");
+            MessageBox.Show("Made by Ukee for GBATemp\nBased off APM's MHX/MHGen Save Editor\nAlso thanks to Seth VanHeulen for the Save File structure\nAnd some MHX/MHGen/MHXX hex editing threads in GBATemp", "About");
         }
 
         public void loadSave()
@@ -1010,6 +1004,94 @@ namespace MHXXSaveEditor
                 player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = idBytes[0];
                 player.equipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = idBytes[1];
             }
+        }
+
+        private void setAmountToToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new SetItemAmountDialog())
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    int val = form.itmval;
+                    foreach (ListViewItem i in listViewItem.Items)
+                    {
+                        if (!i.SubItems[1].Text.Contains("-----"))
+                        {
+                            i.SubItems[2].Text = val.ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void removeDuplicatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> newList = new List<string>();
+            List<int> itemsToRemove = new List<int>();
+            foreach (ListViewItem i in listViewItem.Items)
+            {
+                if (newList.Contains(i.SubItems[1].Text))
+                    itemsToRemove.Add(Convert.ToInt32(i.SubItems[0].Text) - 1);
+                else
+                    newList.Add(i.SubItems[1].Text);
+            }
+
+            //Remove duplicate items here
+            foreach (var i in itemsToRemove)
+            {
+                listViewItem.Items[i].SubItems[1].Text = "-----";
+                listViewItem.Items[i].SubItems[2].Text = "0";
+            }
+
+            MessageBox.Show("Duplicate items have been removed");
+        }
+
+        private void removeAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem i in listViewItem.Items)
+            {
+                if (!i.SubItems[1].Text.Contains("-----"))
+                {
+                    i.SubItems[1].Text = "-----";
+                    i.SubItems[2].Text = "0";
+                }
+            }
+        }
+
+        private void goToMainThreadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you wish visit the main thread?", "Visit Main Thread", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://gbatemp.net/threads/release-mhxx-save-editor.481210/");
+            }
+        }
+
+        private void visitGithubPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you wish visit Github page?", "Visit Github", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://github.com/mineminemine/MHXXSaveEditor");
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            packSaveFile();
+            SaveFileDialog savefile = new SaveFileDialog();
+            // set a default file name
+            savefile.FileName = "system";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "All files (*.*)|*.*";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+                File.WriteAllBytes(savefile.FileName, saveFile);
+            MessageBox.Show("File saved", "Saved !");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)

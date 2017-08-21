@@ -189,7 +189,7 @@
             // 
             this.numericUpDownPowerLv.Location = new System.Drawing.Point(102, 28);
             this.numericUpDownPowerLv.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
@@ -201,7 +201,7 @@
             // 
             this.numericUpDownWeightLv.Location = new System.Drawing.Point(102, 59);
             this.numericUpDownWeightLv.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
@@ -213,7 +213,7 @@
             // 
             this.numericUpDownSpeedLv.Location = new System.Drawing.Point(102, 91);
             this.numericUpDownSpeedLv.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
