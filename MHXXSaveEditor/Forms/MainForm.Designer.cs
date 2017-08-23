@@ -38,11 +38,20 @@
             this.toolStripMenuItemSaveSlot3 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maxAmountItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setAmountToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeDuplicatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToMainThreadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitGithubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.generalTab = new System.Windows.Forms.TabPage();
             this.buttonEditShoutouts = new System.Windows.Forms.Button();
@@ -153,15 +162,7 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.setAmountToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeDuplicatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.goToMainThreadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visitGithubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonEditGuildCard = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -247,7 +248,7 @@
             // 
             this.toolStripMenuItemSaveSlot1.Enabled = false;
             this.toolStripMenuItemSaveSlot1.Name = "toolStripMenuItemSaveSlot1";
-            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot1.Text = "1";
             this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot1_Click);
             // 
@@ -255,7 +256,7 @@
             // 
             this.toolStripMenuItemSaveSlot2.Enabled = false;
             this.toolStripMenuItemSaveSlot2.Name = "toolStripMenuItemSaveSlot2";
-            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot2.Text = "2";
             this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot2_Click);
             // 
@@ -263,7 +264,7 @@
             // 
             this.toolStripMenuItemSaveSlot3.Enabled = false;
             this.toolStripMenuItemSaveSlot3.Name = "toolStripMenuItemSaveSlot3";
-            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot3.Text = "3";
             this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot3_Click);
             // 
@@ -281,6 +282,25 @@
             this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(189, 26);
             this.saveToolStripMenuItemSave.Text = "Save";
             this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -310,6 +330,32 @@
             this.maxAmountItemsToolStripMenuItem.Text = "Max Amount";
             this.maxAmountItemsToolStripMenuItem.Click += new System.EventHandler(this.maxAmountItemsToolStripMenuItem_Click);
             // 
+            // setAmountToToolStripMenuItem
+            // 
+            this.setAmountToToolStripMenuItem.Name = "setAmountToToolStripMenuItem";
+            this.setAmountToToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.setAmountToToolStripMenuItem.Text = "Set Amount To";
+            this.setAmountToToolStripMenuItem.Click += new System.EventHandler(this.setAmountToToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            // 
+            // removeDuplicatesToolStripMenuItem
+            // 
+            this.removeDuplicatesToolStripMenuItem.Name = "removeDuplicatesToolStripMenuItem";
+            this.removeDuplicatesToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.removeDuplicatesToolStripMenuItem.Text = "Remove Duplicates";
+            this.removeDuplicatesToolStripMenuItem.Click += new System.EventHandler(this.removeDuplicatesToolStripMenuItem_Click);
+            // 
+            // removeAllItemsToolStripMenuItem
+            // 
+            this.removeAllItemsToolStripMenuItem.Name = "removeAllItemsToolStripMenuItem";
+            this.removeAllItemsToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.removeAllItemsToolStripMenuItem.Text = "Remove All Items";
+            this.removeAllItemsToolStripMenuItem.Click += new System.EventHandler(this.removeAllItemsToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -326,6 +372,20 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // goToMainThreadToolStripMenuItem
+            // 
+            this.goToMainThreadToolStripMenuItem.Name = "goToMainThreadToolStripMenuItem";
+            this.goToMainThreadToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.goToMainThreadToolStripMenuItem.Text = "Visit main thread";
+            this.goToMainThreadToolStripMenuItem.Click += new System.EventHandler(this.goToMainThreadToolStripMenuItem_Click);
+            // 
+            // visitGithubPageToolStripMenuItem
+            // 
+            this.visitGithubPageToolStripMenuItem.Name = "visitGithubPageToolStripMenuItem";
+            this.visitGithubPageToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.visitGithubPageToolStripMenuItem.Text = "Visit Github page";
+            this.visitGithubPageToolStripMenuItem.Click += new System.EventHandler(this.visitGithubPageToolStripMenuItem_Click);
             // 
             // tabControlMain
             // 
@@ -344,6 +404,7 @@
             // 
             // generalTab
             // 
+            this.generalTab.Controls.Add(this.buttonEditGuildCard);
             this.generalTab.Controls.Add(this.buttonEditShoutouts);
             this.generalTab.Controls.Add(this.labelConvTime);
             this.generalTab.Controls.Add(this.numericUpDownTime);
@@ -1555,6 +1616,7 @@
             // 
             // comboBoxPalicoEquip
             // 
+            this.comboBoxPalicoEquip.Enabled = false;
             this.comboBoxPalicoEquip.FormattingEnabled = true;
             this.comboBoxPalicoEquip.Location = new System.Drawing.Point(433, 296);
             this.comboBoxPalicoEquip.Name = "comboBoxPalicoEquip";
@@ -1621,64 +1683,15 @@
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
             // 
-            // setAmountToToolStripMenuItem
+            // buttonEditGuildCard
             // 
-            this.setAmountToToolStripMenuItem.Name = "setAmountToToolStripMenuItem";
-            this.setAmountToToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.setAmountToToolStripMenuItem.Text = "Set Amount To";
-            this.setAmountToToolStripMenuItem.Click += new System.EventHandler(this.setAmountToToolStripMenuItem_Click);
-            // 
-            // removeAllItemsToolStripMenuItem
-            // 
-            this.removeAllItemsToolStripMenuItem.Name = "removeAllItemsToolStripMenuItem";
-            this.removeAllItemsToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.removeAllItemsToolStripMenuItem.Text = "Remove All Items";
-            this.removeAllItemsToolStripMenuItem.Click += new System.EventHandler(this.removeAllItemsToolStripMenuItem_Click);
-            // 
-            // removeDuplicatesToolStripMenuItem
-            // 
-            this.removeDuplicatesToolStripMenuItem.Name = "removeDuplicatesToolStripMenuItem";
-            this.removeDuplicatesToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.removeDuplicatesToolStripMenuItem.Text = "Remove Duplicates";
-            this.removeDuplicatesToolStripMenuItem.Click += new System.EventHandler(this.removeDuplicatesToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
-            // 
-            // goToMainThreadToolStripMenuItem
-            // 
-            this.goToMainThreadToolStripMenuItem.Name = "goToMainThreadToolStripMenuItem";
-            this.goToMainThreadToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
-            this.goToMainThreadToolStripMenuItem.Text = "Visit main thread";
-            this.goToMainThreadToolStripMenuItem.Click += new System.EventHandler(this.goToMainThreadToolStripMenuItem_Click);
-            // 
-            // visitGithubPageToolStripMenuItem
-            // 
-            this.visitGithubPageToolStripMenuItem.Name = "visitGithubPageToolStripMenuItem";
-            this.visitGithubPageToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
-            this.visitGithubPageToolStripMenuItem.Text = "Visit Github page";
-            this.visitGithubPageToolStripMenuItem.Click += new System.EventHandler(this.visitGithubPageToolStripMenuItem_Click);
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
-            this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(186, 6);
+            this.buttonEditGuildCard.Location = new System.Drawing.Point(447, 294);
+            this.buttonEditGuildCard.Name = "buttonEditGuildCard";
+            this.buttonEditGuildCard.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditGuildCard.TabIndex = 22;
+            this.buttonEditGuildCard.Text = "Edit Guild Card";
+            this.buttonEditGuildCard.UseVisualStyleBackColor = true;
+            this.buttonEditGuildCard.Click += new System.EventHandler(this.buttonEditGuildCard_Click);
             // 
             // MainForm
             // 
@@ -1882,6 +1895,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button buttonEditGuildCard;
     }
 }
 

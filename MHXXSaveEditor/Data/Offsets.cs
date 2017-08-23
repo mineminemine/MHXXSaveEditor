@@ -48,6 +48,18 @@
         // Palico
         public const int PALICO_OFFSET = 0x23BB6; //Size 27216 (84 of them each 324 bytes long)
 
+        // Points
+        public const int HR_POINTS_OFFSET = 0x280B; //Size 4
+        public const int ACADEMY_POINTS_OFFSET = 0x2817; //Size 4
+        public const int BHERNA_POINTS_OFFSET = 0x281B; //Size 4
+        public const int KOKOTO_POINTS_OFFSET = 0x281F; //Size 4
+        public const int POKKE_POINTS_OFFSET = 0x2823; //Size 4
+        public const int YUKUMO_POINTS_OFFSET = 0x2827; //Size 4
+
+        // Monster Hunts
+        public const int MONSTERHUNT_OFFSETS = 0x5EA6; //137 (in 2 byte size) Monsters 2 bytes each
+        public const int MONSTERCAPTURE_OFFSETS = 0x5FB8; //137 (in 2 byte size) Monsters 2 bytes each
+
         // Items, Equips, Pouch
         public const int ITEM_BOX_OFFSET = 0x0278; //Size 5463 (2300 of them each 19 bits long)
         public const int EQUIPMENT_BOX_OFFSET = 0x62EE; //Size 72000 (2000 of them each 36 bytes long)
@@ -67,36 +79,42 @@
         public const int CHARACTER_HAIRSTYLE_OFFSET2 = 0x23B4D; //Size 1
         public const int CHARACTER_FACE_OFFSET2 = 0x23B4E; //Size 1
         public const int CHARACTER_FEATURES_OFFSET2 = 0x23B4F; //Size 1
-
-        public const int CHARACTER_VOICE_OFFSET3 = 0XC71D6; //Size 1
-        public const int CHARACTER_EYE_COLOR_OFFSET3 = 0XC71D7; //Size 1
-        public const int CHARACTER_CLOTHING_OFFSET3 = 0XC71D8; //Size 1
-        public const int CHARACTER_GENDER_OFFSET3 = 0XC71D9; // Size 1
-        public const int CHARACTER_HUNTINGSTYLE_OFFSET3 = 0xC71DA; // Size 1
-        public const int CHARACTER_HAIRSTYLE_OFFSET3 = 0xC71DB; //Size 1
-        public const int CHARACTER_FACE_OFFSET3 = 0xC71DC; //Size 1
-        public const int CHARACTER_FEATURES_OFFSET3 = 0xC71DD; //Size 1
-
         public const int CHARACTER_SKIN_COLOR_OFFSET2 = 0x23B67; //Size 4 
         public const int CHARACTER_HAIR_COLOR_OFFSET2 = 0X23B6B; //Size 4
         public const int CHARACTER_FEATURES_COLOR_OFFSET2 = 0x23B6F; //Size 4
         public const int CHARACTER_CLOTHING_COLOR_OFFSET2 = 0X23B73; //Size 4
-        public const int CHARACTER_SKIN_COLOR_OFFSET3 = 0XC71F5; //Size 4
-        public const int CHARACTER_HAIR_COLOR_OFFSET3 = 0XC71F9; //Size 4
-        public const int CHARACTER_FEATURES_COLOR_OFFSET3 = 0XC71FD; //Size 4
-        public const int CHARACTER_CLOTHING_COLOR_OFFSET3 = 0XC7201; //Size 4
 
-        // Points
-        public const int HR_POINTS_OFFSET = 0x280B; //Size 4
-        public const int ACADEMY_POINTS_OFFSET = 0x2817; //Size 4
-        public const int BHERNA_POINTS_OFFSET = 0x281B; //Size 4
-        public const int KOKOTO_POINTS_OFFSET = 0x281F; //Size 4
-        public const int POKKE_POINTS_OFFSET = 0x2823; //Size 4
-        public const int YUKUMO_POINTS_OFFSET = 0x2827; //Size 4
+        // Player Guild Card
+        public const int GUILCARD_OFFSET = 0xC71BD;
+        //public const int GUILDCARD_NAME_OFFSET = 0xC71BD; //Size 12 ?
+        //public const int GUILDCARD_WEAPONTYPE_OFFSET = 0XC71D5; //Size 1
+        public const int GUILDCARD_VOICE_OFFSET = 0XC71D6; //Size 1
+        public const int GUILDCARD_EYE_COLOR_OFFSET = 0XC71D7; //Size 1
+        public const int GUILDCARD_CLOTHING_OFFSET = 0XC71D8; //Size 1
+        public const int GUILDCARD_GENDER_OFFSET = 0XC71D9; // Size 1
+        public const int GUILDCARD_HUNTINGSTYLE_OFFSET = 0xC71DA; // Size 1
+        public const int GUILDCARD_HAIRSTYLE_OFFSET = 0xC71DB; //Size 1
+        public const int GUILDCARD_FACE_OFFSET = 0xC71DC; //Size 1
+        public const int GUILDCARD_FEATURES_OFFSET = 0xC71DD; //Size 1
+        public const int GUILDCARD_SKIN_COLOR_OFFSET = 0XC71F5; //Size 4
+        public const int GUILDCARD_HAIR_COLOR_OFFSET = 0XC71F9; //Size 4
+        public const int GUILDCARD_FEATURES_COLOR_OFFSET = 0XC71FD; //Size 4
+        public const int GUILDCARD_CLOTHING_COLOR_OFFSET = 0XC7201; //Size 4
+        //public const int GUILDCARD_LOWVIL_QUEST_OFFSET = 0xC7A1B; //Size 2
+        //public const int GUILDCARD_HIGHVIL_QUEST_OFFSET = 0xC7A1D; //Size 2
+        //public const int GUILDCARD_LOWHUB_QUEST_OFFSET = 0xC7A1F; //Size 2
+        //public const int GUILDCARD_HIGHHUB_QUEST_OFFSET = 0xC7A21; //Size 2
+        //public const int GUILDCARD_GRANK_QUEST_OFFSET = 0xC7A23; //Size 2
+        //public const int GUILDCARD_SP_QUEST_OFFSET = 0xC7A25; //Size 2
+        //public const int GUILDCARD_ARENA_QUEST_OFFSET = 0xC7A27; //Size 2
+        public const int GUILDCARD_ID_OFFSET = 0XC7A6D; //Size 8
+        public const int GUILDCARD_VILLAGE_WEAPON_OFFSET = 0XC7A77; //Size 30
+        public const int GUILDCARD_HUB_WEAPON_OFFSET = 0XC7A95; //Size 30
+        public const int GUILDCARD_ARENA_WEAPON_OFFSET = 0XC7AB3; //Size 30
 
         // Shoutouts
-        public const int MANUAL_SHOUTOUT_OFFSETS = 0x11D629;
-        public const int AUTOMATIC_SHOUTOUT_OFFSETS = 0x11E169;
+        public const int MANUAL_SHOUTOUT_OFFSETS = 0x11D629; //Size 60
+        public const int AUTOMATIC_SHOUTOUT_OFFSETS = 0x11E169; //Size 60
 
         //public const int SHOP_OFFSETS = 0x1D76;
         //public const int CRAFTABLE_WEAPONS_OFFSET = 0x20BE;
@@ -106,11 +124,6 @@
         //public const int FOOD_FLAG_OFFSETS = 0x1A32; //Size 4
         //public const int AWARD_FLAG_OFFSETS = 0x1B8A; //Size 13
 
-        //public const int PLAYER_GUILD_CARD_OFFSET = 0x09F0FE; //Size 5208
-
         //public const int UNLOCKED_BOXES_OFFSET = 0x1A22; //Size 8
-
-        //public const int MONSTERHUNT_OFFSETS = 0x42E7; //71 Monsters 2 bytes each
-        //public const int MONSTERCAPTURE_OFFSETS = 0x43C7; //71 Monsters 2 bytes each
     }
 }

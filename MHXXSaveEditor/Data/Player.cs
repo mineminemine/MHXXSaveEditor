@@ -14,7 +14,7 @@
         public byte Voice { get; set; }
         public byte EyeColor { get; set; }
         public byte Clothing { get; set; }
-        public byte Gender { get; set; } //TWO GENDERS Male = 0; Female = 1;
+        public byte Gender { get; set; }
         //public byte HuntingStyle { get; set; }
         public byte HairStyle { get; set; }
         public byte Face { get; set; }
@@ -34,18 +34,25 @@
         public int PokkePoints { get; set; }
         public int YukumoPoints { get; set; }
 
+        // Monster Hunts
+        public byte[] MonsterKills { get; set; }
+        public byte[] MonsterCaptures { get; set; }
+
         //Item Box
         public string[] itemId { get; set; }
         public string[] itemCount { get; set; }
 
         //Equipment Box
-        public byte[] equipmentInfo { get; set; }
+        public byte[] EquipmentInfo { get; set; }
 
         // Palico Equipment Box
-        public byte[] equipmentPalico { get; set; }
+        public byte[] EquipmentPalico { get; set; }
 
         // Palico
         public byte[] PalicoData { get; set; }
+
+        // Guild Card
+        public byte[] GuildCardData { get; set; }
 
         // Shoutouts
         public byte[] AutomaticShoutouts { get; set; }

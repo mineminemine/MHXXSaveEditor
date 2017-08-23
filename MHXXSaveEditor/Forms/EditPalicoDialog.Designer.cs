@@ -103,6 +103,8 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonExportPalico = new System.Windows.Forms.Button();
+            this.buttonImportPalico = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnthusiasm)).BeginInit();
@@ -895,11 +897,33 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonCancel_MouseClick);
             // 
+            // buttonExportPalico
+            // 
+            this.buttonExportPalico.Location = new System.Drawing.Point(12, 414);
+            this.buttonExportPalico.Name = "buttonExportPalico";
+            this.buttonExportPalico.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportPalico.TabIndex = 3;
+            this.buttonExportPalico.Text = "Export";
+            this.buttonExportPalico.UseVisualStyleBackColor = true;
+            this.buttonExportPalico.Click += new System.EventHandler(this.buttonExportPalico_Click);
+            // 
+            // buttonImportPalico
+            // 
+            this.buttonImportPalico.Location = new System.Drawing.Point(118, 414);
+            this.buttonImportPalico.Name = "buttonImportPalico";
+            this.buttonImportPalico.Size = new System.Drawing.Size(100, 30);
+            this.buttonImportPalico.TabIndex = 4;
+            this.buttonImportPalico.Text = "Import";
+            this.buttonImportPalico.UseVisualStyleBackColor = true;
+            this.buttonImportPalico.Click += new System.EventHandler(this.buttonImportPalico_Click);
+            // 
             // EditPalicoDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 453);
+            this.Controls.Add(this.buttonImportPalico);
+            this.Controls.Add(this.buttonExportPalico);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tabControl1);
@@ -1003,5 +1027,7 @@
         private System.Windows.Forms.TextBox textBoxGreeting;
         private System.Windows.Forms.ComboBox comboBoxSkillRNG;
         private System.Windows.Forms.ComboBox comboBoxActionRNG;
+        private System.Windows.Forms.Button buttonExportPalico;
+        private System.Windows.Forms.Button buttonImportPalico;
     }
 }

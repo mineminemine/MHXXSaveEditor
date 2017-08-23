@@ -22,11 +22,14 @@ namespace MHXXSaveEditor.Util
             player.ClothingColorRGBA = new byte[4];
             player.itemId = new string[Constants.TOTAL_ITEM_SLOTS];
             player.itemCount = new string[Constants.TOTAL_ITEM_SLOTS];
-            player.equipmentInfo = new byte[Constants.SIZEOF_EQUIPBOX];
-            player.equipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
+            player.EquipmentInfo = new byte[Constants.SIZEOF_EQUIPBOX];
+            player.EquipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
             player.PalicoData = new byte[Constants.SIZEOF_PALICOES];
+            player.GuildCardData = new byte[Constants.SIZEOF_GUILDCARD];
             player.ManualShoutouts = new byte[Constants.SIZEOF_MANUAL_SHOUTOUTS];
             player.AutomaticShoutouts = new byte[Constants.SIZEOF_AUTOMATIC_SHOUTOUTS];
+            player.MonsterKills = new byte[Constants.SIZEOF_MONSTERHUNTS];
+            player.MonsterCaptures = new byte[Constants.SIZEOF_MONSTERCAPTURES];
             byte[] itemBytes = new byte[Constants.SIZEOF_ITEMBOX];
 
             if (slot == 1)
@@ -106,13 +109,21 @@ namespace MHXXSaveEditor.Util
             }
 
             // Equipment Box
-            Array.Copy(saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, player.equipmentInfo, 0, Constants.SIZEOF_EQUIPBOX);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.EQUIPMENT_BOX_OFFSET, player.EquipmentInfo, 0, Constants.SIZEOF_EQUIPBOX);
 
             // Palico Equipment Box
-            Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_EQUIPMENT_OFFSET, player.equipmentPalico, 0, Constants.SIZEOF_PALICOEQUIPBOX);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_EQUIPMENT_OFFSET, player.EquipmentPalico, 0, Constants.SIZEOF_PALICOEQUIPBOX);
+
+            // Monster Hunts
+            Array.Copy(saveFile, player.SaveOffset + Offsets.MONSTERHUNT_OFFSETS, player.MonsterKills, 0, Constants.SIZEOF_MONSTERHUNTS);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.MONSTERCAPTURE_OFFSETS, player.MonsterCaptures, 0, Constants.SIZEOF_MONSTERCAPTURES);
+
 
             // Palico
             Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, player.PalicoData, 0, Constants.SIZEOF_PALICOES);
+
+            // Guild Card
+            Array.Copy(saveFile, player.SaveOffset + Offsets.GUILCARD_OFFSET, player.GuildCardData, 0, Constants.SIZEOF_GUILDCARD);
 
             // Shoutouts
             Array.Copy(saveFile, player.SaveOffset + Offsets.MANUAL_SHOUTOUT_OFFSETS, player.ManualShoutouts, 0, Constants.SIZEOF_MANUAL_SHOUTOUTS);

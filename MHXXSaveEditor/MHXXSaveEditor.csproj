@@ -54,6 +54,12 @@
     <Compile Include="Data\GameConstants.cs" />
     <Compile Include="Data\Offsets.cs" />
     <Compile Include="Data\Player.cs" />
+    <Compile Include="Forms\EditGuildCardDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditGuildCardDialog.Designer.cs">
+      <DependentUpon>EditGuildCardDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditKinsectDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DataExtractor.cs" />
     <Compile Include="Util\MaxLengthChecker.cs" />
+    <EmbeddedResource Include="Forms\EditGuildCardDialog.resx">
+      <DependentUpon>EditGuildCardDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditKinsectDialog.resx">
       <DependentUpon>EditKinsectDialog.cs</DependentUpon>
     </EmbeddedResource>

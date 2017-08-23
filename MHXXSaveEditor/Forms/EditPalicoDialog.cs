@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using MHXXSaveEditor.Data;
 using MHXXSaveEditor.Util;
+using System.IO;
 
 namespace MHXXSaveEditor.Forms
 {
@@ -16,7 +17,7 @@ namespace MHXXSaveEditor.Forms
             InitializeComponent();
             this.mainForm = mainForm;
             selectedPalico = selectedSlot;
-            this.Text = "Editing Palico - " + palicoName;
+            Text = "Editing Palico - " + palicoName;
             comboBoxForte.Items.AddRange(GameConstants.PalicoForte);
             comboBoxTarget.Items.AddRange(GameConstants.PalicoTarget);
             LoadPalico();
@@ -184,6 +185,7 @@ namespace MHXXSaveEditor.Forms
 
         public void LoadEquippedActions()
         {
+            listViewEquippedActions.Items.Clear();
             string hexValue, actionName;
             int intValue;
             for (int a = 0; a < 8; a++)
@@ -225,6 +227,7 @@ namespace MHXXSaveEditor.Forms
 
         public void LoadEquippedSkills()
         {
+            listViewEquippedSkills.Items.Clear();
             string hexValue, skillName;
             int intValue;
             for (int a = 0; a < 8; a++)
@@ -374,10 +377,9 @@ namespace MHXXSaveEditor.Forms
 
         public void updateListViewLearnedActions()
         {
+            comboBoxLearnedActions.Items.Clear();
             string actionRNG = comboBoxActionRNG.Text;
             int actionSelectedSlot = Convert.ToInt32(listViewLearnedActions.SelectedItems[0].SubItems[0].Text) - 1;
-
-            comboBoxLearnedActions.Items.Clear();
 
             if(Convert.ToInt32(mainForm.player.PalicoData[(selectedPalico * Constants.SIZEOF_PALICO) + 0x25]) == 0)
             {
@@ -535,6 +537,7 @@ namespace MHXXSaveEditor.Forms
                     comboBoxLearnedSkills.Enabled = false;
                 }
             }
+
             comboBoxLearnedSkills.SelectedIndex = comboBoxLearnedSkills.FindStringExact(listViewLearnedSkills.SelectedItems[0].SubItems[1].Text);
         }
 
@@ -772,6 +775,66 @@ namespace MHXXSaveEditor.Forms
             var mlc = new MaxLengthChecker();
             if (mlc.getMaxLength(textBoxPreviousOwner.Text, 32))
                 textBoxPreviousOwner.MaxLength = textBoxPreviousOwner.Text.Length;
+        }
+
+        private void buttonExportPalico_Click(object sender, EventArgs e)
+        {
+            byte[] palicoNameByte = new byte[Constants.SIZEOF_NAME];
+            byte[] thePalico = new byte[Constants.SIZEOF_PALICO];
+            Array.Copy(mainForm.player.PalicoData, selectedPalico * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
+            Array.Copy(mainForm.player.PalicoData, selectedPalico * Constants.SIZEOF_PALICO, thePalico, 0, Constants.SIZEOF_PALICO);
+
+            string palicoName = Encoding.UTF8.GetString(palicoNameByte);
+
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = palicoName;
+            savefile.Filter = "Catzx files (*.catzx)|*.catzx";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+                File.WriteAllBytes(savefile.FileName, thePalico);
+            MessageBox.Show("Palico has been exported", "Export Palico");
+        }
+
+        private void buttonImportPalico_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to import another palico to this slot?", "Import Palico", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "All files (*.*)|*.*";
+                ofd.FilterIndex = 1;
+
+                if (ofd.ShowDialog() != DialogResult.OK)
+                {
+                    ofd.Dispose();
+                    return;
+                }
+
+                string filePath = ofd.FileName;
+                byte[] thePalicoFile = File.ReadAllBytes(ofd.FileName);
+                if (thePalicoFile.Length != Constants.SIZEOF_PALICO)
+                {
+                    MessageBox.Show("This is not a Palico file.", "Error");
+                    return;
+                }
+
+                // Reset/Remove whatever equips the palico was using
+                thePalicoFile[0x100] = 1;
+                for (int a = 1; a < 6; a++)
+                {
+                    thePalicoFile[0x100 + a] = 0;
+                }
+
+                Array.Copy(thePalicoFile, 0, mainForm.player.PalicoData, selectedPalico * Constants.SIZEOF_PALICO, Constants.SIZEOF_PALICO);
+                LoadPalico();
+                LoadEquippedActions();
+                LoadEquippedSkills();
+                LoadLearnedActions();
+                LoadLearnedSkills();
+                MessageBox.Show("Palico file successfully imported.", "Import Palico");
+            }
+            else
+                return;
         }
     }
 }
