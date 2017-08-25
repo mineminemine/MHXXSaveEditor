@@ -11,7 +11,7 @@
         public const int THIRD_CHARACTER_OFFSET = 0x18; //Size 4
 
         //Character Offsets [CHARACTER BASE +  CHARACTER OFFSET]
-        public const int NAME_OFFSET = 0x0; //Size 32
+        public const int NAME_OFFSET = 0x23B7D; // size 4
         public const int PLAY_TIME_OFFSET = 0x20; //Size 4
         public const int FUNDS_OFFSET = 0x24; //Size 4 ;
         public const int HUNTER_RANK_OFFSET = 0x28; //Size 2 
@@ -27,18 +27,37 @@
         //public const int EQUIPPED_LEG_OFFSET = 0x01FC; //Size 48
         //public const int EQUIPPED_TALISMAN_OFFSET = 0x022C; //Size 48
         //public const int WEAPON_TYPE_OFFSET = 0x025C; //Size 1
-        public const int CHARACTER_VOICE_OFFSET = 0x241; //Size 1
-        public const int CHARACTER_EYE_COLOR_OFFSET = 0x242; //Size 1
-        public const int CHARACTER_CLOTHING_OFFSET = 0x243; //Size 1
-        public const int CHARACTER_GENDER_OFFSET = 0x244;  //Size 1
-        public const int CHARACTER_HUNTINGSTYLE_OFFSET = 0x245; //Size 1
-        public const int CHARACTER_HAIRSTYLE_OFFSET = 0x246; //Size 1
-        public const int CHARACTER_FACE_OFFSET = 0x247; //Size 1
-        public const int CHARACTER_FEATURES_OFFSET = 0x248; //Size 1
-        public const int CHARACTER_SKIN_COLOR_OFFSET = 0x260; //Size 4 
-        public const int CHARACTER_HAIR_COLOR_OFFSET = 0x264; //Size 4
-        public const int CHARACTER_FEATURES_COLOR_OFFSET = 0x268; //Size 4
-        public const int CHARACTER_CLOTHING_COLOR_OFFSET = 0x26C; //Size 4
+        public const int CHARACTER_VOICE_OFFSET = 0x23B48; //Size 1
+        public const int CHARACTER_EYE_COLOR_OFFSET = 0x23B49; //Size 1
+        public const int CHARACTER_CLOTHING_OFFSET = 0x23B4A; //Size 1
+        public const int CHARACTER_GENDER_OFFSET = 0x23B4B; // Size 1
+        public const int CHARACTER_HUNTINGSTYLE_OFFSET = 0x23B4C; // Size 1
+        public const int CHARACTER_HAIRSTYLE_OFFSET = 0x23B4D; //Size 1
+        public const int CHARACTER_FACE_OFFSET = 0x23B4E; //Size 1
+        public const int CHARACTER_FEATURES_OFFSET = 0x23B4F; //Size 1
+        public const int CHARACTER_SKIN_COLOR_OFFSET = 0x23B67; //Size 4 
+        public const int CHARACTER_HAIR_COLOR_OFFSET = 0X23B6B; //Size 4
+        public const int CHARACTER_FEATURES_COLOR_OFFSET = 0x23B6F; //Size 4
+        public const int CHARACTER_CLOTHING_COLOR_OFFSET = 0X23B73; //Size 4
+
+        // Secondary offsets ??
+        public const int FUNDS_OFFSET2 = 0x280F; // size 4
+        public const int PLAY_TIME_OFFSET2 = 0x2248B; //Size 4
+
+        // Only shown on save screen ?
+        //public const int NAME_OFFSET = 0x0; //Size 32
+        //public const int CHARACTER_VOICE_OFFSET = 0x241; //Size 1
+        //public const int CHARACTER_EYE_COLOR_OFFSET = 0x242; //Size 1
+        //public const int CHARACTER_CLOTHING_OFFSET = 0x243; //Size 1
+        //public const int CHARACTER_GENDER_OFFSET = 0x244;  //Size 1
+        //public const int CHARACTER_HUNTINGSTYLE_OFFSET = 0x245; //Size 1
+        //public const int CHARACTER_HAIRSTYLE_OFFSET = 0x246; //Size 1
+        //public const int CHARACTER_FACE_OFFSET = 0x247; //Size 1
+        //public const int CHARACTER_FEATURES_OFFSET = 0x248; //Size 1
+        //public const int CHARACTER_SKIN_COLOR_OFFSET = 0x260; //Size 4 
+        //public const int CHARACTER_HAIR_COLOR_OFFSET = 0x264; //Size 4
+        //public const int CHARACTER_FEATURES_COLOR_OFFSET = 0x268; //Size 4
+        //public const int CHARACTER_CLOTHING_COLOR_OFFSET = 0x26C; //Size 4
         //public const int CHEST_ARMOR_PIGMENT_OFFSET = 0x0268; //Size 4
         //public const int ARMS_ARMOR_PIGMENT_OFFSET = 0x026C; //Size 4 
         //public const int WAIST_ARMOR_PIGMENT_OFFSET = 0x0270;  //Size 4
@@ -66,23 +85,6 @@
         //public const int ITEM_SET_OFFSET = 0x0EDE; //Size 1360 (8 of them each 170 bytes long)
         //public const int POUCH_OFFSET = 0x142E; //Size 72 (32 Items each 18 bits long)
         public const int PALICO_EQUIPMENT_OFFSET = 0x17C2E; //Size 36000 (1000 of them 36 bytes long)
-
-        // Secondary offsets ??
-        public const int NAME_OFFSET2 = 0x23B7E; // size 4
-        public const int FUNDS_OFFSET2 = 0x280F; // size 4
-        public const int PLAY_TIME_OFFSET2 = 0x2248B; //Size 4
-        public const int CHARACTER_VOICE_OFFSET2 = 0x23B48; //Size 1
-        public const int CHARACTER_EYE_COLOR_OFFSET2 = 0x23B49; //Size 1
-        public const int CHARACTER_CLOTHING_OFFSET2 = 0x23B4A; //Size 1
-        public const int CHARACTER_GENDER_OFFSET2 = 0x23B4B; // Size 1
-        public const int CHARACTER_HUNTINGSTYLE_OFFSET2 = 0x23B4C; // Size 1
-        public const int CHARACTER_HAIRSTYLE_OFFSET2 = 0x23B4D; //Size 1
-        public const int CHARACTER_FACE_OFFSET2 = 0x23B4E; //Size 1
-        public const int CHARACTER_FEATURES_OFFSET2 = 0x23B4F; //Size 1
-        public const int CHARACTER_SKIN_COLOR_OFFSET2 = 0x23B67; //Size 4 
-        public const int CHARACTER_HAIR_COLOR_OFFSET2 = 0X23B6B; //Size 4
-        public const int CHARACTER_FEATURES_COLOR_OFFSET2 = 0x23B6F; //Size 4
-        public const int CHARACTER_CLOTHING_COLOR_OFFSET2 = 0X23B73; //Size 4
 
         // Player Guild Card
         public const int GUILCARD_OFFSET = 0xC71BD;

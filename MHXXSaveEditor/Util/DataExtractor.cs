@@ -49,7 +49,7 @@ namespace MHXXSaveEditor.Util
             }
 
             // Character Name
-            Array.Copy(saveFile, player.SaveOffset, charNameByte, 0, Constants.SIZEOF_NAME); // copies from savefile to buffer
+            Array.Copy(saveFile, player.SaveOffset + Offsets.NAME_OFFSET, charNameByte, 0, Constants.SIZEOF_NAME);
             player.Name = Encoding.UTF8.GetString(charNameByte);
 
             // Play Time

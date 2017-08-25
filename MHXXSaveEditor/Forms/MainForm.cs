@@ -13,6 +13,7 @@ using MHXXSaveEditor.Data;
 using MHXXSaveEditor.Util;
 using MHXXSaveEditor.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace MHXXSaveEditor
 {
@@ -435,25 +436,18 @@ namespace MHXXSaveEditor
 
             // Character Faatures
             saveFile[player.SaveOffset + Offsets.CHARACTER_GENDER_OFFSET] = (byte)comboBoxGender.SelectedIndex;
-            saveFile[player.SaveOffset + Offsets.CHARACTER_GENDER_OFFSET2] = (byte)comboBoxGender.SelectedIndex;
             saveFile[player.SaveOffset + Offsets.GUILDCARD_GENDER_OFFSET] = (byte)comboBoxGender.SelectedIndex;
             saveFile[player.SaveOffset + Offsets.CHARACTER_VOICE_OFFSET] = (byte)(numericUpDownVoice.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_VOICE_OFFSET2] = (byte)(numericUpDownVoice.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_VOICE_OFFSET] = (byte)(numericUpDownVoice.Value - 1);
             saveFile[player.SaveOffset + Offsets.CHARACTER_EYE_COLOR_OFFSET] = (byte)(numericUpDownEyeColor.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_EYE_COLOR_OFFSET2] = (byte)(numericUpDownEyeColor.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_EYE_COLOR_OFFSET] = (byte)(numericUpDownEyeColor.Value -1);
             saveFile[player.SaveOffset + Offsets.CHARACTER_CLOTHING_OFFSET] = (byte)(numericUpDownClothing.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_CLOTHING_OFFSET2] = (byte)(numericUpDownClothing.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_CLOTHING_OFFSET] = (byte)(numericUpDownClothing.Value -1);
             saveFile[player.SaveOffset + Offsets.CHARACTER_HAIRSTYLE_OFFSET] = (byte)(numericUpDownHair.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_HAIRSTYLE_OFFSET2] = (byte)(numericUpDownHair.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_HAIRSTYLE_OFFSET] = (byte)(numericUpDownHair.Value - 1);
             saveFile[player.SaveOffset + Offsets.CHARACTER_FACE_OFFSET] = (byte)(numericUpDownFace.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_FACE_OFFSET2] = (byte)(numericUpDownFace.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_FACE_OFFSET] = (byte) (numericUpDownFace.Value - 1);
             saveFile[player.SaveOffset + Offsets.CHARACTER_FEATURES_OFFSET] = (byte)(numericUpDownFeatures.Value - 1);
-            saveFile[player.SaveOffset + Offsets.CHARACTER_FEATURES_OFFSET2] = (byte)(numericUpDownFeatures.Value - 1);
             saveFile[player.SaveOffset + Offsets.GUILDCARD_FEATURES_OFFSET] = (byte)(numericUpDownFeatures.Value - 1);
 
             // Colors
@@ -462,28 +456,24 @@ namespace MHXXSaveEditor
             player.SkinColorRGBA[2] = (byte)numericUpDownSkinB.Value;
             player.SkinColorRGBA[3] = (byte)numericUpDownSkinA.Value;
             Array.Copy(player.SkinColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_SKIN_COLOR_OFFSET, 4);
-            Array.Copy(player.SkinColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_SKIN_COLOR_OFFSET2, 4);
             Array.Copy(player.SkinColorRGBA, 0, saveFile, player.SaveOffset + Offsets.GUILDCARD_SKIN_COLOR_OFFSET, 4);
             player.HairColorRGBA[0] = (byte)numericUpDownHairR.Value;
             player.HairColorRGBA[1] = (byte)numericUpDownHairG.Value;
             player.HairColorRGBA[2] = (byte)numericUpDownHairB.Value;
             player.HairColorRGBA[3] = (byte)numericUpDownHairA.Value;
             Array.Copy(player.HairColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_HAIR_COLOR_OFFSET, 4);
-            Array.Copy(player.HairColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_HAIR_COLOR_OFFSET2, 4);
             Array.Copy(player.HairColorRGBA, 0, saveFile, player.SaveOffset + Offsets.GUILDCARD_HAIR_COLOR_OFFSET, 4);
             player.FeaturesColorRGBA[0] = (byte)numericUpDownFeaturesR.Value;
             player.FeaturesColorRGBA[1] = (byte)numericUpDownFeaturesG.Value;
             player.FeaturesColorRGBA[2] = (byte)numericUpDownFeaturesB.Value;
             player.FeaturesColorRGBA[3] = (byte)numericUpDownFeaturesA.Value;
             Array.Copy(player.FeaturesColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_FEATURES_COLOR_OFFSET, 4);
-            Array.Copy(player.FeaturesColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_FEATURES_COLOR_OFFSET2, 4);
             Array.Copy(player.FeaturesColorRGBA, 0, saveFile, player.SaveOffset + Offsets.GUILDCARD_FEATURES_COLOR_OFFSET, 4);
             player.ClothingColorRGBA[0] = (byte)numericUpDownClothesR.Value;
             player.ClothingColorRGBA[1] = (byte)numericUpDownClothesG.Value;
             player.ClothingColorRGBA[2] = (byte)numericUpDownClothesB.Value;
             player.ClothingColorRGBA[3] = (byte)numericUpDownClothesA.Value;
             Array.Copy(player.ClothingColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_CLOTHING_COLOR_OFFSET, 4);
-            Array.Copy(player.ClothingColorRGBA, 0, saveFile, player.SaveOffset + Offsets.CHARACTER_CLOTHING_COLOR_OFFSET2, 4);
             Array.Copy(player.ClothingColorRGBA, 0, saveFile, player.SaveOffset + Offsets.GUILDCARD_CLOTHING_COLOR_OFFSET, 4);
 
             // Item Box
@@ -998,6 +988,7 @@ namespace MHXXSaveEditor
                 byte[] idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
                 player.EquipmentInfo[(equipSelectedSlot * 36) + 2] = idBytes[0];
                 player.EquipmentInfo[(equipSelectedSlot * 36) + 3] = idBytes[1];
+                numericUpDownEquipLevel.Enabled = true;
             }
         }
 
@@ -1112,6 +1103,42 @@ namespace MHXXSaveEditor
             EditGuildCardDialog editGuildCard = new EditGuildCardDialog(this);
             editGuildCard.ShowDialog();
             editGuildCard.Dispose();
+        }
+
+        private void numericUpDownSkinColor_ValueChanged(object sender, EventArgs e)
+        {
+            labelSkinColor.BackColor = Color.FromArgb((int)numericUpDownSkinR.Value, (int)numericUpDownSkinG.Value, (int)numericUpDownSkinB.Value);
+
+            var cb = new ColorBrightness();
+            var foreColor = (cb.PerceivedBrightness(labelSkinColor.BackColor) > 130 ? Color.Black : Color.White);
+            labelSkinColor.ForeColor = foreColor;
+        }
+
+        private void numericUpDownHairColor_ValueChanged(object sender, EventArgs e)
+        {
+            labelHairColor.BackColor = Color.FromArgb((int)numericUpDownHairR.Value, (int)numericUpDownHairG.Value, (int)numericUpDownHairB.Value);
+
+            var cb = new ColorBrightness();
+            var foreColor = (cb.PerceivedBrightness(labelHairColor.BackColor) > 130 ? Color.Black : Color.White);
+            labelHairColor.ForeColor = foreColor;
+        }
+
+        private void numericUpDownFeaturesColor_ValueChanged(object sender, EventArgs e)
+        {
+            labelFeaturesColor.BackColor = Color.FromArgb((int)numericUpDownFeaturesR.Value, (int)numericUpDownFeaturesG.Value, (int)numericUpDownFeaturesB.Value);
+
+            var cb = new ColorBrightness();
+            var foreColor = (cb.PerceivedBrightness(labelFeaturesColor.BackColor) > 130 ? Color.Black : Color.White);
+            labelFeaturesColor.ForeColor = foreColor;
+        }
+
+        private void numericUpDownClothesColor_ValueChanged(object sender, EventArgs e)
+        {
+            labelClothesColor.BackColor = Color.FromArgb((int)numericUpDownClothesR.Value, (int)numericUpDownClothesG.Value, (int)numericUpDownClothesB.Value);
+
+            var cb = new ColorBrightness();
+            var foreColor = (cb.PerceivedBrightness(labelClothesColor.BackColor) > 130 ? Color.Black : Color.White);
+            labelClothesColor.ForeColor = foreColor;
         }
 
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)

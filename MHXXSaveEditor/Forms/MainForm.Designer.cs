@@ -54,6 +54,7 @@
             this.visitGithubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.generalTab = new System.Windows.Forms.TabPage();
+            this.buttonEditGuildCard = new System.Windows.Forms.Button();
             this.buttonEditShoutouts = new System.Windows.Forms.Button();
             this.labelConvTime = new System.Windows.Forms.Label();
             this.numericUpDownTime = new System.Windows.Forms.NumericUpDown();
@@ -92,15 +93,15 @@
             this.numericUpDownSkinA = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownSkinB = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownSkinG = new System.Windows.Forms.NumericUpDown();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.labelClothesColor = new System.Windows.Forms.Label();
+            this.labelFeaturesColor = new System.Windows.Forms.Label();
+            this.labelHairColor = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.numericUpDownSkinR = new System.Windows.Forms.NumericUpDown();
-            this.label21 = new System.Windows.Forms.Label();
+            this.labelSkinColor = new System.Windows.Forms.Label();
             this.numericUpDownClothing = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.numericUpDownEyeColor = new System.Windows.Forms.NumericUpDown();
@@ -162,7 +163,6 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonEditGuildCard = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -320,7 +320,7 @@
             this.removeDuplicatesToolStripMenuItem,
             this.removeAllItemsToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
-            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
             // 
             // maxAmountItemsToolStripMenuItem
@@ -434,6 +434,16 @@
             this.generalTab.TabIndex = 1;
             this.generalTab.Text = "General";
             this.generalTab.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditGuildCard
+            // 
+            this.buttonEditGuildCard.Location = new System.Drawing.Point(447, 294);
+            this.buttonEditGuildCard.Name = "buttonEditGuildCard";
+            this.buttonEditGuildCard.Size = new System.Drawing.Size(120, 30);
+            this.buttonEditGuildCard.TabIndex = 22;
+            this.buttonEditGuildCard.Text = "Edit Guild Card";
+            this.buttonEditGuildCard.UseVisualStyleBackColor = true;
+            this.buttonEditGuildCard.Click += new System.EventHandler(this.buttonEditGuildCard_Click);
             // 
             // buttonEditShoutouts
             // 
@@ -694,15 +704,15 @@
             this.playerTab.Controls.Add(this.numericUpDownSkinA);
             this.playerTab.Controls.Add(this.numericUpDownSkinB);
             this.playerTab.Controls.Add(this.numericUpDownSkinG);
-            this.playerTab.Controls.Add(this.label28);
-            this.playerTab.Controls.Add(this.label27);
-            this.playerTab.Controls.Add(this.label26);
+            this.playerTab.Controls.Add(this.labelClothesColor);
+            this.playerTab.Controls.Add(this.labelFeaturesColor);
+            this.playerTab.Controls.Add(this.labelHairColor);
             this.playerTab.Controls.Add(this.label25);
             this.playerTab.Controls.Add(this.label24);
             this.playerTab.Controls.Add(this.label23);
             this.playerTab.Controls.Add(this.label22);
             this.playerTab.Controls.Add(this.numericUpDownSkinR);
-            this.playerTab.Controls.Add(this.label21);
+            this.playerTab.Controls.Add(this.labelSkinColor);
             this.playerTab.Controls.Add(this.numericUpDownClothing);
             this.playerTab.Controls.Add(this.label18);
             this.playerTab.Controls.Add(this.numericUpDownEyeColor);
@@ -737,6 +747,7 @@
             this.numericUpDownClothesA.Name = "numericUpDownClothesA";
             this.numericUpDownClothesA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesA.TabIndex = 37;
+            this.numericUpDownClothesA.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesB
             // 
@@ -750,6 +761,7 @@
             this.numericUpDownClothesB.Name = "numericUpDownClothesB";
             this.numericUpDownClothesB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesB.TabIndex = 36;
+            this.numericUpDownClothesB.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesG
             // 
@@ -763,6 +775,7 @@
             this.numericUpDownClothesG.Name = "numericUpDownClothesG";
             this.numericUpDownClothesG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesG.TabIndex = 35;
+            this.numericUpDownClothesG.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesR
             // 
@@ -776,6 +789,7 @@
             this.numericUpDownClothesR.Name = "numericUpDownClothesR";
             this.numericUpDownClothesR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesR.TabIndex = 34;
+            this.numericUpDownClothesR.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownFeaturesA
             // 
@@ -789,6 +803,7 @@
             this.numericUpDownFeaturesA.Name = "numericUpDownFeaturesA";
             this.numericUpDownFeaturesA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesA.TabIndex = 33;
+            this.numericUpDownFeaturesA.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesB
             // 
@@ -802,6 +817,7 @@
             this.numericUpDownFeaturesB.Name = "numericUpDownFeaturesB";
             this.numericUpDownFeaturesB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesB.TabIndex = 32;
+            this.numericUpDownFeaturesB.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesG
             // 
@@ -815,6 +831,7 @@
             this.numericUpDownFeaturesG.Name = "numericUpDownFeaturesG";
             this.numericUpDownFeaturesG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesG.TabIndex = 31;
+            this.numericUpDownFeaturesG.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesR
             // 
@@ -828,6 +845,7 @@
             this.numericUpDownFeaturesR.Name = "numericUpDownFeaturesR";
             this.numericUpDownFeaturesR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesR.TabIndex = 30;
+            this.numericUpDownFeaturesR.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownHairA
             // 
@@ -841,6 +859,7 @@
             this.numericUpDownHairA.Name = "numericUpDownHairA";
             this.numericUpDownHairA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairA.TabIndex = 29;
+            this.numericUpDownHairA.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairB
             // 
@@ -854,6 +873,7 @@
             this.numericUpDownHairB.Name = "numericUpDownHairB";
             this.numericUpDownHairB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairB.TabIndex = 28;
+            this.numericUpDownHairB.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairG
             // 
@@ -867,6 +887,7 @@
             this.numericUpDownHairG.Name = "numericUpDownHairG";
             this.numericUpDownHairG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairG.TabIndex = 27;
+            this.numericUpDownHairG.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairR
             // 
@@ -880,6 +901,7 @@
             this.numericUpDownHairR.Name = "numericUpDownHairR";
             this.numericUpDownHairR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairR.TabIndex = 26;
+            this.numericUpDownHairR.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownSkinA
             // 
@@ -893,6 +915,7 @@
             this.numericUpDownSkinA.Name = "numericUpDownSkinA";
             this.numericUpDownSkinA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinA.TabIndex = 25;
+            this.numericUpDownSkinA.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
             // 
             // numericUpDownSkinB
             // 
@@ -906,6 +929,7 @@
             this.numericUpDownSkinB.Name = "numericUpDownSkinB";
             this.numericUpDownSkinB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinB.TabIndex = 24;
+            this.numericUpDownSkinB.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
             // 
             // numericUpDownSkinG
             // 
@@ -919,33 +943,34 @@
             this.numericUpDownSkinG.Name = "numericUpDownSkinG";
             this.numericUpDownSkinG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinG.TabIndex = 23;
+            this.numericUpDownSkinG.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
             // 
-            // label28
+            // labelClothesColor
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(148, 243);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(55, 17);
-            this.label28.TabIndex = 22;
-            this.label28.Text = "Clothes";
+            this.labelClothesColor.AutoSize = true;
+            this.labelClothesColor.Location = new System.Drawing.Point(148, 243);
+            this.labelClothesColor.Name = "labelClothesColor";
+            this.labelClothesColor.Size = new System.Drawing.Size(55, 17);
+            this.labelClothesColor.TabIndex = 22;
+            this.labelClothesColor.Text = "Clothes";
             // 
-            // label27
+            // labelFeaturesColor
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(148, 217);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(64, 17);
-            this.label27.TabIndex = 21;
-            this.label27.Text = "Features";
+            this.labelFeaturesColor.AutoSize = true;
+            this.labelFeaturesColor.Location = new System.Drawing.Point(148, 217);
+            this.labelFeaturesColor.Name = "labelFeaturesColor";
+            this.labelFeaturesColor.Size = new System.Drawing.Size(64, 17);
+            this.labelFeaturesColor.TabIndex = 21;
+            this.labelFeaturesColor.Text = "Features";
             // 
-            // label26
+            // labelHairColor
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(149, 190);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(34, 17);
-            this.label26.TabIndex = 20;
-            this.label26.Text = "Hair";
+            this.labelHairColor.AutoSize = true;
+            this.labelHairColor.Location = new System.Drawing.Point(149, 190);
+            this.labelHairColor.Name = "labelHairColor";
+            this.labelHairColor.Size = new System.Drawing.Size(34, 17);
+            this.labelHairColor.TabIndex = 20;
+            this.labelHairColor.Text = "Hair";
             // 
             // label25
             // 
@@ -998,15 +1023,16 @@
             this.numericUpDownSkinR.Name = "numericUpDownSkinR";
             this.numericUpDownSkinR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinR.TabIndex = 14;
+            this.numericUpDownSkinR.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
             // 
-            // label21
+            // labelSkinColor
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(149, 161);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(35, 17);
-            this.label21.TabIndex = 15;
-            this.label21.Text = "Skin";
+            this.labelSkinColor.AutoSize = true;
+            this.labelSkinColor.Location = new System.Drawing.Point(149, 161);
+            this.labelSkinColor.Name = "labelSkinColor";
+            this.labelSkinColor.Size = new System.Drawing.Size(35, 17);
+            this.labelSkinColor.TabIndex = 15;
+            this.labelSkinColor.Text = "Skin";
             // 
             // numericUpDownClothing
             // 
@@ -1683,16 +1709,6 @@
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
             // 
-            // buttonEditGuildCard
-            // 
-            this.buttonEditGuildCard.Location = new System.Drawing.Point(447, 294);
-            this.buttonEditGuildCard.Name = "buttonEditGuildCard";
-            this.buttonEditGuildCard.Size = new System.Drawing.Size(120, 30);
-            this.buttonEditGuildCard.TabIndex = 22;
-            this.buttonEditGuildCard.Text = "Edit Guild Card";
-            this.buttonEditGuildCard.UseVisualStyleBackColor = true;
-            this.buttonEditGuildCard.Click += new System.EventHandler(this.buttonEditGuildCard_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1842,14 +1858,14 @@
         private System.Windows.Forms.NumericUpDown numericUpDownSkinA;
         private System.Windows.Forms.NumericUpDown numericUpDownSkinB;
         private System.Windows.Forms.NumericUpDown numericUpDownSkinG;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label labelClothesColor;
+        private System.Windows.Forms.Label labelFeaturesColor;
+        private System.Windows.Forms.Label labelHairColor;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label labelSkinColor;
         private System.Windows.Forms.Label labelConvTime;
         private System.Windows.Forms.ToolStripMenuItem itemBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maxAmountItemsToolStripMenuItem;
