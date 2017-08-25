@@ -12,21 +12,11 @@
 
         //Character Offsets [CHARACTER BASE +  CHARACTER OFFSET]
         public const int NAME_OFFSET = 0x23B7D; // size 4
-        public const int PLAY_TIME_OFFSET = 0x20; //Size 4
-        public const int FUNDS_OFFSET = 0x24; //Size 4 ;
+        public const int PLAY_TIME_OFFSET = 0x20; //Size 4m this only shows on the save screen
+        public const int PLAY_TIME_OFFSET2 = 0x2248B; //Size 4
+        public const int FUNDS_OFFSET = 0x24; //Size 4, this only shows on the save screen
+        public const int FUNDS_OFFSET2 = 0x280F; // size 4
         public const int HUNTER_RANK_OFFSET = 0x28; //Size 2 
-        //public const int CHARACTER_HUNTING_STYLE_OFFSET = 0x0261; //Size 1
-        //public const int HUNTER_ART_1_OFFSET = 0x2C; //Size 2
-        //public const int HUNTER_ART_2_OFFSET = 0x2E; //Size 2
-        //public const int HUNTER_ART_3_OFFSET = 0X30; //Size 2
-        //public const int EQUIPPED_WEAPON_OFFSET = 0x010C; //Size 48
-        //public const int EQUIPPED_HEAD_OFFSET = 0x013C; //Size 48
-        //public const int EQUIPPED_CHEST_OFFSET = 0x016C; //Size 48
-        //public const int EQUIPPED_ARMS_OFFSET = 0x019c; //Size 48
-        //public const int EQUIPPED_WAIST_OFFSET = 0x01CC; //Size 48
-        //public const int EQUIPPED_LEG_OFFSET = 0x01FC; //Size 48
-        //public const int EQUIPPED_TALISMAN_OFFSET = 0x022C; //Size 48
-        //public const int WEAPON_TYPE_OFFSET = 0x025C; //Size 1
         public const int CHARACTER_VOICE_OFFSET = 0x23B48; //Size 1
         public const int CHARACTER_EYE_COLOR_OFFSET = 0x23B49; //Size 1
         public const int CHARACTER_CLOTHING_OFFSET = 0x23B4A; //Size 1
@@ -40,17 +30,24 @@
         public const int CHARACTER_FEATURES_COLOR_OFFSET = 0x23B6F; //Size 4
         public const int CHARACTER_CLOTHING_COLOR_OFFSET = 0X23B73; //Size 4
 
-        // Secondary offsets ??
-        public const int FUNDS_OFFSET2 = 0x280F; // size 4
-        public const int PLAY_TIME_OFFSET2 = 0x2248B; //Size 4
-
         // Only shown on save screen ?
         //public const int NAME_OFFSET = 0x0; //Size 32
+        //public const int HUNTER_ART_1_OFFSET = 0x2C; //Size 2
+        //public const int HUNTER_ART_2_OFFSET = 0x2E; //Size 2
+        //public const int HUNTER_ART_3_OFFSET = 0X30; //Size 2
+        //public const int EQUIPPED_WEAPON_OFFSET = 0x010C; //Size 48
+        //public const int EQUIPPED_HEAD_OFFSET = 0x013C; //Size 48
+        //public const int EQUIPPED_CHEST_OFFSET = 0x016C; //Size 48
+        //public const int EQUIPPED_ARMS_OFFSET = 0x019c; //Size 48
+        //public const int EQUIPPED_WAIST_OFFSET = 0x01CC; //Size 48
+        //public const int EQUIPPED_LEG_OFFSET = 0x01FC; //Size 48
+        //public const int EQUIPPED_TALISMAN_OFFSET = 0x022C; //Size 48
+        //public const int WEAPON_TYPE_OFFSET = 0x025C; //Size 1
         //public const int CHARACTER_VOICE_OFFSET = 0x241; //Size 1
         //public const int CHARACTER_EYE_COLOR_OFFSET = 0x242; //Size 1
         //public const int CHARACTER_CLOTHING_OFFSET = 0x243; //Size 1
         //public const int CHARACTER_GENDER_OFFSET = 0x244;  //Size 1
-        //public const int CHARACTER_HUNTINGSTYLE_OFFSET = 0x245; //Size 1
+        //public const int CHARACTER_HUNTING_STYLE_OFFSET = 0x245; //Size 1
         //public const int CHARACTER_HAIRSTYLE_OFFSET = 0x246; //Size 1
         //public const int CHARACTER_FACE_OFFSET = 0x247; //Size 1
         //public const int CHARACTER_FEATURES_OFFSET = 0x248; //Size 1
@@ -82,9 +79,9 @@
         // Items, Equips, Pouch
         public const int ITEM_BOX_OFFSET = 0x0278; //Size 5463 (2300 of them each 19 bits long)
         public const int EQUIPMENT_BOX_OFFSET = 0x62EE; //Size 72000 (2000 of them each 36 bytes long)
+        public const int PALICO_EQUIPMENT_OFFSET = 0x17C2E; //Size 36000 (1000 of them 36 bytes long)
         //public const int ITEM_SET_OFFSET = 0x0EDE; //Size 1360 (8 of them each 170 bytes long)
         //public const int POUCH_OFFSET = 0x142E; //Size 72 (32 Items each 18 bits long)
-        public const int PALICO_EQUIPMENT_OFFSET = 0x17C2E; //Size 36000 (1000 of them 36 bytes long)
 
         // Player Guild Card
         public const int GUILCARD_OFFSET = 0xC71BD;

@@ -404,7 +404,7 @@ namespace MHXXSaveEditor
             byte[] charNameByte = new byte[Constants.SIZEOF_NAME]; // create byte array with size of 32
             byte[] convName = Encoding.UTF8.GetBytes(charNameBox.Text); // get bytes from text box
             Array.Copy(convName, 0, charNameByte, 0, convName.Length); // copy from convname into the charnamebyte (which also leaves the other empty spaces as 00)
-            Array.Copy(charNameByte, 0, saveFile, player.SaveOffset, Constants.SIZEOF_NAME); // copy into save file
+            Array.Copy(charNameByte, 0, saveFile, player.SaveOffset + Offsets.NAME_OFFSET, Constants.SIZEOF_NAME); // copy into save file
 
             // HR Points
             byte[] hrPoints = BitConverter.GetBytes((int)numericUpDownHRP.Value);

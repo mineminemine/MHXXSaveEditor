@@ -5,6 +5,7 @@ namespace MHXXSaveEditor.Util
 {
     class ColorBrightness
     {
+        // Credits goes to whoever did this tbh, googling this comes up with many result so I don't know who the real person behind it
         public int PerceivedBrightness(Color c)
         {
             return (int)Math.Sqrt(
