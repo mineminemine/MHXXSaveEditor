@@ -101,6 +101,7 @@
     <Compile Include="Util\ColorBrightness.cs" />
     <Compile Include="Util\DataExtractor.cs" />
     <Compile Include="Util\MaxLengthChecker.cs" />
+    <Compile Include="Util\SecondsToHHMMSS.cs" />
     <EmbeddedResource Include="Forms\EditGuildCardDialog.resx">
       <DependentUpon>EditGuildCardDialog.cs</DependentUpon>
     </EmbeddedResource>

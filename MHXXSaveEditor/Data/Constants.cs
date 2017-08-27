@@ -2,7 +2,7 @@
 {
     class Constants
     {
-        public const string EDITOR_VERSION = "MHXX Save Editor v0.05a";
+        public const string EDITOR_VERSION = "MHXX Save Editor v0.06";
 
         public const int SIZEOF_NAME = 32;
 
@@ -17,6 +17,7 @@
 
         public const int SIZEOF_MONSTERHUNTS = 274;
         public const int SIZEOF_MONSTERCAPTURES = 274;
+        public const int SIZEOF_MONSTERSIZES = 548;
 
         public const int SIZEOF_PALICOES = 27216;
         public const int SIZEOF_PALICO = 324;
@@ -24,6 +25,9 @@
         public const int TOTAL_PALICO_GREETING = 60;
 
         public const int SIZEOF_GUILDCARD = 4986; // Unsure of the actual size
+        public const int SIZEOF_ARENALOG = 342;
+        public const int SIZEOF_GRUDGEMATCH = 20;
+        public const int TOTAL_ARENA_ENTRY = 5;
 
         public const int SIZEOF_PER_SHOUTOUT = 60;
         public const int SIZEOF_MANUAL_SHOUTOUTS = 2880;

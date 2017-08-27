@@ -34,9 +34,10 @@
         public int PokkePoints { get; set; }
         public int YukumoPoints { get; set; }
 
-        // Monster Hunts
+        // Monster Hunts / Sizes
         public byte[] MonsterKills { get; set; }
         public byte[] MonsterCaptures { get; set; }
+        public byte[] MonsterSizes { get; set; }
 
         //Item Box
         public string[] itemId { get; set; }
@@ -53,6 +54,7 @@
 
         // Guild Card
         public byte[] GuildCardData { get; set; }
+        public byte[] ArenaData { get; set; }
 
         // Shoutouts
         public byte[] AutomaticShoutouts { get; set; }

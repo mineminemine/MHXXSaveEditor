@@ -929,6 +929,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditPalicoDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

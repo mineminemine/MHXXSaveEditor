@@ -544,6 +544,7 @@
             this.Controls.Add(this.buttonOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditKinsectDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

@@ -72,9 +72,10 @@
         public const int POKKE_POINTS_OFFSET = 0x2823; //Size 4
         public const int YUKUMO_POINTS_OFFSET = 0x2827; //Size 4
 
-        // Monster Hunts
-        public const int MONSTERHUNT_OFFSETS = 0x5EA6; //137 (in 2 byte size) Monsters 2 bytes each
-        public const int MONSTERCAPTURE_OFFSETS = 0x5FB8; //137 (in 2 byte size) Monsters 2 bytes each
+        // Monster Hunts / Sizes
+        public const int MONSTERHUNT_OFFSETS = 0x5EA6; //Size 274, 137 Monsters (supposedly) 2 bytes each
+        public const int MONSTERCAPTURE_OFFSETS = 0x5FB8; //Size 274,137 Monsters (supposedly) 2 bytes each
+        public const int MONSTERSIZE_OFFSETS = 0x60CA; //Size 548, 4 bytes per monster
 
         // Items, Equips, Pouch
         public const int ITEM_BOX_OFFSET = 0x0278; //Size 5463 (2300 of them each 19 bits long)
@@ -107,9 +108,10 @@
         //public const int GUILDCARD_SP_QUEST_OFFSET = 0xC7A25; //Size 2
         //public const int GUILDCARD_ARENA_QUEST_OFFSET = 0xC7A27; //Size 2
         public const int GUILDCARD_ID_OFFSET = 0XC7A6D; //Size 8
-        public const int GUILDCARD_VILLAGE_WEAPON_OFFSET = 0XC7A77; //Size 30
-        public const int GUILDCARD_HUB_WEAPON_OFFSET = 0XC7A95; //Size 30
-        public const int GUILDCARD_ARENA_WEAPON_OFFSET = 0XC7AB3; //Size 30
+        //public const int GUILDCARD_VILLAGE_WEAPON_OFFSET = 0XC7A77; //Size 30
+        //public const int GUILDCARD_HUB_WEAPON_OFFSET = 0XC7A95; //Size 30
+        //public const int GUILDCARD_ARENA_WEAPON_OFFSET = 0XC7AB3; //Size 30
+        public const int GUILDCARD_ARENA_LOG_OFFSET = 0xC83E1; //Size 324
 
         // Shoutouts
         public const int MANUAL_SHOUTOUT_OFFSETS = 0x11D629; //Size 60

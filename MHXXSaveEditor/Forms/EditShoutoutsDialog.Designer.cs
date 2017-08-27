@@ -33,14 +33,14 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonManualShoutoutSet = new System.Windows.Forms.Button();
             this.textBoxManualShoutouts = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonAutomaticShoutoutSet = new System.Windows.Forms.Button();
             this.textBoxAutomaticShoutouts = new System.Windows.Forms.TextBox();
             this.listViewAutomaticShoutouts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonManualShoutoutSet = new System.Windows.Forms.Button();
-            this.buttonAutomaticShoutoutSet = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -94,6 +94,16 @@
             this.tabPage1.Text = "Manual Shoutouts";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buttonManualShoutoutSet
+            // 
+            this.buttonManualShoutoutSet.Location = new System.Drawing.Point(413, 335);
+            this.buttonManualShoutoutSet.Name = "buttonManualShoutoutSet";
+            this.buttonManualShoutoutSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonManualShoutoutSet.TabIndex = 4;
+            this.buttonManualShoutoutSet.Text = "Set";
+            this.buttonManualShoutoutSet.UseVisualStyleBackColor = true;
+            this.buttonManualShoutoutSet.Click += new System.EventHandler(this.buttonManualShoutoutSet_Click);
+            // 
             // textBoxManualShoutouts
             // 
             this.textBoxManualShoutouts.Location = new System.Drawing.Point(7, 336);
@@ -114,6 +124,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Automatic Shoutouts";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonAutomaticShoutoutSet
+            // 
+            this.buttonAutomaticShoutoutSet.Location = new System.Drawing.Point(412, 336);
+            this.buttonAutomaticShoutoutSet.Name = "buttonAutomaticShoutoutSet";
+            this.buttonAutomaticShoutoutSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonAutomaticShoutoutSet.TabIndex = 5;
+            this.buttonAutomaticShoutoutSet.Text = "Set";
+            this.buttonAutomaticShoutoutSet.UseVisualStyleBackColor = true;
+            this.buttonAutomaticShoutoutSet.Click += new System.EventHandler(this.buttonAutomaticShoutoutSet_Click);
             // 
             // textBoxAutomaticShoutouts
             // 
@@ -148,26 +168,6 @@
             this.columnHeader2.Text = "Shoutout";
             this.columnHeader2.Width = 618;
             // 
-            // buttonManualShoutoutSet
-            // 
-            this.buttonManualShoutoutSet.Location = new System.Drawing.Point(413, 335);
-            this.buttonManualShoutoutSet.Name = "buttonManualShoutoutSet";
-            this.buttonManualShoutoutSet.Size = new System.Drawing.Size(75, 23);
-            this.buttonManualShoutoutSet.TabIndex = 4;
-            this.buttonManualShoutoutSet.Text = "Set";
-            this.buttonManualShoutoutSet.UseVisualStyleBackColor = true;
-            this.buttonManualShoutoutSet.Click += new System.EventHandler(this.buttonManualShoutoutSet_Click);
-            // 
-            // buttonAutomaticShoutoutSet
-            // 
-            this.buttonAutomaticShoutoutSet.Location = new System.Drawing.Point(412, 336);
-            this.buttonAutomaticShoutoutSet.Name = "buttonAutomaticShoutoutSet";
-            this.buttonAutomaticShoutoutSet.Size = new System.Drawing.Size(75, 23);
-            this.buttonAutomaticShoutoutSet.TabIndex = 5;
-            this.buttonAutomaticShoutoutSet.Text = "Set";
-            this.buttonAutomaticShoutoutSet.UseVisualStyleBackColor = true;
-            this.buttonAutomaticShoutoutSet.Click += new System.EventHandler(this.buttonAutomaticShoutoutSet_Click);
-            // 
             // EditShoutoutsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,6 +176,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditShoutoutsDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

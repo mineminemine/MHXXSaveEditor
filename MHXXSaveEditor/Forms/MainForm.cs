@@ -30,6 +30,7 @@ namespace MHXXSaveEditor
         byte[] saveFile;
         int currentPlayer, itemSelectedSlot;
         public int equipSelectedSlot, palicoEqpSelectedSlot;
+        SecondsToHHMMSS ttime = new SecondsToHHMMSS();
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -166,8 +167,7 @@ namespace MHXXSaveEditor
             numericUpDownPok.Value = player.PokkePoints;
             numericUpDownYuk.Value = player.YukumoPoints;
 
-            TimeSpan time = TimeSpan.FromSeconds(player.PlayTime);
-            labelConvTime.Text = "D.HH:MM:SS - " + time.ToString();
+            labelConvTime.Text = "D.HH:MM:SS - " + ttime.GetTime(player.PlayTime);
 
             // Player
             numericUpDownVoice.Value = Convert.ToInt32(player.Voice) + 1;
@@ -510,9 +510,13 @@ namespace MHXXSaveEditor
             // Guild Card
             Array.Copy(player.GuildCardData, 0, saveFile, player.SaveOffset + Offsets.GUILCARD_OFFSET, Constants.SIZEOF_GUILDCARD);
 
-            // Monster Hunts
+            // Monster Hunts / Sizes
             Array.Copy(player.MonsterKills, 0, saveFile, player.SaveOffset + Offsets.MONSTERHUNT_OFFSETS, Constants.SIZEOF_MONSTERHUNTS);
             Array.Copy(player.MonsterCaptures, 0, saveFile, player.SaveOffset + Offsets.MONSTERCAPTURE_OFFSETS, Constants.SIZEOF_MONSTERCAPTURES);
+            Array.Copy(player.MonsterSizes, 0, saveFile, player.SaveOffset + Offsets.MONSTERSIZE_OFFSETS, Constants.SIZEOF_MONSTERSIZES);
+
+            // Arena
+            Array.Copy(player.ArenaData, 0, saveFile, player.SaveOffset + Offsets.GUILDCARD_ARENA_LOG_OFFSET, Constants.SIZEOF_ARENALOG);
 
             // Palico
             Array.Copy(player.PalicoData, 0, saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, Constants.SIZEOF_PALICOES);
@@ -529,7 +533,6 @@ namespace MHXXSaveEditor
             else
             {
                 itemSelectedSlot = Convert.ToInt32(listViewItem.SelectedItems[0].SubItems[0].Text) - 1;
-                numericUpDownItemID.Value = Convert.ToInt32(player.itemId[itemSelectedSlot]);
                 numericUpDownItemAmount.Value = Convert.ToInt32(player.itemCount[itemSelectedSlot]);
                 comboBoxItem.SelectedIndex = Convert.ToInt32(player.itemId[itemSelectedSlot]);
             }
@@ -542,7 +545,6 @@ namespace MHXXSaveEditor
             else
             {
                 int index = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text);
-                numericUpDownItemID.Value = index;
                 listViewItem.SelectedItems[0].SubItems[1].Text = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text)];
 
                 if (listViewItem.SelectedItems[0].SubItems[2].Text == "0" && listViewItem.SelectedItems[0].SubItems[1].Text != "-----")
@@ -553,9 +555,7 @@ namespace MHXXSaveEditor
                 if (comboBoxItem.Text == "-----")
                 {
                     numericUpDownItemAmount.Value = 0;
-                    numericUpDownItemID.Value = 0;
                     listViewItem.SelectedItems[0].SubItems[2].Text = "0";
-
                 }
 
                 player.itemCount[itemSelectedSlot] = listViewItem.SelectedItems[0].SubItems[2].Text;
@@ -573,7 +573,6 @@ namespace MHXXSaveEditor
                 {
                     listViewItem.SelectedItems[0].SubItems[1].Text = "-----";
                     listViewItem.SelectedItems[0].SubItems[2].Text = "0";
-                    numericUpDownItemID.Value = 0;
                     comboBoxItem.SelectedIndex = 0;
                     player.itemCount[itemSelectedSlot] = "0";
                     player.itemId[itemSelectedSlot] = "0";
@@ -594,8 +593,7 @@ namespace MHXXSaveEditor
 
         private void numericUpDownTime_ValueChanged(object sender, EventArgs e)
         {
-            TimeSpan time = TimeSpan.FromSeconds((double)numericUpDownTime.Value);
-            labelConvTime.Text = "D.HH:MM:SS - " + time.ToString();
+            labelConvTime.Text = "HH:MM:SS - " + ttime.GetTime((int)numericUpDownTime.Value);
         }
 
         private void comboBoxEquipType_SelectedIndexChanged(object sender, EventArgs e)
@@ -606,9 +604,7 @@ namespace MHXXSaveEditor
             {
                 ComboBox cb = (ComboBox)sender;
                 if (!cb.Focused)
-                {
                     return;
-                }
 
                 comboBoxEquipName.Items.Clear();
                 numericUpDownEquipLevel.Value = 1;
@@ -1139,6 +1135,14 @@ namespace MHXXSaveEditor
             var cb = new ColorBrightness();
             var foreColor = (cb.PerceivedBrightness(labelClothesColor.BackColor) > 130 ? Color.Black : Color.White);
             labelClothesColor.ForeColor = foreColor;
+        }
+
+        private void buttonClearItemSlot_Click(object sender, EventArgs e)
+        {
+            if (listViewItem.SelectedItems.Count == 0) // Check if nothing was selected
+                return;
+            else
+                comboBoxItem.SelectedIndex = 0;
         }
 
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)

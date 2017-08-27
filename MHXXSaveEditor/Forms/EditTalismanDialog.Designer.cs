@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxSkillName2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxSkillName1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownSkillLevel2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSkillLevel1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxSkillName1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxSkillName2 = new System.Windows.Forms.ComboBox();
-            this.numericUpDownSkillLevel1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSkillLevel2 = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numericUpDownSlots = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,8 +45,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel1)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSlots)).BeginInit();
             this.SuspendLayout();
@@ -64,14 +64,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Skills";
             // 
-            // label1
+            // comboBoxSkillName2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Skill 1";
+            this.comboBoxSkillName2.FormattingEnabled = true;
+            this.comboBoxSkillName2.Location = new System.Drawing.Point(73, 63);
+            this.comboBoxSkillName2.Name = "comboBoxSkillName2";
+            this.comboBoxSkillName2.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxSkillName2.TabIndex = 6;
+            // 
+            // comboBoxSkillName1
+            // 
+            this.comboBoxSkillName1.FormattingEnabled = true;
+            this.comboBoxSkillName1.Location = new System.Drawing.Point(73, 26);
+            this.comboBoxSkillName1.Name = "comboBoxSkillName1";
+            this.comboBoxSkillName1.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxSkillName1.TabIndex = 5;
             // 
             // label2
             // 
@@ -81,6 +88,15 @@
             this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Skill 2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Skill 1";
             // 
             // groupBox2
             // 
@@ -94,6 +110,20 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Level";
+            // 
+            // numericUpDownSkillLevel2
+            // 
+            this.numericUpDownSkillLevel2.Location = new System.Drawing.Point(74, 64);
+            this.numericUpDownSkillLevel2.Name = "numericUpDownSkillLevel2";
+            this.numericUpDownSkillLevel2.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownSkillLevel2.TabIndex = 6;
+            // 
+            // numericUpDownSkillLevel1
+            // 
+            this.numericUpDownSkillLevel1.Location = new System.Drawing.Point(74, 27);
+            this.numericUpDownSkillLevel1.Name = "numericUpDownSkillLevel1";
+            this.numericUpDownSkillLevel1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownSkillLevel1.TabIndex = 5;
             // 
             // label3
             // 
@@ -112,36 +142,6 @@
             this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Skill 1";
-            // 
-            // comboBoxSkillName1
-            // 
-            this.comboBoxSkillName1.FormattingEnabled = true;
-            this.comboBoxSkillName1.Location = new System.Drawing.Point(73, 26);
-            this.comboBoxSkillName1.Name = "comboBoxSkillName1";
-            this.comboBoxSkillName1.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxSkillName1.TabIndex = 5;
-            // 
-            // comboBoxSkillName2
-            // 
-            this.comboBoxSkillName2.FormattingEnabled = true;
-            this.comboBoxSkillName2.Location = new System.Drawing.Point(73, 63);
-            this.comboBoxSkillName2.Name = "comboBoxSkillName2";
-            this.comboBoxSkillName2.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxSkillName2.TabIndex = 6;
-            // 
-            // numericUpDownSkillLevel1
-            // 
-            this.numericUpDownSkillLevel1.Location = new System.Drawing.Point(74, 27);
-            this.numericUpDownSkillLevel1.Name = "numericUpDownSkillLevel1";
-            this.numericUpDownSkillLevel1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownSkillLevel1.TabIndex = 5;
-            // 
-            // numericUpDownSkillLevel2
-            // 
-            this.numericUpDownSkillLevel2.Location = new System.Drawing.Point(74, 64);
-            this.numericUpDownSkillLevel2.Name = "numericUpDownSkillLevel2";
-            this.numericUpDownSkillLevel2.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownSkillLevel2.TabIndex = 6;
             // 
             // groupBox3
             // 
@@ -207,6 +207,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditTalismanDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -216,8 +217,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSkillLevel1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSlots)).EndInit();

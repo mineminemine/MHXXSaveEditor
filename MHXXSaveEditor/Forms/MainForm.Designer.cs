@@ -118,9 +118,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.itemBoxTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.numericUpDownItemAmount = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownItemID = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBoxItem = new System.Windows.Forms.ComboBox();
@@ -163,6 +161,7 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonClearItemSlot = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -201,7 +200,6 @@
             this.itemBoxTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).BeginInit();
             this.equipTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).BeginInit();
             this.palicoTab.SuspendLayout();
@@ -1254,9 +1252,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.buttonClearItemSlot);
             this.groupBox1.Controls.Add(this.numericUpDownItemAmount);
-            this.groupBox1.Controls.Add(this.numericUpDownItemID);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.comboBoxItem);
@@ -1267,18 +1264,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Edit";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 24);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(21, 17);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "ID";
-            // 
             // numericUpDownItemAmount
             // 
-            this.numericUpDownItemAmount.Location = new System.Drawing.Point(529, 22);
+            this.numericUpDownItemAmount.Location = new System.Drawing.Point(332, 23);
             this.numericUpDownItemAmount.Maximum = new decimal(new int[] {
             99,
             0,
@@ -1289,24 +1277,10 @@
             this.numericUpDownItemAmount.TabIndex = 5;
             this.numericUpDownItemAmount.ValueChanged += new System.EventHandler(this.numericUpDownItemAmount_ValueChanged);
             // 
-            // numericUpDownItemID
-            // 
-            this.numericUpDownItemID.Enabled = false;
-            this.numericUpDownItemID.Location = new System.Drawing.Point(35, 22);
-            this.numericUpDownItemID.Maximum = new decimal(new int[] {
-            2990,
-            0,
-            0,
-            0});
-            this.numericUpDownItemID.Name = "numericUpDownItemID";
-            this.numericUpDownItemID.ReadOnly = true;
-            this.numericUpDownItemID.Size = new System.Drawing.Size(150, 22);
-            this.numericUpDownItemID.TabIndex = 7;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(467, 24);
+            this.label12.Location = new System.Drawing.Point(270, 25);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 17);
             this.label12.TabIndex = 4;
@@ -1315,7 +1289,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(209, 24);
+            this.label11.Location = new System.Drawing.Point(9, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 17);
             this.label11.TabIndex = 3;
@@ -1324,7 +1298,7 @@
             // comboBoxItem
             // 
             this.comboBoxItem.FormattingEnabled = true;
-            this.comboBoxItem.Location = new System.Drawing.Point(249, 21);
+            this.comboBoxItem.Location = new System.Drawing.Point(49, 22);
             this.comboBoxItem.Name = "comboBoxItem";
             this.comboBoxItem.Size = new System.Drawing.Size(200, 24);
             this.comboBoxItem.TabIndex = 2;
@@ -1709,6 +1683,16 @@
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
             // 
+            // buttonClearItemSlot
+            // 
+            this.buttonClearItemSlot.Location = new System.Drawing.Point(529, 18);
+            this.buttonClearItemSlot.Name = "buttonClearItemSlot";
+            this.buttonClearItemSlot.Size = new System.Drawing.Size(150, 30);
+            this.buttonClearItemSlot.TabIndex = 6;
+            this.buttonClearItemSlot.Text = "Clear Slot";
+            this.buttonClearItemSlot.UseVisualStyleBackColor = true;
+            this.buttonClearItemSlot.Click += new System.EventHandler(this.buttonClearItemSlot_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1765,7 +1749,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownItemID)).EndInit();
             this.equipTab.ResumeLayout(false);
             this.equipTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEquipLevel)).EndInit();
@@ -1824,8 +1807,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDownItemAmount;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numericUpDownItemID;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numericUpDownClothing;
@@ -1912,6 +1893,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button buttonEditGuildCard;
+        private System.Windows.Forms.Button buttonClearItemSlot;
     }
 }
 

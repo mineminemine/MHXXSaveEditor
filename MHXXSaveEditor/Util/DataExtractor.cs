@@ -26,10 +26,12 @@ namespace MHXXSaveEditor.Util
             player.EquipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
             player.PalicoData = new byte[Constants.SIZEOF_PALICOES];
             player.GuildCardData = new byte[Constants.SIZEOF_GUILDCARD];
+            player.ArenaData = new byte[Constants.SIZEOF_ARENALOG];
             player.ManualShoutouts = new byte[Constants.SIZEOF_MANUAL_SHOUTOUTS];
             player.AutomaticShoutouts = new byte[Constants.SIZEOF_AUTOMATIC_SHOUTOUTS];
             player.MonsterKills = new byte[Constants.SIZEOF_MONSTERHUNTS];
             player.MonsterCaptures = new byte[Constants.SIZEOF_MONSTERCAPTURES];
+            player.MonsterSizes = new byte[Constants.SIZEOF_MONSTERSIZES];
             byte[] itemBytes = new byte[Constants.SIZEOF_ITEMBOX];
 
             if (slot == 1)
@@ -114,16 +116,17 @@ namespace MHXXSaveEditor.Util
             // Palico Equipment Box
             Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_EQUIPMENT_OFFSET, player.EquipmentPalico, 0, Constants.SIZEOF_PALICOEQUIPBOX);
 
-            // Monster Hunts
+            // Monster Hunts / Sizes
             Array.Copy(saveFile, player.SaveOffset + Offsets.MONSTERHUNT_OFFSETS, player.MonsterKills, 0, Constants.SIZEOF_MONSTERHUNTS);
             Array.Copy(saveFile, player.SaveOffset + Offsets.MONSTERCAPTURE_OFFSETS, player.MonsterCaptures, 0, Constants.SIZEOF_MONSTERCAPTURES);
-
+            Array.Copy(saveFile, player.SaveOffset + Offsets.MONSTERSIZE_OFFSETS, player.MonsterSizes, 0, Constants.SIZEOF_MONSTERSIZES);
 
             // Palico
             Array.Copy(saveFile, player.SaveOffset + Offsets.PALICO_OFFSET, player.PalicoData, 0, Constants.SIZEOF_PALICOES);
 
             // Guild Card
             Array.Copy(saveFile, player.SaveOffset + Offsets.GUILCARD_OFFSET, player.GuildCardData, 0, Constants.SIZEOF_GUILDCARD);
+            Array.Copy(saveFile, player.SaveOffset + Offsets.GUILDCARD_ARENA_LOG_OFFSET, player.ArenaData, 0, Constants.SIZEOF_ARENALOG);
 
             // Shoutouts
             Array.Copy(saveFile, player.SaveOffset + Offsets.MANUAL_SHOUTOUT_OFFSETS, player.ManualShoutouts, 0, Constants.SIZEOF_MANUAL_SHOUTOUTS);
