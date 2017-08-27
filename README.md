@@ -1,17 +1,17 @@
 # MHXXSaveEditor
 
 A save editor for Monster Hunter XX for the Nintendo 3DS/2DS, not the Switch version.
-However, it *may be possible* to transfer your edited 3DS MHXX save file to the Switch version.
+However, it *may be possible* to transfer your edited 3DS/2DS MHXX save file to the Switch version.
 
 ## Features
 
 - General Editor
 - Character Editor
 - Item Box Editor
-- Equipment Editor (Talisman/Charm, Kinsect)
+- Equipment Editor (Talisman/Charm (see section below), Kinsect, etc.)
 - Palico Equipment Editor
-- Palico Editor
-- Guild Card Editor
+- Palico Editor (General stuffs, Learned Actions/Skills, etc.)
+- Guild Card Editor (Monster Hunts, Arena, etc.)
 
 ---
 
@@ -19,8 +19,7 @@ Looking for a better talisman/charm editor? Look [here](https://gbatemp.net/thre
 
 ## Coming soon
 
-- Arena time/rank whatever editor
-- Stuffs?
+- Stuffs? Suggestions are welcome really.
 
 ## Requirements
 
