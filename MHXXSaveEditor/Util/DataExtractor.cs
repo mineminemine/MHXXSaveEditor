@@ -37,17 +37,17 @@ namespace MHXXSaveEditor.Util
             if (slot == 1)
             {
                 string firstSlot = saveFile[0x13].ToString("X2") + saveFile[0x12].ToString("X2") + saveFile[0x11].ToString("X2") + saveFile[0x10].ToString("X2");
-                player.SaveOffset = Int32.Parse(firstSlot, System.Globalization.NumberStyles.HexNumber);
+                player.SaveOffset = int.Parse(firstSlot, System.Globalization.NumberStyles.HexNumber);
             }
             else if (slot == 2)
             {
                 string secondSlot = saveFile[0x17].ToString("X2") + saveFile[0x16].ToString("X2") + saveFile[0x15].ToString("X2") + saveFile[0x14].ToString("X2");
-                player.SaveOffset = Int32.Parse(secondSlot, System.Globalization.NumberStyles.HexNumber);
+                player.SaveOffset = int.Parse(secondSlot, System.Globalization.NumberStyles.HexNumber);
             }
             else
             {
                 string thirdSlot = saveFile[0x21].ToString("X2") + saveFile[0x20].ToString("X2") + saveFile[0x19].ToString("X2") + saveFile[0x18].ToString("X2");
-                player.SaveOffset = Int32.Parse(thirdSlot, System.Globalization.NumberStyles.HexNumber);
+                player.SaveOffset = int.Parse(thirdSlot, System.Globalization.NumberStyles.HexNumber);
             }
 
             // Character Name

@@ -37,6 +37,9 @@ namespace MHXXSaveEditor
             toolStripMenuItemSaveSlot1.Enabled = false;
             toolStripMenuItemSaveSlot2.Enabled = false;
             toolStripMenuItemSaveSlot3.Enabled = false;
+            slot1ToolStripMenuItem.Enabled = false;
+            slot2ToolStripMenuItem.Enabled = false;
+            slot3ToolStripMenuItem.Enabled = false;
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All files (*.*)|*.*";
@@ -65,22 +68,30 @@ namespace MHXXSaveEditor
                 currentPlayer = 1;
                 toolStripMenuItemSaveSlot1.Enabled = true;
                 toolStripMenuItemSaveSlot1.Checked = true;
+                slot1ToolStripMenuItem.Enabled = true;
             }
-            if (saveFile[5] == 1 ) // Second slot
+            else if (saveFile[5] == 1 ) // Second slot
             {
                 if (currentPlayer != 1)
                 {
                     currentPlayer = 2;
                 }
                 toolStripMenuItemSaveSlot2.Enabled = true;
+                slot2ToolStripMenuItem.Enabled = true;
             }
-            if (saveFile[6] == 1) // Third slot
+            else if (saveFile[6] == 1) // Third slot
             {
                 if (currentPlayer != 1 || currentPlayer != 2)
                 {
                     currentPlayer = 3;
                 }
                 toolStripMenuItemSaveSlot3.Enabled = true;
+                slot3ToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("No existing save slots used, please make one in-game first.", "Error");
+                return;
             }
 
             saveToolStripMenuItemSave.Enabled = true; // Enables the save toolstrip once save is loaded
@@ -1143,6 +1154,54 @@ namespace MHXXSaveEditor
                 return;
             else
                 comboBoxItem.SelectedIndex = 0;
+        }
+
+        private void slot1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 1", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                deleteSaveSlot(1);
+        }
+
+        private void slot2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                deleteSaveSlot(2);
+        }
+
+        private void slot3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 3", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                deleteSaveSlot(3);
+        }
+
+        private void deleteSaveSlot(int slotNumber)
+        {
+            int theOffset;
+
+            if (slotNumber == 1)
+            {
+                string firstSlot = saveFile[0x13].ToString("X2") + saveFile[0x12].ToString("X2") + saveFile[0x11].ToString("X2") + saveFile[0x10].ToString("X2");
+                theOffset = int.Parse(firstSlot, System.Globalization.NumberStyles.HexNumber);
+                saveFile[4] = 0;
+            }
+            else if (slotNumber == 2)
+            {
+                string secondSlot = saveFile[0x17].ToString("X2") + saveFile[0x16].ToString("X2") + saveFile[0x15].ToString("X2") + saveFile[0x14].ToString("X2");
+                theOffset = int.Parse(secondSlot, System.Globalization.NumberStyles.HexNumber);
+                saveFile[5] = 0;
+            }
+            else
+            {
+                string thirdSlot = saveFile[0x21].ToString("X2") + saveFile[0x20].ToString("X2") + saveFile[0x19].ToString("X2") + saveFile[0x18].ToString("X2");
+                theOffset = int.Parse(thirdSlot, System.Globalization.NumberStyles.HexNumber);
+                saveFile[6] = 0;
+            }
+
+            Array.Copy(Properties.Resources.CleanSave, 0, saveFile, theOffset, Properties.Resources.CleanSave.Length);
+            File.WriteAllBytes(filePath, saveFile);
+            MessageBox.Show("The save slot has been deleted", "Save slot " + slotNumber +  "deleted");
+            MessageBox.Show("This program will now restart");
+            Application.Restart();
         }
 
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)

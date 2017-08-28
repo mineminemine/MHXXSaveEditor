@@ -59,5 +59,15 @@ namespace MHXXSaveEditor.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CleanSave {
+            get {
+                object obj = ResourceManager.GetObject("CleanSave", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
