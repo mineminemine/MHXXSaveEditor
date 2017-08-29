@@ -605,7 +605,7 @@ namespace MHXXSaveEditor
 
         private void numericUpDownTime_ValueChanged(object sender, EventArgs e)
         {
-            labelConvTime.Text = "HH:MM:SS - " + ttime.GetTime((int)numericUpDownTime.Value);
+            labelConvTime.Text = "D.HH:MM:SS - " + ttime.GetTime((int)numericUpDownTime.Value);
         }
 
         private void comboBoxEquipType_SelectedIndexChanged(object sender, EventArgs e)
