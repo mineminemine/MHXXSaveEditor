@@ -43,6 +43,9 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteSaveSlotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slot1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slot2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slot3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,9 +169,6 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.slot1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slot2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slot3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -257,7 +257,7 @@
             // 
             this.toolStripMenuItemSaveSlot1.Enabled = false;
             this.toolStripMenuItemSaveSlot1.Name = "toolStripMenuItemSaveSlot1";
-            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot1.Text = "1";
             this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot1_Click);
             // 
@@ -265,7 +265,7 @@
             // 
             this.toolStripMenuItemSaveSlot2.Enabled = false;
             this.toolStripMenuItemSaveSlot2.Name = "toolStripMenuItemSaveSlot2";
-            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot2.Text = "2";
             this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot2_Click);
             // 
@@ -273,7 +273,7 @@
             // 
             this.toolStripMenuItemSaveSlot3.Enabled = false;
             this.toolStripMenuItemSaveSlot3.Name = "toolStripMenuItemSaveSlot3";
-            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot3.Text = "3";
             this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot3_Click);
             // 
@@ -304,6 +304,7 @@
             // 
             // saveAsToolStripMenuItem
             // 
+            this.saveAsToolStripMenuItem.Enabled = false;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.saveAsToolStripMenuItem.Text = "Save As";
@@ -323,6 +324,30 @@
             this.deleteSaveSlotToolStripMenuItem.Name = "deleteSaveSlotToolStripMenuItem";
             this.deleteSaveSlotToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.deleteSaveSlotToolStripMenuItem.Text = "Delete Save Slot";
+            // 
+            // slot1ToolStripMenuItem
+            // 
+            this.slot1ToolStripMenuItem.Enabled = false;
+            this.slot1ToolStripMenuItem.Name = "slot1ToolStripMenuItem";
+            this.slot1ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
+            this.slot1ToolStripMenuItem.Text = "Slot 1";
+            this.slot1ToolStripMenuItem.Click += new System.EventHandler(this.slot1ToolStripMenuItem_Click);
+            // 
+            // slot2ToolStripMenuItem
+            // 
+            this.slot2ToolStripMenuItem.Enabled = false;
+            this.slot2ToolStripMenuItem.Name = "slot2ToolStripMenuItem";
+            this.slot2ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
+            this.slot2ToolStripMenuItem.Text = "Slot 2";
+            this.slot2ToolStripMenuItem.Click += new System.EventHandler(this.slot2ToolStripMenuItem_Click);
+            // 
+            // slot3ToolStripMenuItem
+            // 
+            this.slot3ToolStripMenuItem.Enabled = false;
+            this.slot3ToolStripMenuItem.Name = "slot3ToolStripMenuItem";
+            this.slot3ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
+            this.slot3ToolStripMenuItem.Text = "Slot 3";
+            this.slot3ToolStripMenuItem.Click += new System.EventHandler(this.slot3ToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -354,7 +379,7 @@
             this.removeDuplicatesToolStripMenuItem,
             this.removeAllItemsToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
-            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
+            this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
             // 
             // maxAmountItemsToolStripMenuItem
@@ -1728,30 +1753,6 @@
             // 
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
-            // 
-            // slot1ToolStripMenuItem
-            // 
-            this.slot1ToolStripMenuItem.Enabled = false;
-            this.slot1ToolStripMenuItem.Name = "slot1ToolStripMenuItem";
-            this.slot1ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.slot1ToolStripMenuItem.Text = "Slot 1";
-            this.slot1ToolStripMenuItem.Click += new System.EventHandler(this.slot1ToolStripMenuItem_Click);
-            // 
-            // slot2ToolStripMenuItem
-            // 
-            this.slot2ToolStripMenuItem.Enabled = false;
-            this.slot2ToolStripMenuItem.Name = "slot2ToolStripMenuItem";
-            this.slot2ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.slot2ToolStripMenuItem.Text = "Slot 2";
-            this.slot2ToolStripMenuItem.Click += new System.EventHandler(this.slot2ToolStripMenuItem_Click);
-            // 
-            // slot3ToolStripMenuItem
-            // 
-            this.slot3ToolStripMenuItem.Enabled = false;
-            this.slot3ToolStripMenuItem.Name = "slot3ToolStripMenuItem";
-            this.slot3ToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.slot3ToolStripMenuItem.Text = "Slot 3";
-            this.slot3ToolStripMenuItem.Click += new System.EventHandler(this.slot3ToolStripMenuItem_Click);
             // 
             // MainForm
             // 

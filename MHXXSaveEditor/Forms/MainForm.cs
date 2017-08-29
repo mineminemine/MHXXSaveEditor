@@ -96,6 +96,7 @@ namespace MHXXSaveEditor
 
             saveToolStripMenuItemSave.Enabled = true; // Enables the save toolstrip once save is loaded
             editToolStripMenuItem.Enabled = true;
+            saveAsToolStripMenuItem.Enabled = true;
             tabControlMain.Enabled = true;
 
             // Extract data from save file
