@@ -76,6 +76,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboBoxMonsters = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
             this.comboBoxArenaGrade = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBoxArenaWeapon = new System.Windows.Forms.ComboBox();
@@ -91,7 +92,6 @@
             this.buttonOkay = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label24 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGCStreetPasses)).BeginInit();
@@ -188,6 +188,7 @@
             this.numericUpDownGCStreetPasses.Name = "numericUpDownGCStreetPasses";
             this.numericUpDownGCStreetPasses.Size = new System.Drawing.Size(200, 22);
             this.numericUpDownGCStreetPasses.TabIndex = 5;
+            this.numericUpDownGCStreetPasses.Visible = false;
             // 
             // label3
             // 
@@ -197,6 +198,7 @@
             this.label3.Size = new System.Drawing.Size(96, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Street Passes";
+            this.label3.Visible = false;
             // 
             // numericUpDownGCPlayTime
             // 
@@ -664,6 +666,15 @@
             this.tabPage5.Text = "Arena";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 178);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(113, 17);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "Grudge Matches";
+            // 
             // comboBoxArenaGrade
             // 
             this.comboBoxArenaGrade.Enabled = false;
@@ -673,7 +684,7 @@
             "S",
             "A",
             "B"});
-            this.comboBoxArenaGrade.Location = new System.Drawing.Point(474, 231);
+            this.comboBoxArenaGrade.Location = new System.Drawing.Point(463, 231);
             this.comboBoxArenaGrade.Name = "comboBoxArenaGrade";
             this.comboBoxArenaGrade.Size = new System.Drawing.Size(150, 24);
             this.comboBoxArenaGrade.TabIndex = 7;
@@ -682,7 +693,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(471, 212);
+            this.label21.Location = new System.Drawing.Point(460, 212);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(48, 17);
             this.label21.TabIndex = 6;
@@ -692,7 +703,7 @@
             // 
             this.comboBoxArenaWeapon.Enabled = false;
             this.comboBoxArenaWeapon.FormattingEnabled = true;
-            this.comboBoxArenaWeapon.Location = new System.Drawing.Point(243, 231);
+            this.comboBoxArenaWeapon.Location = new System.Drawing.Point(237, 232);
             this.comboBoxArenaWeapon.Name = "comboBoxArenaWeapon";
             this.comboBoxArenaWeapon.Size = new System.Drawing.Size(150, 24);
             this.comboBoxArenaWeapon.TabIndex = 5;
@@ -701,7 +712,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(240, 212);
+            this.label20.Location = new System.Drawing.Point(234, 213);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(97, 17);
             this.label20.TabIndex = 4;
@@ -794,15 +805,6 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 178);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(113, 17);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "Grudge Matches";
             // 
             // EditGuildCardDialog
             // 

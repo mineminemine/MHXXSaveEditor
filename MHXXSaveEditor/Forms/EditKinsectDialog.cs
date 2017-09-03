@@ -12,7 +12,7 @@ namespace MHXXSaveEditor.Forms
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.Text = "Editing Kinsect - " + eqpName;
+            Text = "Editing Kinsect - " + eqpName;
             comboBoxKinsectType.Items.AddRange(GameConstants.KinsectNames);
 
             comboBoxKinsectType.SelectedIndex = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 12]);
@@ -37,7 +37,7 @@ namespace MHXXSaveEditor.Forms
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace MHXXSaveEditor.Forms
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 31] = Convert.ToByte(numericUpDownIceExp.Value);
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 32] = Convert.ToByte(numericUpDownDragonExp.Value);
 
-            this.Close();
+            Close();
         }
     }
 }

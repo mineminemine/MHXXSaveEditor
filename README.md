@@ -8,8 +8,8 @@ However, it *may be possible* to transfer your edited 3DS/2DS MHXX save file to 
 - General Editor
 - Character Editor
 - Item Box Editor
-- Equipment Editor (Talisman/Charm (see section below), Kinsect, etc.)
-- Palico Equipment Editor
+- Equipment Editor (Transmogrify, Talisman/Charm (see section below), Kinsect, etc.)
+- Palico Equipment Editor (Transmogrify too)
 - Palico Editor (General stuffs, Learned Actions/Skills, etc.)
 - Guild Card Editor (Monster Hunts, Arena, etc.)
 
@@ -23,9 +23,9 @@ Looking for a better talisman/charm editor? Look [here](https://gbatemp.net/thre
 
 ## Requirements
 
-- .NET Framework ver 4.7
 - Your MHXX `system` file obtained from your prefered save manager
-- Also C++ Redistributable
+- .NET Framework ver 4.0
+- C++ Redistributables
 
 ## Credits
 - **APM** - For her initial work on a save editor for MHGen/MHX, some of the source code and GUI for this save editor is based off hers, see [here](https://github.com/ezapm/APMMHXSaveEditor)  

@@ -227,6 +227,13 @@ namespace MHXXSaveEditor
                     arr[2] = palicoType;
                     ListViewItem plc = new ListViewItem(arr);
                     listViewPalico.Items.Add(plc);
+
+                    int palicoDLC = player.PalicoData[(a * Constants.SIZEOF_PALICO) + 0x0E0];
+                    if (palicoDLC > 100)
+                    {
+                        listViewPalico.Items[a].UseItemStyleForSubItems = false;
+                        listViewPalico.Items[a].SubItems[1].ForeColor = Color.Green;
+                    }
                 }
             }
             listViewPalico.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -269,6 +276,7 @@ namespace MHXXSaveEditor
             for (int a = 0; a < Constants.TOTAL_EQUIP_SLOTS; a++) // 2000 slots for 2000 equips
             {
                 int eqID = Convert.ToInt32(player.EquipmentInfo[(a * 36) + 3].ToString("X2") + player.EquipmentInfo[(a * 36) + 2].ToString("X2"), 16);
+                int transmogID = Convert.ToInt32(player.EquipmentInfo[(a * 36) + 5].ToString("X2") + player.EquipmentInfo[(a * 36) + 4].ToString("X2"), 16);
                 string typeLevelBits = Convert.ToString(player.EquipmentInfo[(a * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.EquipmentInfo[a * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
                 string equipType = GameConstants.EquipmentTypes[Convert.ToInt32(typeLevelBits.Substring(7, 5), 2)];
 
@@ -280,19 +288,19 @@ namespace MHXXSaveEditor
                         case 0:
                             break;
                         case 1:
-                            eqName = GameConstants.EquipHeadNames[eqID];
+                            eqName = GameConstants.EquipHeadNames[Array.IndexOf(GameConstants.EquipHeadIDs, eqID)];
                             break;
                         case 2:
-                            eqName = GameConstants.EquipChestNames[eqID];
+                            eqName = GameConstants.EquipChestNames[Array.IndexOf(GameConstants.EquipChestIDs, eqID)];
                             break;
                         case 3:
-                            eqName = GameConstants.EquipArmsNames[eqID];
+                            eqName = GameConstants.EquipArmsNames[Array.IndexOf(GameConstants.EquipArmsIDs, eqID)];
                             break;
                         case 4:
-                            eqName = GameConstants.EquipWaistNames[eqID];
+                            eqName = GameConstants.EquipWaistNames[Array.IndexOf(GameConstants.EquipWaistIDs, eqID)];
                             break;
                         case 5:
-                            eqName = GameConstants.EquipLegsNames[eqID];
+                            eqName = GameConstants.EquipLegsNames[Array.IndexOf(GameConstants.EquipLegsIDs, eqID)];
                             break;
                         case 6:
                             eqName = GameConstants.EquipTalismanNames[eqID];
@@ -361,6 +369,11 @@ namespace MHXXSaveEditor
                 arr[2] = eqName;
                 ListViewItem itm = new ListViewItem(arr);
                 listViewEquipment.Items.Add(itm);
+                if(transmogID != 0)
+                {
+                    listViewEquipment.Items[a].UseItemStyleForSubItems = false;
+                    listViewEquipment.Items[a].SubItems[2].ForeColor = Color.DarkOrange;
+                }
             }
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -376,6 +389,7 @@ namespace MHXXSaveEditor
             for (int a = 0; a < Constants.TOTAL_PALICO_EQUIP; a++) // 1000 slots
             {
                 int eqID = Convert.ToInt32(player.EquipmentPalico[(a * 36) + 3].ToString("X2") + player.EquipmentPalico[(a * 36) + 2].ToString("X2"), 16);
+                int transmogID = Convert.ToInt32(player.EquipmentPalico[(a * 36) + 5].ToString("X2") + player.EquipmentPalico[(a * 36) + 4].ToString("X2"), 16);
                 int equipType = Convert.ToInt32(player.EquipmentPalico[(a * 36)]);
                 string typeName = "(None)";
                 string eqName = "(None)";
@@ -387,11 +401,11 @@ namespace MHXXSaveEditor
                         typeName = GameConstants.PalicoEquip[1];
                         break;
                     case 23:
-                        eqName = GameConstants.PalicoHeadNames[eqID];
+                        eqName = GameConstants.PalicoHeadNames[Array.IndexOf(GameConstants.PalicoHeadIDs, eqID)];
                         typeName = GameConstants.PalicoEquip[2];
                         break;
                     case 24:
-                        eqName = GameConstants.PalicoArmorNames[eqID];
+                        eqName = GameConstants.PalicoArmorNames[Array.IndexOf(GameConstants.PalicoArmorIDs, eqID)];
                         typeName = GameConstants.PalicoEquip[3];
                         break;
                     default:
@@ -405,6 +419,11 @@ namespace MHXXSaveEditor
                 arr[2] = eqName;
                 ListViewItem eqp = new ListViewItem(arr);
                 listViewPalicoEquipment.Items.Add(eqp);
+                if (transmogID != 0)
+                {
+                    listViewPalicoEquipment.Items[a].UseItemStyleForSubItems = false;
+                    listViewPalicoEquipment.Items[a].SubItems[2].ForeColor = Color.DarkOrange;
+                }
             }
             listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -813,7 +832,6 @@ namespace MHXXSaveEditor
         private void buttonEditKinsect_Click(object sender, EventArgs e)
         {
             EditKinsectDialog editKinsect = new EditKinsectDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
-            MessageBox.Show("Edit at your own risk", "WARNING");
             editKinsect.ShowDialog();
             editKinsect.Dispose();
         }
@@ -833,7 +851,6 @@ namespace MHXXSaveEditor
         private void buttonEditTalisman_Click(object sender, EventArgs e)
         {
             EditTalismanDialog editKinsect = new EditTalismanDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
-            MessageBox.Show("Edit at your own risk", "WARNING");
             editKinsect.ShowDialog();
             editKinsect.Dispose();
         }
@@ -872,7 +889,6 @@ namespace MHXXSaveEditor
             {
                 int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
                 EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
-                MessageBox.Show("Edit at your own risk", "WARNING");
                 editPalico.ShowDialog();
                 editPalico.Dispose();
 
@@ -889,7 +905,6 @@ namespace MHXXSaveEditor
             {
                 int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
                 EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
-                MessageBox.Show("Edit at your own risk", "WARNING");
                 editPalico.ShowDialog();
                 editPalico.Dispose();
 
@@ -992,8 +1007,22 @@ namespace MHXXSaveEditor
                     return;
                 }
 
+                byte[] idBytes;
+
+                if (comboBoxEquipType.SelectedIndex == 1)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipHeadIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 2)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipChestIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 3)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipArmsIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 4)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipWaistIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 5)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipLegsIDs[comboBoxEquipName.SelectedIndex]);
+                else
+                    idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
+
                 listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
-                byte[] idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
                 player.EquipmentInfo[(equipSelectedSlot * 36) + 2] = idBytes[0];
                 player.EquipmentInfo[(equipSelectedSlot * 36) + 3] = idBytes[1];
                 numericUpDownEquipLevel.Enabled = true;
@@ -1012,8 +1041,16 @@ namespace MHXXSaveEditor
                     return;
                 }
 
+                byte[] idBytes;
+
+                if (comboBoxPalicoEqpType.SelectedIndex == 2)
+                    idBytes = BitConverter.GetBytes(GameConstants.PalicoHeadIDs[comboBoxPalicoEquip.SelectedIndex]);
+                else if (comboBoxPalicoEqpType.SelectedIndex == 3)
+                    idBytes = BitConverter.GetBytes(GameConstants.PalicoArmorIDs[comboBoxPalicoEquip.SelectedIndex]);
+                else
+                    idBytes = BitConverter.GetBytes(comboBoxPalicoEquip.SelectedIndex);
+
                 listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = comboBoxPalicoEquip.Text;
-                byte[] idBytes = BitConverter.GetBytes(comboBoxPalicoEquip.SelectedIndex);
                 player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = idBytes[0];
                 player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = idBytes[1];
             }
@@ -1205,6 +1242,44 @@ namespace MHXXSaveEditor
             Application.Restart();
         }
 
+        private void buttonTransmogrify_Click(object sender, EventArgs e)
+        {
+            Transmogrify transmogrifyEquip = new Transmogrify(this, listViewEquipment.SelectedItems[0].SubItems[2].Text, listViewEquipment.SelectedItems[0].SubItems[1].Text, Convert.ToInt32(labelTransmogID.Text));
+            if (transmogrifyEquip.ShowDialog() == DialogResult.OK)
+            {
+                int transmogID = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 5].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 4].ToString("X2"), 16);
+                if(transmogID != 0)
+                {
+                    listViewEquipment.Items[equipSelectedSlot].UseItemStyleForSubItems = false;
+                    listViewEquipment.Items[equipSelectedSlot].SubItems[2].ForeColor = Color.DarkOrange;
+                }
+                else
+                    listViewEquipment.Items[equipSelectedSlot].SubItems[2].ForeColor = Color.Black;
+
+                labelTransmogID.Text = transmogID.ToString();
+            }
+            transmogrifyEquip.Dispose();
+        }
+
+        private void buttonTransmogrifyPalico_Click(object sender, EventArgs e)
+        {
+            Transmogrify transmogrifyEquip = new Transmogrify(this, listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text, listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text, Convert.ToInt32(labelTransmogPalicoID.Text));
+            if (transmogrifyEquip.ShowDialog() == DialogResult.OK)
+            {
+                int transmogID = Convert.ToInt32(player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5].ToString("X2") + player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4].ToString("X2"), 16);
+                if (transmogID != 0)
+                {
+                    listViewPalicoEquipment.Items[palicoEqpSelectedSlot].UseItemStyleForSubItems = false;
+                    listViewPalicoEquipment.Items[palicoEqpSelectedSlot].SubItems[2].ForeColor = Color.DarkOrange;
+                }
+                else
+                    listViewPalicoEquipment.Items[palicoEqpSelectedSlot].SubItems[2].ForeColor = Color.Black;
+
+                labelTransmogPalicoID.Text = transmogID.ToString();
+            }
+            transmogrifyEquip.Dispose();
+        }
+
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
@@ -1224,30 +1299,37 @@ namespace MHXXSaveEditor
 
                 palicoEqpSelectedSlot = Convert.ToInt32(listViewPalicoEquipment.SelectedItems[0].SubItems[0].Text) - 1;
                 comboBoxPalicoEqpType.SelectedIndex = comboBoxPalicoEqpType.FindStringExact(listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text);
-                if(comboBoxPalicoEqpType.SelectedIndex == 1)
+                int eqID = Convert.ToInt32(player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3].ToString("X2") + player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2].ToString("X2"), 16);
+                int transmogID = Convert.ToInt32(player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5].ToString("X2") + player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4].ToString("X2"), 16);
+                if (comboBoxPalicoEqpType.SelectedIndex == 1)
                 {
                     comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
                     comboBoxPalicoEquip.Enabled = true;
+                    buttonTransmogrifyPalico.Enabled = false;
+                    comboBoxPalicoEquip.SelectedIndex = eqID;
                 }
                 else if(comboBoxPalicoEqpType.SelectedIndex == 2)
                 {
                     comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
                     comboBoxPalicoEquip.Enabled = true;
+                    buttonTransmogrifyPalico.Enabled = true;
+                    comboBoxPalicoEquip.SelectedIndex = Array.IndexOf(GameConstants.PalicoHeadIDs, eqID);
                 }
                 else if(comboBoxPalicoEqpType.SelectedIndex == 3)
                 {
                     comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
                     comboBoxPalicoEquip.Enabled = true;
+                    buttonTransmogrifyPalico.Enabled = true;
+                    comboBoxPalicoEquip.SelectedIndex = Array.IndexOf(GameConstants.PalicoArmorIDs, eqID);
                 }
                 else
                 {
                     comboBoxPalicoEquip.Items.Clear();
                     comboBoxPalicoEquip.Items.Add("(None)");
                     comboBoxPalicoEquip.Enabled = false;
+                    buttonTransmogrifyPalico.Enabled = false;
                 }
-
-                int eqID = Convert.ToInt32(player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3].ToString("X2") + player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2].ToString("X2"), 16);
-                comboBoxPalicoEquip.SelectedIndex = eqID;
+                labelTransmogPalicoID.Text = transmogID.ToString();
             }
         }
 
@@ -1271,6 +1353,7 @@ namespace MHXXSaveEditor
                 comboBoxEquipType.SelectedIndex = Convert.ToInt32(typeLevelBits.Substring(7, 5), 2);
 
                 int eqID = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 3].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 2].ToString("X2"), 16);
+                int transmogID = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 5].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 4].ToString("X2"), 16);
                 int eqLevel = Convert.ToInt32(typeLevelBits.Substring(0, 7), 2);
                 int deco1 = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 7].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 6].ToString("X2"), 16);
                 int deco2 = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 9].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 8].ToString("X2"), 16);
@@ -1286,6 +1369,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = false;
                     buttonEditKinsect.Enabled = false;
                     buttonEditTalisman.Enabled = false;
+                    buttonTransmogrify.Enabled = false;
                     numericUpDownEquipLevel.Enabled = false;
                 }
                 else if (comboBoxEquipType.SelectedIndex == 20)
@@ -1296,6 +1380,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditKinsect.Enabled = true;
                     buttonEditTalisman.Enabled = false;
+                    buttonTransmogrify.Enabled = false;
                     numericUpDownEquipLevel.Enabled = true;
                 }
                 else if (comboBoxEquipType.SelectedIndex == 6)
@@ -1306,7 +1391,19 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditTalisman.Enabled = true;
                     buttonEditKinsect.Enabled = false;
+                    buttonTransmogrify.Enabled = false;
                     numericUpDownEquipLevel.Enabled = false;
+                }
+                else if (comboBoxEquipType.SelectedIndex == 1 || comboBoxEquipType.SelectedIndex == 2 || comboBoxEquipType.SelectedIndex == 3 || comboBoxEquipType.SelectedIndex == 4 || comboBoxEquipType.SelectedIndex == 5)
+                {
+                    comboBoxEquipName.Enabled = true;
+                    comboBoxEquipDeco1.Enabled = true;
+                    comboBoxEquipDeco2.Enabled = true;
+                    comboBoxEquipDeco3.Enabled = true;
+                    buttonEditTalisman.Enabled = false;
+                    buttonEditKinsect.Enabled = false;
+                    buttonTransmogrify.Enabled = true;
+                    numericUpDownEquipLevel.Enabled = true;
                 }
                 else
                 {
@@ -1316,6 +1413,7 @@ namespace MHXXSaveEditor
                     comboBoxEquipDeco3.Enabled = true;
                     buttonEditKinsect.Enabled = false;
                     buttonEditTalisman.Enabled = false;
+                    buttonTransmogrify.Enabled = false;
                     numericUpDownEquipLevel.Enabled = true;
                 }
 
@@ -1325,23 +1423,23 @@ namespace MHXXSaveEditor
                     {
                         case 1:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
-                            comboBoxEquipName.SelectedIndex = eqID;
+                            comboBoxEquipName.SelectedIndex = Array.IndexOf(GameConstants.EquipHeadIDs, eqID);
                             break;
                         case 2:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipChestNames);
-                            comboBoxEquipName.SelectedIndex = eqID;
+                            comboBoxEquipName.SelectedIndex = Array.IndexOf(GameConstants.EquipChestIDs, eqID);
                             break;
                         case 3:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipArmsNames);
-                            comboBoxEquipName.SelectedIndex = eqID;
+                            comboBoxEquipName.SelectedIndex = Array.IndexOf(GameConstants.EquipArmsIDs, eqID);
                             break;
                         case 4:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipWaistNames);
-                            comboBoxEquipName.SelectedIndex = eqID;
+                            comboBoxEquipName.SelectedIndex = Array.IndexOf(GameConstants.EquipWaistIDs, eqID);
                             break;
                         case 5:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipLegsNames);
-                            comboBoxEquipName.SelectedIndex = eqID;
+                            comboBoxEquipName.SelectedIndex = Array.IndexOf(GameConstants.EquipLegsIDs, eqID);
                             break;
                         case 6:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipTalismanNames);
@@ -1415,6 +1513,7 @@ namespace MHXXSaveEditor
                 comboBoxEquipDeco1.SelectedIndex = Array.IndexOf(GameConstants.JwlIDs ,deco1);
                 comboBoxEquipDeco2.SelectedIndex = Array.IndexOf(GameConstants.JwlIDs, deco2);
                 comboBoxEquipDeco3.SelectedIndex = Array.IndexOf(GameConstants.JwlIDs, deco3);
+                labelTransmogID.Text = transmogID.ToString();
             }
         }
     }

@@ -135,6 +135,8 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.equipTab = new System.Windows.Forms.TabPage();
+            this.labelTransmogID = new System.Windows.Forms.Label();
+            this.buttonTransmogrify = new System.Windows.Forms.Button();
             this.comboBoxEquipName = new System.Windows.Forms.ComboBox();
             this.numericUpDownEquipLevel = new System.Windows.Forms.NumericUpDown();
             this.buttonEditTalisman = new System.Windows.Forms.Button();
@@ -169,6 +171,9 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonTransmogrifyPalico = new System.Windows.Forms.Button();
+            this.labelTransmogPalicoID = new System.Windows.Forms.Label();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -419,6 +424,7 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
+            this.toolStripSeparator6,
             this.goToMainThreadToolStripMenuItem,
             this.visitGithubPageToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -1409,6 +1415,8 @@
             // 
             // equipTab
             // 
+            this.equipTab.Controls.Add(this.labelTransmogID);
+            this.equipTab.Controls.Add(this.buttonTransmogrify);
             this.equipTab.Controls.Add(this.comboBoxEquipName);
             this.equipTab.Controls.Add(this.numericUpDownEquipLevel);
             this.equipTab.Controls.Add(this.buttonEditTalisman);
@@ -1431,6 +1439,27 @@
             this.equipTab.TabIndex = 3;
             this.equipTab.Text = "Equipment";
             this.equipTab.UseVisualStyleBackColor = true;
+            // 
+            // labelTransmogID
+            // 
+            this.labelTransmogID.AutoSize = true;
+            this.labelTransmogID.Location = new System.Drawing.Point(680, 296);
+            this.labelTransmogID.Name = "labelTransmogID";
+            this.labelTransmogID.Size = new System.Drawing.Size(13, 17);
+            this.labelTransmogID.TabIndex = 19;
+            this.labelTransmogID.Text = "-";
+            this.labelTransmogID.Visible = false;
+            // 
+            // buttonTransmogrify
+            // 
+            this.buttonTransmogrify.Enabled = false;
+            this.buttonTransmogrify.Location = new System.Drawing.Point(556, 289);
+            this.buttonTransmogrify.Name = "buttonTransmogrify";
+            this.buttonTransmogrify.Size = new System.Drawing.Size(120, 30);
+            this.buttonTransmogrify.TabIndex = 18;
+            this.buttonTransmogrify.Text = "Transmogrify";
+            this.buttonTransmogrify.UseVisualStyleBackColor = true;
+            this.buttonTransmogrify.Click += new System.EventHandler(this.buttonTransmogrify_Click);
             // 
             // comboBoxEquipName
             // 
@@ -1672,6 +1701,8 @@
             // 
             // palicoEquipTab
             // 
+            this.palicoEquipTab.Controls.Add(this.labelTransmogPalicoID);
+            this.palicoEquipTab.Controls.Add(this.buttonTransmogrifyPalico);
             this.palicoEquipTab.Controls.Add(this.comboBoxPalicoEquip);
             this.palicoEquipTab.Controls.Add(this.label30);
             this.palicoEquipTab.Controls.Add(this.comboBoxPalicoEqpType);
@@ -1689,7 +1720,7 @@
             // 
             this.comboBoxPalicoEquip.Enabled = false;
             this.comboBoxPalicoEquip.FormattingEnabled = true;
-            this.comboBoxPalicoEquip.Location = new System.Drawing.Point(433, 296);
+            this.comboBoxPalicoEquip.Location = new System.Drawing.Point(332, 296);
             this.comboBoxPalicoEquip.Name = "comboBoxPalicoEquip";
             this.comboBoxPalicoEquip.Size = new System.Drawing.Size(200, 24);
             this.comboBoxPalicoEquip.TabIndex = 10;
@@ -1698,7 +1729,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(382, 299);
+            this.label30.Location = new System.Drawing.Point(281, 299);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(45, 17);
             this.label30.TabIndex = 7;
@@ -1708,7 +1739,7 @@
             // 
             this.comboBoxPalicoEqpType.Enabled = false;
             this.comboBoxPalicoEqpType.FormattingEnabled = true;
-            this.comboBoxPalicoEqpType.Location = new System.Drawing.Point(96, 296);
+            this.comboBoxPalicoEqpType.Location = new System.Drawing.Point(61, 296);
             this.comboBoxPalicoEqpType.Name = "comboBoxPalicoEqpType";
             this.comboBoxPalicoEqpType.Size = new System.Drawing.Size(200, 24);
             this.comboBoxPalicoEqpType.TabIndex = 6;
@@ -1717,7 +1748,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(50, 299);
+            this.label31.Location = new System.Drawing.Point(15, 299);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(40, 17);
             this.label31.TabIndex = 5;
@@ -1753,6 +1784,32 @@
             // 
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
+            // 
+            // buttonTransmogrifyPalico
+            // 
+            this.buttonTransmogrifyPalico.Enabled = false;
+            this.buttonTransmogrifyPalico.Location = new System.Drawing.Point(561, 292);
+            this.buttonTransmogrifyPalico.Name = "buttonTransmogrifyPalico";
+            this.buttonTransmogrifyPalico.Size = new System.Drawing.Size(120, 30);
+            this.buttonTransmogrifyPalico.TabIndex = 19;
+            this.buttonTransmogrifyPalico.Text = "Transmogrify";
+            this.buttonTransmogrifyPalico.UseVisualStyleBackColor = true;
+            this.buttonTransmogrifyPalico.Click += new System.EventHandler(this.buttonTransmogrifyPalico_Click);
+            // 
+            // labelTransmogPalicoID
+            // 
+            this.labelTransmogPalicoID.AutoSize = true;
+            this.labelTransmogPalicoID.Location = new System.Drawing.Point(683, 299);
+            this.labelTransmogPalicoID.Name = "labelTransmogPalicoID";
+            this.labelTransmogPalicoID.Size = new System.Drawing.Size(13, 17);
+            this.labelTransmogPalicoID.TabIndex = 20;
+            this.labelTransmogPalicoID.Text = "-";
+            this.labelTransmogPalicoID.Visible = false;
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(195, 6);
             // 
             // MainForm
             // 
@@ -1962,6 +2019,11 @@
         private System.Windows.Forms.ToolStripMenuItem slot1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem slot2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem slot3ToolStripMenuItem;
+        private System.Windows.Forms.Button buttonTransmogrify;
+        private System.Windows.Forms.Label labelTransmogID;
+        private System.Windows.Forms.Button buttonTransmogrifyPalico;
+        private System.Windows.Forms.Label labelTransmogPalicoID;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
 

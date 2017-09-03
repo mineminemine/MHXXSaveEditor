@@ -133,7 +133,6 @@ namespace MHXXSaveEditor.Forms
 
         private void comboBoxMonsters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(comboBoxMonsters.SelectedIndex);
             numericUpDownKillCount.Value = BitConverter.ToInt16(MainForm.player.MonsterKills, (comboBoxMonsters.SelectedIndex * 2));
             numericUpDownCaptureCount.Value = BitConverter.ToInt16(MainForm.player.MonsterCaptures, (comboBoxMonsters.SelectedIndex * 2));
             if ( Array.IndexOf(GameConstants.IgnoreList, comboBoxMonsters.Text) != -1)

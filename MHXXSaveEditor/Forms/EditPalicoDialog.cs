@@ -134,7 +134,7 @@ namespace MHXXSaveEditor.Forms
                 if (palicoJob == 8)
                     labelStatusDetail.Text = "This palico is selected for ordering items";
                 else if (palicoJob == 16)
-                    labelStatusDetail.Text = "This palico is selected for Special Traning/Catnap/Meditation";
+                    labelStatusDetail.Text = "This palico is selected for Palico Dojo/Catnap/Meditation";
                 else if (palicoTraining == 4)
                     labelStatusDetail.Text = "Not sure what this palico is doing..";
                 else if (palicoTraining == 16)
@@ -159,7 +159,7 @@ namespace MHXXSaveEditor.Forms
                             labelStatusDetail.Text = "This palico is on a Meownster Hunt";
                             break;
                         case 160:
-                            labelStatusDetail.Text = "This DLC palico is not hired; check with the Palico Sellers";
+                            labelStatusDetail.Text = "This DLC palico is resting; not doing anything";
                             break;
                         case 161:
                             labelStatusDetail.Text = "This DLC palico is resting; not doing anything";

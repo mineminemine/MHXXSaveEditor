@@ -98,6 +98,12 @@
     <Compile Include="Forms\SetItemAmountDialog.Designer.cs">
       <DependentUpon>SetItemAmountDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transmogrify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transmogrify.Designer.cs">
+      <DependentUpon>Transmogrify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ColorBrightness.cs" />
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SetItemAmountDialog.resx">
       <DependentUpon>SetItemAmountDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transmogrify.resx">
+      <DependentUpon>Transmogrify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
