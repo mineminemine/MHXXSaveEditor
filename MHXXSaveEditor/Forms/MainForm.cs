@@ -277,13 +277,13 @@ namespace MHXXSaveEditor
             {
                 int eqID = Convert.ToInt32(player.EquipmentInfo[(a * 36) + 3].ToString("X2") + player.EquipmentInfo[(a * 36) + 2].ToString("X2"), 16);
                 int transmogID = Convert.ToInt32(player.EquipmentInfo[(a * 36) + 5].ToString("X2") + player.EquipmentInfo[(a * 36) + 4].ToString("X2"), 16);
-                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(a * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.EquipmentInfo[a * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
-                string equipType = GameConstants.EquipmentTypes[Convert.ToInt32(typeLevelBits.Substring(7, 5), 2)];
+                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(a * 36) + 1], 2).PadLeft(8, '0') + Convert.ToString(player.EquipmentInfo[a * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
+                string equipType = GameConstants.EquipmentTypes[Convert.ToInt32(typeLevelBits.Substring(11, 5), 2)];
 
                 string eqName = "(None)";
                 try
                 {
-                    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
+                    switch (Convert.ToInt32(typeLevelBits.Substring(11, 5), 2))
                     {
                         case 0:
                             break;
@@ -751,9 +751,9 @@ namespace MHXXSaveEditor
 
                 listViewEquipment.SelectedItems[0].SubItems[1].Text = comboBoxEquipType.Text;
                 listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
+                listViewEquipment.SelectedItems[0].SubItems[2].ForeColor = Color.Black;
 
                 // Change the equipment type to selected equip in combobox
-                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.EquipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
                 string eqType = Convert.ToString(comboBoxEquipType.SelectedIndex, 2).PadLeft(5, '0');
                 string newByte = "00000000000" + eqType; // the zeroes are used to empty out the level and reset back to lv 1
                 int nBytes = newByte.Length / 8;
@@ -867,9 +867,9 @@ namespace MHXXSaveEditor
                     return;
                 }
 
-                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.EquipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
+                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(8, '0') + Convert.ToString(player.EquipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 6bits transmog level, 5 bits eqp level in the middle, then right hand side 5 bits eq type
                 int toChange = (int)numericUpDownEquipLevel.Value - 1;
-                string newBinary = "0000" + Convert.ToString(toChange, 2).PadLeft(7, '0') + typeLevelBits.Substring(7, 5);
+                string newBinary = typeLevelBits.Substring(0, 6) + Convert.ToString(toChange, 2).PadLeft(5, '0') + typeLevelBits.Substring(11, 5);
 
                 int nBytes = newBinary.Length / 8;
                 byte[] bytes = new byte[nBytes];
@@ -929,13 +929,16 @@ namespace MHXXSaveEditor
 
                 comboBoxPalicoEquip.Items.Clear();
                 listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text = comboBoxPalicoEqpType.Text;
-                switch(comboBoxPalicoEqpType.SelectedIndex)
+                listViewPalicoEquipment.SelectedItems[0].SubItems[2].ForeColor = Color.Black;
+                switch (comboBoxPalicoEqpType.SelectedIndex)
                 {
                     case 1:
                         player.EquipmentPalico[palicoEqpSelectedSlot * 36] = 22;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
                         comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoWeaponNames);
                         comboBoxPalicoEquip.SelectedIndex = 0;
@@ -946,6 +949,8 @@ namespace MHXXSaveEditor
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
                         comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoHeadNames);
                         comboBoxPalicoEquip.SelectedIndex = 0;
@@ -956,6 +961,8 @@ namespace MHXXSaveEditor
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
                         comboBoxPalicoEquip.Items.AddRange(GameConstants.PalicoArmorNames);
                         comboBoxPalicoEquip.SelectedIndex = 0;
@@ -966,6 +973,8 @@ namespace MHXXSaveEditor
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 1] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 2] = 0;
                         player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 3] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 4] = 0;
+                        player.EquipmentPalico[(palicoEqpSelectedSlot * 36) + 5] = 0;
                         listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text = "(None)";
                         comboBoxPalicoEquip.Items.Add("(None)");
                         comboBoxPalicoEquip.SelectedIndex = 0;
@@ -1349,12 +1358,12 @@ namespace MHXXSaveEditor
                 comboBoxEquipType.Enabled = true;
 
                 equipSelectedSlot = Convert.ToInt32(listViewEquipment.SelectedItems[0].SubItems[0].Text) - 1;
-                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(4, '0') + Convert.ToString(player.EquipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
-                comboBoxEquipType.SelectedIndex = Convert.ToInt32(typeLevelBits.Substring(7, 5), 2);
+                string typeLevelBits = Convert.ToString(player.EquipmentInfo[(equipSelectedSlot * 36) + 1], 2).PadLeft(8, '0') + Convert.ToString(player.EquipmentInfo[equipSelectedSlot * 36], 2).PadLeft(8, '0'); // One byte == the eqp type and level; 7 bits level on left hand side, then right hand side 5 bits eq type
+                comboBoxEquipType.SelectedIndex = Convert.ToInt32(typeLevelBits.Substring(11, 5), 2);
 
                 int eqID = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 3].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 2].ToString("X2"), 16);
                 int transmogID = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 5].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 4].ToString("X2"), 16);
-                int eqLevel = Convert.ToInt32(typeLevelBits.Substring(0, 7), 2);
+                int eqLevel = Convert.ToInt32(typeLevelBits.Substring(6, 5), 2);
                 int deco1 = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 7].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 6].ToString("X2"), 16);
                 int deco2 = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 9].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 8].ToString("X2"), 16);
                 int deco3 = Convert.ToInt32(player.EquipmentInfo[(equipSelectedSlot * 36) + 11].ToString("X2") + player.EquipmentInfo[(equipSelectedSlot * 36) + 10].ToString("X2"), 16);
@@ -1419,7 +1428,7 @@ namespace MHXXSaveEditor
 
                 try
                 {
-                    switch (Convert.ToInt32(typeLevelBits.Substring(7, 5), 2))
+                    switch (Convert.ToInt32(typeLevelBits.Substring(11, 5), 2))
                     {
                         case 1:
                             comboBoxEquipName.Items.AddRange(GameConstants.EquipHeadNames);
