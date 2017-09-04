@@ -502,9 +502,6 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                int actionSelectedSlot, newActionSelected;
-                actionSelectedSlot = Convert.ToInt32(listViewLearnedActions.SelectedItems[0].SubItems[0].Text) - 1;
-                newActionSelected = comboBoxLearnedActions.SelectedIndex;
                 listViewLearnedActions.SelectedItems[0].SubItems[1].Text = comboBoxLearnedActions.Text;
             }
         }
@@ -569,9 +566,6 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                int skillSelectedSlot, newSkillSelected;
-                skillSelectedSlot = Convert.ToInt32(listViewLearnedSkills.SelectedItems[0].SubItems[0].Text) - 1;
-                newSkillSelected = comboBoxLearnedSkills.SelectedIndex;
                 listViewLearnedSkills.SelectedItems[0].SubItems[1].Text = comboBoxLearnedSkills.Text;
             }
         }
@@ -679,7 +673,7 @@ namespace MHXXSaveEditor.Forms
                 iter++;
             }
 
-            this.Close();
+            Close();
         }
 
         private void comboBoxActionRNG_SelectedIndexChanged(object sender, EventArgs e)
