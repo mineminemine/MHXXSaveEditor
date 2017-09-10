@@ -393,7 +393,6 @@ namespace MHXXSaveEditor
                 int equipType = Convert.ToInt32(player.EquipmentPalico[(a * 36)]);
                 string typeName = "(None)";
                 string eqName = "(None)";
-
                 switch (equipType)
                 {
                     case 22:
@@ -575,7 +574,6 @@ namespace MHXXSaveEditor
                 return;
             else
             {
-                int index = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text);
                 listViewItem.SelectedItems[0].SubItems[1].Text = GameConstants.ItemNameList[Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text)];
 
                 if (listViewItem.SelectedItems[0].SubItems[2].Text == "0" && listViewItem.SelectedItems[0].SubItems[1].Text != "-----")
@@ -1287,6 +1285,68 @@ namespace MHXXSaveEditor
                 labelTransmogPalicoID.Text = transmogID.ToString();
             }
             transmogrifyEquip.Dispose();
+        }
+
+        private void importFromToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to import from another item box list?", "Import Item Box", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "MHXX Item Box File (.itemXX) | *.itemXX";
+                ofd.FilterIndex = 1;
+
+                if (ofd.ShowDialog() != DialogResult.OK)
+                {
+                    ofd.Dispose();
+                    return;
+                }
+
+                string filePath = ofd.FileName;
+                string[] theItemBoxFile = File.ReadAllLines(ofd.FileName);
+                int a = 0;
+
+                foreach (ListViewItem item in listViewItem.Items)
+                {
+                    string[] theItem = theItemBoxFile[a].Split(',');
+                    item.SubItems[1].Text = GameConstants.ItemNameList[int.Parse(theItem[0])];
+                    if (int.Parse(theItem[1]) > 99)
+                        item.SubItems[2].Text = "99";
+                    else if (int.Parse(theItem[1]) < 0)
+                        item.SubItems[2].Text = "1";
+                    else
+                        item.SubItems[2].Text = theItem[1];
+
+                    player.itemCount[a] = theItem[1];
+                    player.itemId[a] = theItem[0];
+
+                    a++;
+                }
+            }
+        }
+
+        private void exportToToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog exportFile = new SaveFileDialog();
+            exportFile.Filter = "MHXX Item Box File (.itemXX) | *.itemXX";
+
+            if (exportFile.ShowDialog() == DialogResult.OK)
+            {
+                string amount, id;
+
+                using (var tw = new StreamWriter(exportFile.FileName.ToString()))
+                {
+                    foreach (ListViewItem item in listViewItem.Items)
+                    {
+                        id = Array.IndexOf(GameConstants.ItemNameList, item.SubItems[1].Text).ToString();
+                        amount = item.SubItems[2].Text;
+
+                        tw.WriteLine(id + "," + amount);
+                    }
+                }
+
+                MessageBox.Show("Item Box has been exported to " + exportFile.FileName.ToString(), "Export Item Box");
+            }
         }
 
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)

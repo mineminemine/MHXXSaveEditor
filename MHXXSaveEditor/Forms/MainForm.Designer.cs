@@ -57,6 +57,7 @@
             this.removeAllItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.goToMainThreadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visitGithubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlMain = new System.Windows.Forms.TabControl();
@@ -162,6 +163,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.palicoEquipTab = new System.Windows.Forms.TabPage();
+            this.labelTransmogPalicoID = new System.Windows.Forms.Label();
+            this.buttonTransmogrifyPalico = new System.Windows.Forms.Button();
             this.comboBoxPalicoEquip = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.comboBoxPalicoEqpType = new System.Windows.Forms.ComboBox();
@@ -171,9 +174,9 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonTransmogrifyPalico = new System.Windows.Forms.Button();
-            this.labelTransmogPalicoID = new System.Windows.Forms.Label();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.generalTab.SuspendLayout();
@@ -382,7 +385,10 @@
             this.setAmountToToolStripMenuItem,
             this.toolStripSeparator1,
             this.removeDuplicatesToolStripMenuItem,
-            this.removeAllItemsToolStripMenuItem});
+            this.removeAllItemsToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.importFromToolStripMenuItem,
+            this.exportToToolStripMenuItem});
             this.itemBoxToolStripMenuItem.Name = "itemBoxToolStripMenuItem";
             this.itemBoxToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.itemBoxToolStripMenuItem.Text = "Item Box";
@@ -437,6 +443,11 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(195, 6);
             // 
             // goToMainThreadToolStripMenuItem
             // 
@@ -1716,6 +1727,27 @@
             this.palicoEquipTab.Text = "Palico Equip";
             this.palicoEquipTab.UseVisualStyleBackColor = true;
             // 
+            // labelTransmogPalicoID
+            // 
+            this.labelTransmogPalicoID.AutoSize = true;
+            this.labelTransmogPalicoID.Location = new System.Drawing.Point(683, 299);
+            this.labelTransmogPalicoID.Name = "labelTransmogPalicoID";
+            this.labelTransmogPalicoID.Size = new System.Drawing.Size(13, 17);
+            this.labelTransmogPalicoID.TabIndex = 20;
+            this.labelTransmogPalicoID.Text = "-";
+            this.labelTransmogPalicoID.Visible = false;
+            // 
+            // buttonTransmogrifyPalico
+            // 
+            this.buttonTransmogrifyPalico.Enabled = false;
+            this.buttonTransmogrifyPalico.Location = new System.Drawing.Point(561, 292);
+            this.buttonTransmogrifyPalico.Name = "buttonTransmogrifyPalico";
+            this.buttonTransmogrifyPalico.Size = new System.Drawing.Size(120, 30);
+            this.buttonTransmogrifyPalico.TabIndex = 19;
+            this.buttonTransmogrifyPalico.Text = "Transmogrify";
+            this.buttonTransmogrifyPalico.UseVisualStyleBackColor = true;
+            this.buttonTransmogrifyPalico.Click += new System.EventHandler(this.buttonTransmogrifyPalico_Click);
+            // 
             // comboBoxPalicoEquip
             // 
             this.comboBoxPalicoEquip.Enabled = false;
@@ -1785,31 +1817,24 @@
             this.columnHeader9.Text = "Name";
             this.columnHeader9.Width = 435;
             // 
-            // buttonTransmogrifyPalico
+            // toolStripSeparator7
             // 
-            this.buttonTransmogrifyPalico.Enabled = false;
-            this.buttonTransmogrifyPalico.Location = new System.Drawing.Point(561, 292);
-            this.buttonTransmogrifyPalico.Name = "buttonTransmogrifyPalico";
-            this.buttonTransmogrifyPalico.Size = new System.Drawing.Size(120, 30);
-            this.buttonTransmogrifyPalico.TabIndex = 19;
-            this.buttonTransmogrifyPalico.Text = "Transmogrify";
-            this.buttonTransmogrifyPalico.UseVisualStyleBackColor = true;
-            this.buttonTransmogrifyPalico.Click += new System.EventHandler(this.buttonTransmogrifyPalico_Click);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(209, 6);
             // 
-            // labelTransmogPalicoID
+            // exportToToolStripMenuItem
             // 
-            this.labelTransmogPalicoID.AutoSize = true;
-            this.labelTransmogPalicoID.Location = new System.Drawing.Point(683, 299);
-            this.labelTransmogPalicoID.Name = "labelTransmogPalicoID";
-            this.labelTransmogPalicoID.Size = new System.Drawing.Size(13, 17);
-            this.labelTransmogPalicoID.TabIndex = 20;
-            this.labelTransmogPalicoID.Text = "-";
-            this.labelTransmogPalicoID.Visible = false;
+            this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
+            this.exportToToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.exportToToolStripMenuItem.Text = "Export To";
+            this.exportToToolStripMenuItem.Click += new System.EventHandler(this.exportToToolStripMenuItem_Click);
             // 
-            // toolStripSeparator6
+            // importFromToolStripMenuItem
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(195, 6);
+            this.importFromToolStripMenuItem.Name = "importFromToolStripMenuItem";
+            this.importFromToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
+            this.importFromToolStripMenuItem.Text = "Import From";
+            this.importFromToolStripMenuItem.Click += new System.EventHandler(this.importFromToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -2024,6 +2049,9 @@
         private System.Windows.Forms.Button buttonTransmogrifyPalico;
         private System.Windows.Forms.Label labelTransmogPalicoID;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem importFromToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToToolStripMenuItem;
     }
 }
 
