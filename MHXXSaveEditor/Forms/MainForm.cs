@@ -88,7 +88,7 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot3.Enabled = true;
                 slot3ToolStripMenuItem.Enabled = true;
             }
-            if (saveFile[4] == 1 && saveFile[5] == 0 && saveFile[6] == 0)
+            if (saveFile[4] == 0 && saveFile[5] == 0 && saveFile[6] == 0)
             {
                 MessageBox.Show("No existing save slots used, please make one in-game first.", "Error");
                 return;
