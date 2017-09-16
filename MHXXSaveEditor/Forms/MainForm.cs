@@ -70,7 +70,7 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot1.Checked = true;
                 slot1ToolStripMenuItem.Enabled = true;
             }
-            else if (saveFile[5] == 1 ) // Second slot
+            if (saveFile[5] == 1) // Second slot
             {
                 if (currentPlayer != 1)
                 {
@@ -79,7 +79,7 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot2.Enabled = true;
                 slot2ToolStripMenuItem.Enabled = true;
             }
-            else if (saveFile[6] == 1) // Third slot
+            if (saveFile[6] == 1) // Third slot
             {
                 if (currentPlayer != 1 || currentPlayer != 2)
                 {
@@ -88,7 +88,7 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot3.Enabled = true;
                 slot3ToolStripMenuItem.Enabled = true;
             }
-            else
+            if (saveFile[4] == 1 && saveFile[5] == 0 && saveFile[6] == 0)
             {
                 MessageBox.Show("No existing save slots used, please make one in-game first.", "Error");
                 return;
@@ -111,6 +111,7 @@ namespace MHXXSaveEditor
             if(currentPlayer != 1)
             {
                 currentPlayer = 1;
+                toolStripMenuItemSaveSlot1.Checked = true;
                 toolStripMenuItemSaveSlot2.Checked = false;
                 toolStripMenuItemSaveSlot3.Checked = false;
 
@@ -126,6 +127,7 @@ namespace MHXXSaveEditor
             {
                 currentPlayer = 2;
                 toolStripMenuItemSaveSlot1.Checked = false;
+                toolStripMenuItemSaveSlot2.Checked = true;
                 toolStripMenuItemSaveSlot3.Checked = false;
 
                 var ext = new DataExtractor();
@@ -141,6 +143,7 @@ namespace MHXXSaveEditor
                 currentPlayer = 1;
                 toolStripMenuItemSaveSlot1.Checked = false;
                 toolStripMenuItemSaveSlot2.Checked = false;
+                toolStripMenuItemSaveSlot3.Checked = true;
 
                 var ext = new DataExtractor();
                 ext.getInfo(saveFile, currentPlayer, player);
