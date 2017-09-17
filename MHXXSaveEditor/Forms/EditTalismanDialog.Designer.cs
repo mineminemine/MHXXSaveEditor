@@ -71,6 +71,7 @@
             this.comboBoxSkillName2.Name = "comboBoxSkillName2";
             this.comboBoxSkillName2.Size = new System.Drawing.Size(121, 24);
             this.comboBoxSkillName2.TabIndex = 6;
+            this.comboBoxSkillName2.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSkillName2_SelectionChangeCommitted);
             // 
             // comboBoxSkillName1
             // 
@@ -79,6 +80,7 @@
             this.comboBoxSkillName1.Name = "comboBoxSkillName1";
             this.comboBoxSkillName1.Size = new System.Drawing.Size(121, 24);
             this.comboBoxSkillName1.TabIndex = 5;
+            this.comboBoxSkillName1.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSkillName1_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -114,6 +116,16 @@
             // numericUpDownSkillLevel2
             // 
             this.numericUpDownSkillLevel2.Location = new System.Drawing.Point(74, 64);
+            this.numericUpDownSkillLevel2.Maximum = new decimal(new int[] {
+            13,
+            0,
+            0,
+            0});
+            this.numericUpDownSkillLevel2.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownSkillLevel2.Name = "numericUpDownSkillLevel2";
             this.numericUpDownSkillLevel2.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownSkillLevel2.TabIndex = 6;
@@ -121,6 +133,16 @@
             // numericUpDownSkillLevel1
             // 
             this.numericUpDownSkillLevel1.Location = new System.Drawing.Point(74, 27);
+            this.numericUpDownSkillLevel1.Maximum = new decimal(new int[] {
+            13,
+            0,
+            0,
+            0});
+            this.numericUpDownSkillLevel1.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
             this.numericUpDownSkillLevel1.Name = "numericUpDownSkillLevel1";
             this.numericUpDownSkillLevel1.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownSkillLevel1.TabIndex = 5;

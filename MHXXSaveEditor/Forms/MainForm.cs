@@ -284,6 +284,7 @@ namespace MHXXSaveEditor
                 string equipType = GameConstants.EquipmentTypes[Convert.ToInt32(typeLevelBits.Substring(11, 5), 2)];
 
                 string eqName = "(None)";
+                int error = 0;
                 try
                 {
                     switch (Convert.ToInt32(typeLevelBits.Substring(11, 5), 2))
@@ -364,6 +365,8 @@ namespace MHXXSaveEditor
                     }
                     if (MessageBox.Show(hexes, "Click OK to copy this message", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         Clipboard.SetText(hexes);
+
+                    error = 1;
                 }
 
                 string[] arr = new string[3];
@@ -377,6 +380,13 @@ namespace MHXXSaveEditor
                     listViewEquipment.Items[a].UseItemStyleForSubItems = false;
                     listViewEquipment.Items[a].SubItems[2].ForeColor = Color.DarkOrange;
                 }
+                if(error == 1)
+                {
+                    listViewEquipment.Items[a].UseItemStyleForSubItems = false;
+                    listViewEquipment.Items[a].ForeColor = Color.Red;
+                }
+
+                error = 0;
             }
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -851,9 +861,9 @@ namespace MHXXSaveEditor
 
         private void buttonEditTalisman_Click(object sender, EventArgs e)
         {
-            EditTalismanDialog editKinsect = new EditTalismanDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
-            editKinsect.ShowDialog();
-            editKinsect.Dispose();
+            EditTalismanDialog editTalisman = new EditTalismanDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
+            editTalisman.ShowDialog();
+            editTalisman.Dispose();
         }
 
         private void numericUpDownEquipLevel_ValueChanged(object sender, EventArgs e)
@@ -1003,40 +1013,6 @@ namespace MHXXSaveEditor
             var mlc = new MaxLengthChecker();
             if (mlc.getMaxLength(charNameBox.Text, 32))
                 charNameBox.MaxLength = charNameBox.Text.Length;
-        }
-
-        private void comboBoxEquipName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
-                return;
-            else
-            {
-                ComboBox cb = (ComboBox)sender;
-                if (!cb.Focused)
-                {
-                    return;
-                }
-
-                byte[] idBytes;
-
-                if (comboBoxEquipType.SelectedIndex == 1)
-                    idBytes = BitConverter.GetBytes(GameConstants.EquipHeadIDs[comboBoxEquipName.SelectedIndex]);
-                else if (comboBoxEquipType.SelectedIndex == 2)
-                    idBytes = BitConverter.GetBytes(GameConstants.EquipChestIDs[comboBoxEquipName.SelectedIndex]);
-                else if (comboBoxEquipType.SelectedIndex == 3)
-                    idBytes = BitConverter.GetBytes(GameConstants.EquipArmsIDs[comboBoxEquipName.SelectedIndex]);
-                else if (comboBoxEquipType.SelectedIndex == 4)
-                    idBytes = BitConverter.GetBytes(GameConstants.EquipWaistIDs[comboBoxEquipName.SelectedIndex]);
-                else if (comboBoxEquipType.SelectedIndex == 5)
-                    idBytes = BitConverter.GetBytes(GameConstants.EquipLegsIDs[comboBoxEquipName.SelectedIndex]);
-                else
-                    idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
-
-                listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
-                player.EquipmentInfo[(equipSelectedSlot * 36) + 2] = idBytes[0];
-                player.EquipmentInfo[(equipSelectedSlot * 36) + 3] = idBytes[1];
-                numericUpDownEquipLevel.Enabled = true;
-            }
         }
 
         private void comboBoxPalicoEquip_SelectedIndexChanged(object sender, EventArgs e)
@@ -1349,6 +1325,35 @@ namespace MHXXSaveEditor
                 }
 
                 MessageBox.Show("Item Box has been exported to " + exportFile.FileName.ToString(), "Export Item Box");
+            }
+        }
+
+        private void comboBoxEquipName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
+                return;
+            else
+            {
+                byte[] idBytes;
+
+                if (comboBoxEquipType.SelectedIndex == 1)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipHeadIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 2)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipChestIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 3)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipArmsIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 4)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipWaistIDs[comboBoxEquipName.SelectedIndex]);
+                else if (comboBoxEquipType.SelectedIndex == 5)
+                    idBytes = BitConverter.GetBytes(GameConstants.EquipLegsIDs[comboBoxEquipName.SelectedIndex]);
+                else
+                    idBytes = BitConverter.GetBytes(comboBoxEquipName.SelectedIndex);
+
+                listViewEquipment.SelectedItems[0].SubItems[2].Text = comboBoxEquipName.Text;
+                player.EquipmentInfo[(equipSelectedSlot * 36) + 2] = idBytes[0];
+                player.EquipmentInfo[(equipSelectedSlot * 36) + 3] = idBytes[1];
+                if (comboBoxEquipType.SelectedIndex != 0 && comboBoxEquipType.SelectedIndex != 6 && comboBoxEquipType.SelectedIndex != 12)
+                    numericUpDownEquipLevel.Enabled = true;
             }
         }
 
