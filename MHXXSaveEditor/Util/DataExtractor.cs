@@ -46,7 +46,7 @@ namespace MHXXSaveEditor.Util
             }
             else
             {
-                string thirdSlot = saveFile[0x21].ToString("X2") + saveFile[0x20].ToString("X2") + saveFile[0x19].ToString("X2") + saveFile[0x18].ToString("X2");
+                string thirdSlot = saveFile[0x1B].ToString("X2") + saveFile[0x1A].ToString("X2") + saveFile[0x19].ToString("X2") + saveFile[0x18].ToString("X2");
                 player.SaveOffset = int.Parse(thirdSlot, System.Globalization.NumberStyles.HexNumber);
             }
 

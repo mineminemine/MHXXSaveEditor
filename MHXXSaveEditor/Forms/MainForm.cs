@@ -81,7 +81,7 @@ namespace MHXXSaveEditor
             }
             if (saveFile[6] == 1) // Third slot
             {
-                if (currentPlayer != 1 || currentPlayer != 2)
+                if (currentPlayer != 1 && currentPlayer != 2)
                 {
                     currentPlayer = 3;
                 }
@@ -140,7 +140,7 @@ namespace MHXXSaveEditor
         {
             if (currentPlayer != 3)
             {
-                currentPlayer = 1;
+                currentPlayer = 3;
                 toolStripMenuItemSaveSlot1.Checked = false;
                 toolStripMenuItemSaveSlot2.Checked = false;
                 toolStripMenuItemSaveSlot3.Checked = true;
@@ -213,6 +213,7 @@ namespace MHXXSaveEditor
 
             // Palico
             listViewPalico.Items.Clear();
+            listViewPalico.BeginUpdate();
             for (int a = 0; a < Constants.TOTAL_PALICO_SLOTS; a++)
             {
                 if (Convert.ToInt32(player.PalicoData[a * Constants.SIZEOF_PALICO]) != 0) // Check if first character in name != 0, if != 0 means a palico exist in that block (or at least in my opinion)
@@ -239,6 +240,7 @@ namespace MHXXSaveEditor
                     }
                 }
             }
+            listViewPalico.EndUpdate();
             listViewPalico.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPalico.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -246,6 +248,7 @@ namespace MHXXSaveEditor
         public void LoadItemBox()
         {
             listViewItem.Items.Clear();
+            listViewItem.BeginUpdate();
             string itemName;
             for (int a = 0; a < Constants.TOTAL_ITEM_SLOTS; a++) // 2300 slots for 2300 items
             {
@@ -268,6 +271,7 @@ namespace MHXXSaveEditor
                 ListViewItem itm = new ListViewItem(arr);
                 listViewItem.Items.Add(itm);
             }
+            listViewItem.EndUpdate();
             listViewItem.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewItem.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             comboBoxItem.Items.AddRange(GameConstants.ItemNameList);
@@ -276,6 +280,7 @@ namespace MHXXSaveEditor
         public void LoadEquipmentBox()
         {
             listViewEquipment.Items.Clear();
+            listViewEquipment.BeginUpdate();
             for (int a = 0; a < Constants.TOTAL_EQUIP_SLOTS; a++) // 2000 slots for 2000 equips
             {
                 int eqID = Convert.ToInt32(player.EquipmentInfo[(a * 36) + 3].ToString("X2") + player.EquipmentInfo[(a * 36) + 2].ToString("X2"), 16);
@@ -388,6 +393,7 @@ namespace MHXXSaveEditor
 
                 error = 0;
             }
+            listViewEquipment.EndUpdate();
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             comboBoxEquipType.Items.AddRange(GameConstants.EquipmentTypes);
@@ -399,6 +405,7 @@ namespace MHXXSaveEditor
         public void LoadPalicoEquipmentBox()
         {
             listViewPalicoEquipment.Items.Clear();
+            listViewPalicoEquipment.BeginUpdate();
             for (int a = 0; a < Constants.TOTAL_PALICO_EQUIP; a++) // 1000 slots
             {
                 int eqID = Convert.ToInt32(player.EquipmentPalico[(a * 36) + 3].ToString("X2") + player.EquipmentPalico[(a * 36) + 2].ToString("X2"), 16);
@@ -437,6 +444,7 @@ namespace MHXXSaveEditor
                     listViewPalicoEquipment.Items[a].SubItems[2].ForeColor = Color.DarkOrange;
                 }
             }
+            listViewPalicoEquipment.EndUpdate();
             listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -907,6 +915,10 @@ namespace MHXXSaveEditor
                 Array.Copy(player.PalicoData, selectedSlot * Constants.SIZEOF_PALICO, palicoNameByte, 0, Constants.SIZEOF_NAME);
                 listViewPalico.SelectedItems[0].SubItems[1].Text = Encoding.UTF8.GetString(palicoNameByte);
                 listViewPalico.SelectedItems[0].SubItems[2].Text = GameConstants.PalicoForte[Convert.ToInt32(player.PalicoData[(selectedSlot * Constants.SIZEOF_PALICO) + 37])];
+            }
+            else
+            {
+                MessageBox.Show("Please select a palico first!\nIf you don't have any, please hire one from in-game first.");
             }
         }
 
