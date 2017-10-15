@@ -1195,7 +1195,7 @@
             // 
             this.numericUpDownVoice.Location = new System.Drawing.Point(9, 89);
             this.numericUpDownVoice.Maximum = new decimal(new int[] {
-            20,
+            21,
             0,
             0,
             0});
