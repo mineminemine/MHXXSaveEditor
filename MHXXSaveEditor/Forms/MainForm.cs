@@ -4,16 +4,16 @@
 // This editor was made by Ukee from GBATemp https://gbatemp.net/threads/release-mhxx-save-editor.481210/
 // The source code can be found @ https://github.com/mineminemine/MHXXSaveEditor
 
-using System;
-using System.IO;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
 using MHXXSaveEditor.Data;
-using MHXXSaveEditor.Util;
 using MHXXSaveEditor.Forms;
+using MHXXSaveEditor.Util;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
 
 namespace MHXXSaveEditor
 {
@@ -906,7 +906,7 @@ namespace MHXXSaveEditor
         {
             if (listViewPalico.SelectedItems.Count > 0)
             {
-                int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
+                int selectedSlot = Int32.Parse(listViewPalico.SelectedItems[0].SubItems[0].Text) - 1;
                 EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
                 editPalico.ShowDialog();
                 editPalico.Dispose();
@@ -926,7 +926,7 @@ namespace MHXXSaveEditor
         {
             if (listViewPalico.SelectedItems.Count > 0)
             {
-                int selectedSlot = listViewPalico.Items.IndexOf(listViewPalico.SelectedItems[0]);
+                int selectedSlot = Int32.Parse(listViewPalico.SelectedItems[0].SubItems[0].Text) - 1;
                 EditPalicoDialog editPalico = new EditPalicoDialog(this, listViewPalico.SelectedItems[0].SubItems[1].Text, selectedSlot);
                 editPalico.ShowDialog();
                 editPalico.Dispose();
@@ -1368,7 +1368,7 @@ namespace MHXXSaveEditor
                     numericUpDownEquipLevel.Enabled = true;
             }
         }
-
+        
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
