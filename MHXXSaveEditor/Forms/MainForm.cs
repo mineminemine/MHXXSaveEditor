@@ -1368,7 +1368,41 @@ namespace MHXXSaveEditor
                     numericUpDownEquipLevel.Enabled = true;
             }
         }
-        
+
+        private void exportToToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog exportFile = new SaveFileDialog();
+            exportFile.Filter = "MHXX Equipment Box File (.eqpboXX) | *.eqpboXX";
+
+            if (exportFile.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllBytes(exportFile.FileName.ToString(), player.EquipmentInfo);
+
+                MessageBox.Show("Equipment Box has been exported to " + exportFile.FileName.ToString(), "Export Equipment Box");
+            }
+        }
+
+        private void importFromToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to import from another equipment box list?", "Import Equipment Box", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "MHXX Item Box File (.eqpboXX) | *.eqpboXX";
+                ofd.FilterIndex = 1;
+
+                if (ofd.ShowDialog() != DialogResult.OK)
+                {
+                    ofd.Dispose();
+                    return;
+                }
+
+                string filePath = ofd.FileName.ToString();
+                player.EquipmentInfo = File.ReadAllBytes(filePath);
+                LoadEquipmentBox();
+            }
+        }
+
         private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
