@@ -1384,7 +1384,7 @@ namespace MHXXSaveEditor
 
         private void importFromToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to import from another equipment box list?", "Import Equipment Box", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Warning!\nPlease make sure your equipped weapons/armor are only from Box 1-8 or you will likely get crashed in-game.\n\nAre you sure you want to import from another equipment box list?\nOnly equips in Box 9-20 will be imported", "Import Equipment Box", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 OpenFileDialog ofd = new OpenFileDialog();
@@ -1398,8 +1398,10 @@ namespace MHXXSaveEditor
                 }
 
                 string filePath = ofd.FileName.ToString();
-                player.EquipmentInfo = File.ReadAllBytes(filePath);
+                byte[] equipmentLoad = File.ReadAllBytes(filePath);
+                Array.Copy(equipmentLoad, 800 * 36, player.EquipmentInfo, 800 * 36, (2000 * 36) - (800 * 36));
                 LoadEquipmentBox();
+                MessageBox.Show("Equipment has been imported, you may find them starting from slot 800-2000", "Import Equipment Box");
             }
         }
 
