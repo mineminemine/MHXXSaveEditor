@@ -32,7 +32,7 @@ namespace MHXXSaveEditor
         public int equipSelectedSlot, palicoEqpSelectedSlot;
         SecondsToHHMMSS ttime = new SecondsToHHMMSS();
 
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripMenuItemSaveSlot1.Enabled = false;
             toolStripMenuItemSaveSlot2.Enabled = false;
@@ -41,9 +41,11 @@ namespace MHXXSaveEditor
             slot2ToolStripMenuItem.Enabled = false;
             slot3ToolStripMenuItem.Enabled = false;
 
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "All files (*.*)|*.*";
-            ofd.FilterIndex = 1;
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "All files (*.*)|*.*",
+                FilterIndex = 1
+            };
 
             if (ofd.ShowDialog() != DialogResult.OK)
             {
@@ -101,12 +103,12 @@ namespace MHXXSaveEditor
 
             // Extract data from save file
             var ext = new DataExtractor();
-            ext.getInfo(saveFile, currentPlayer, player);
+            ext.GetInfo(saveFile, currentPlayer, player);
 
-            loadSave(); // Load save file data into editor
+            LoadSave(); // Load save file data into editor
         }
 
-        private void toolStripMenuItemSaveSlot1_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemSaveSlot1_Click(object sender, EventArgs e)
         {
             if(currentPlayer != 1)
             {
@@ -116,12 +118,12 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot3.Checked = false;
 
                 var ext = new DataExtractor();
-                ext.getInfo(saveFile, currentPlayer, player);
-                loadSave();
+                ext.GetInfo(saveFile, currentPlayer, player);
+                LoadSave();
             }
         }
 
-        private void toolStripMenuItemSaveSlot2_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemSaveSlot2_Click(object sender, EventArgs e)
         {
             if (currentPlayer != 2)
             {
@@ -131,12 +133,12 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot3.Checked = false;
 
                 var ext = new DataExtractor();
-                ext.getInfo(saveFile, currentPlayer, player);
-                loadSave();
+                ext.GetInfo(saveFile, currentPlayer, player);
+                LoadSave();
             }
         }
 
-        private void toolStripMenuItemSaveSlot3_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemSaveSlot3_Click(object sender, EventArgs e)
         {
             if (currentPlayer != 3)
             {
@@ -146,24 +148,24 @@ namespace MHXXSaveEditor
                 toolStripMenuItemSaveSlot3.Checked = true;
 
                 var ext = new DataExtractor();
-                ext.getInfo(saveFile, currentPlayer, player);
-                loadSave();
+                ext.GetInfo(saveFile, currentPlayer, player);
+                LoadSave();
             }
         }
 
-        private void saveToolStripMenuItemSave_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItemSave_Click(object sender, EventArgs e)
         {
-            packSaveFile();
+            PackSaveFile();
             File.WriteAllBytes(filePath, saveFile);
             MessageBox.Show("File saved", "Saved !");
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Made by Ukee for GBATemp\nBased off APM's MHX/MHGen Save Editor\nAlso thanks to Seth VanHeulen for the Save File structure\nAnd some MHX/MHGen/MHXX hex editing threads in GBATemp", "About");
         }
 
-        public void loadSave()
+        public void LoadSave()
         {
             // Item Box // Equipment Box // Palico Equipment Box
             LoadItemBox();
@@ -229,15 +231,16 @@ namespace MHXXSaveEditor
                     arr[0] = (a + 1).ToString();
                     arr[1] = palicoName;
                     arr[2] = palicoType;
-                    ListViewItem plc = new ListViewItem(arr);
-                    listViewPalico.Items.Add(plc);
-
+                    ListViewItem plc = new ListViewItem(arr)
+                    {
+                        UseItemStyleForSubItems = false
+                    };
                     int palicoDLC = player.PalicoData[(a * Constants.SIZEOF_PALICO) + 0x0E0];
                     if (palicoDLC > 100)
                     {
-                        listViewPalico.Items[a].UseItemStyleForSubItems = false;
-                        listViewPalico.Items[a].SubItems[1].ForeColor = Color.Green;
+                        plc.SubItems[1].ForeColor = Color.Green;
                     }
+                    listViewPalico.Items.Add(plc);
                 }
             }
             listViewPalico.EndUpdate();
@@ -254,20 +257,20 @@ namespace MHXXSaveEditor
             {
                 try
                 {
-                    itemName = GameConstants.ItemNameList[Convert.ToInt32(player.itemId[a])];
+                    itemName = GameConstants.ItemNameList[Convert.ToInt32(player.ItemId[a])];
                 }
                 catch
                 {
                     MessageBox.Show("An unknown item was found at slot: " + (a + 1).ToString() + "\nYou may have an invalid item in your item box\nIf you proceed to try and edit it, you may get a crash", "Item Error");
-                    if (MessageBox.Show("Item ID: " + player.itemId[a], "Click OK to copy this message", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                        Clipboard.SetText("Item ID: " + player.itemId[a]);
-                    itemName = "Unknown [" + player.itemId[a].ToString() + "]";
+                    if (MessageBox.Show("Item ID: " + player.ItemId[a], "Click OK to copy this message", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        Clipboard.SetText("Item ID: " + player.ItemId[a]);
+                    itemName = "Unknown [" + player.ItemId[a].ToString() + "]";
                 }
 
                 string[] arr = new string[3];
                 arr[0] = (a + 1).ToString();
                 arr[1] = itemName;
-                arr[2] = player.itemCount[a];
+                arr[2] = player.ItemCount[a];
                 ListViewItem itm = new ListViewItem(arr);
                 listViewItem.Items.Add(itm);
             }
@@ -449,7 +452,7 @@ namespace MHXXSaveEditor
             listViewPalicoEquipment.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        public void packSaveFile()
+        public void PackSaveFile()
         {
             // Char Name
             byte[] charNameByte = new byte[Constants.SIZEOF_NAME]; // create byte array with size of 32
@@ -534,13 +537,13 @@ namespace MHXXSaveEditor
             {
                 int iteration = Convert.ToInt32(i.SubItems[0].Text) - 1;
                 
-                player.itemId[iteration] = Array.IndexOf(GameConstants.ItemNameList, i.SubItems[1].Text).ToString();
-                player.itemCount[iteration] = i.SubItems[2].Text;
+                player.ItemId[iteration] = Array.IndexOf(GameConstants.ItemNameList, i.SubItems[1].Text).ToString();
+                player.ItemCount[iteration] = i.SubItems[2].Text;
             }
             for (int a = 2299; a >= 0; a--)
             {
-                itemBinary += Convert.ToString(Convert.ToInt32(player.itemCount[a]), 2).PadLeft(7, '0');
-                itemBinary += Convert.ToString(Convert.ToInt32(player.itemId[a]), 2).PadLeft(12, '0');
+                itemBinary += Convert.ToString(Convert.ToInt32(player.ItemCount[a]), 2).PadLeft(7, '0');
+                itemBinary += Convert.ToString(Convert.ToInt32(player.ItemId[a]), 2).PadLeft(12, '0');
             }
             var byteArray = Enumerable.Range(0, int.MaxValue / 8)
                           .Select(i => i * 8)    // get the starting index of which char segment
@@ -577,19 +580,19 @@ namespace MHXXSaveEditor
             Array.Copy(player.AutomaticShoutouts, 0, saveFile, player.SaveOffset + Offsets.AUTOMATIC_SHOUTOUT_OFFSETS, Constants.SIZEOF_AUTOMATIC_SHOUTOUTS);
         }
 
-        private void listViewItem_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewItem.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
             else
             {
                 itemSelectedSlot = Convert.ToInt32(listViewItem.SelectedItems[0].SubItems[0].Text) - 1;
-                numericUpDownItemAmount.Value = Convert.ToInt32(player.itemCount[itemSelectedSlot]);
-                comboBoxItem.SelectedIndex = Convert.ToInt32(player.itemId[itemSelectedSlot]);
+                numericUpDownItemAmount.Value = Convert.ToInt32(player.ItemCount[itemSelectedSlot]);
+                comboBoxItem.SelectedIndex = Convert.ToInt32(player.ItemId[itemSelectedSlot]);
             }
         }
 
-        private void comboBoxItem_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewItem.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -608,12 +611,12 @@ namespace MHXXSaveEditor
                     listViewItem.SelectedItems[0].SubItems[2].Text = "0";
                 }
 
-                player.itemCount[itemSelectedSlot] = listViewItem.SelectedItems[0].SubItems[2].Text;
-                player.itemId[itemSelectedSlot] = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text).ToString();
+                player.ItemCount[itemSelectedSlot] = listViewItem.SelectedItems[0].SubItems[2].Text;
+                player.ItemId[itemSelectedSlot] = Array.IndexOf(GameConstants.ItemNameList, comboBoxItem.Text).ToString();
             }
         }
 
-        private void numericUpDownItemAmount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownItemAmount_ValueChanged(object sender, EventArgs e)
         {
             if (listViewItem.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -624,29 +627,29 @@ namespace MHXXSaveEditor
                     listViewItem.SelectedItems[0].SubItems[1].Text = "-----";
                     listViewItem.SelectedItems[0].SubItems[2].Text = "0";
                     comboBoxItem.SelectedIndex = 0;
-                    player.itemCount[itemSelectedSlot] = "0";
-                    player.itemId[itemSelectedSlot] = "0";
+                    player.ItemCount[itemSelectedSlot] = "0";
+                    player.ItemId[itemSelectedSlot] = "0";
                 }
                 else if (listViewItem.SelectedItems[0].SubItems[1].Text == "-----")
                 {
                     listViewItem.SelectedItems[0].SubItems[2].Text = "0";
-                    player.itemCount[itemSelectedSlot] = "0";
+                    player.ItemCount[itemSelectedSlot] = "0";
                     numericUpDownItemAmount.Value = 0;
                 }
                 else
                 {
                     listViewItem.SelectedItems[0].SubItems[2].Text = numericUpDownItemAmount.Value.ToString();
-                    player.itemCount[itemSelectedSlot] = numericUpDownItemAmount.Value.ToString();
+                    player.ItemCount[itemSelectedSlot] = numericUpDownItemAmount.Value.ToString();
                 }
             }
         }
 
-        private void numericUpDownTime_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownTime_ValueChanged(object sender, EventArgs e)
         {
             labelConvTime.Text = "D.HH:MM:SS - " + ttime.GetTime((int)numericUpDownTime.Value);
         }
 
-        private void comboBoxEquipType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquipType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -794,7 +797,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void comboBoxEquipDeco1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquipDeco1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -812,7 +815,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void comboBoxEquipDeco2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquipDeco2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -830,7 +833,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void comboBoxEquipDeco3_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquipDeco3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -848,14 +851,14 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void buttonEditKinsect_Click(object sender, EventArgs e)
+        private void ButtonEditKinsect_Click(object sender, EventArgs e)
         {
             EditKinsectDialog editKinsect = new EditKinsectDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
             editKinsect.ShowDialog();
             editKinsect.Dispose();
         }
 
-        private void maxAmountItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MaxAmountItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem i in listViewItem.Items)
             {
@@ -867,14 +870,14 @@ namespace MHXXSaveEditor
             MessageBox.Show("All item amount have been set to 99");
         }
 
-        private void buttonEditTalisman_Click(object sender, EventArgs e)
+        private void ButtonEditTalisman_Click(object sender, EventArgs e)
         {
             EditTalismanDialog editTalisman = new EditTalismanDialog(this, listViewEquipment.SelectedItems[0].SubItems[2].Text);
             editTalisman.ShowDialog();
             editTalisman.Dispose();
         }
 
-        private void numericUpDownEquipLevel_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownEquipLevel_ValueChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -902,7 +905,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void buttonEditPalico_Click(object sender, EventArgs e)
+        private void ButtonEditPalico_Click(object sender, EventArgs e)
         {
             if (listViewPalico.SelectedItems.Count > 0)
             {
@@ -922,7 +925,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void listViewPalico_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void ListViewPalico_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listViewPalico.SelectedItems.Count > 0)
             {
@@ -938,7 +941,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void comboBoxPalicoEqpType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxPalicoEqpType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -1007,14 +1010,14 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void buttonEditShoutouts_Click(object sender, EventArgs e)
+        private void ButtonEditShoutouts_Click(object sender, EventArgs e)
         {
             EditShoutoutsDialog editShoutouts = new EditShoutoutsDialog(this);
             editShoutouts.ShowDialog();
             editShoutouts.Dispose();
         }
 
-        private void charNameBox_TextChanged(object sender, EventArgs e)
+        private void CharNameBox_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -1023,11 +1026,11 @@ namespace MHXXSaveEditor
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(charNameBox.Text, 32))
+            if (mlc.GetMaxLength(charNameBox.Text, 32))
                 charNameBox.MaxLength = charNameBox.Text.Length;
         }
 
-        private void comboBoxPalicoEquip_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxPalicoEquip_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -1054,14 +1057,14 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void setAmountToToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetAmountToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new SetItemAmountDialog())
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    int val = form.itmval;
+                    int val = form.GetItmval();
                     foreach (ListViewItem i in listViewItem.Items)
                     {
                         if (!i.SubItems[1].Text.Contains("-----"))
@@ -1073,7 +1076,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void removeDuplicatesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveDuplicatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> newList = new List<string>();
             List<int> itemsToRemove = new List<int>();
@@ -1095,7 +1098,7 @@ namespace MHXXSaveEditor
             MessageBox.Show("Duplicate items have been removed");
         }
 
-        private void removeAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem i in listViewItem.Items)
             {
@@ -1108,7 +1111,7 @@ namespace MHXXSaveEditor
             MessageBox.Show("All items have been removed");
         }
 
-        private void goToMainThreadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GoToMainThreadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you wish visit the main thread?", "Visit Main Thread", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
             {
@@ -1116,7 +1119,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void visitGithubPageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void VisitGithubPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you wish visit Github page?", "Visit Github", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
             {
@@ -1124,9 +1127,9 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            packSaveFile();
+            PackSaveFile();
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.FileName = "system";
             savefile.Filter = "All files (*.*)|*.*";
@@ -1136,19 +1139,19 @@ namespace MHXXSaveEditor
             MessageBox.Show("File saved", "Saved !");
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void buttonEditGuildCard_Click(object sender, EventArgs e)
+        private void ButtonEditGuildCard_Click(object sender, EventArgs e)
         {
             EditGuildCardDialog editGuildCard = new EditGuildCardDialog(this);
             editGuildCard.ShowDialog();
             editGuildCard.Dispose();
         }
 
-        private void numericUpDownSkinColor_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownSkinColor_ValueChanged(object sender, EventArgs e)
         {
             labelSkinColor.BackColor = Color.FromArgb((int)numericUpDownSkinR.Value, (int)numericUpDownSkinG.Value, (int)numericUpDownSkinB.Value);
 
@@ -1157,7 +1160,7 @@ namespace MHXXSaveEditor
             labelSkinColor.ForeColor = foreColor;
         }
 
-        private void numericUpDownHairColor_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownHairColor_ValueChanged(object sender, EventArgs e)
         {
             labelHairColor.BackColor = Color.FromArgb((int)numericUpDownHairR.Value, (int)numericUpDownHairG.Value, (int)numericUpDownHairB.Value);
 
@@ -1166,7 +1169,7 @@ namespace MHXXSaveEditor
             labelHairColor.ForeColor = foreColor;
         }
 
-        private void numericUpDownFeaturesColor_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownFeaturesColor_ValueChanged(object sender, EventArgs e)
         {
             labelFeaturesColor.BackColor = Color.FromArgb((int)numericUpDownFeaturesR.Value, (int)numericUpDownFeaturesG.Value, (int)numericUpDownFeaturesB.Value);
 
@@ -1175,7 +1178,7 @@ namespace MHXXSaveEditor
             labelFeaturesColor.ForeColor = foreColor;
         }
 
-        private void numericUpDownClothesColor_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownClothesColor_ValueChanged(object sender, EventArgs e)
         {
             labelClothesColor.BackColor = Color.FromArgb((int)numericUpDownClothesR.Value, (int)numericUpDownClothesG.Value, (int)numericUpDownClothesB.Value);
 
@@ -1184,7 +1187,7 @@ namespace MHXXSaveEditor
             labelClothesColor.ForeColor = foreColor;
         }
 
-        private void buttonClearItemSlot_Click(object sender, EventArgs e)
+        private void ButtonClearItemSlot_Click(object sender, EventArgs e)
         {
             if (listViewItem.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -1192,25 +1195,25 @@ namespace MHXXSaveEditor
                 comboBoxItem.SelectedIndex = 0;
         }
 
-        private void slot1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Slot1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 1", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                deleteSaveSlot(1);
+                DeleteSaveSlot(1);
         }
 
-        private void slot2ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Slot2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 2", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                deleteSaveSlot(2);
+                DeleteSaveSlot(2);
         }
 
-        private void slot3ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Slot3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete this save slot?", "Delete save slot 3", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                deleteSaveSlot(3);
+                DeleteSaveSlot(3);
         }
 
-        private void deleteSaveSlot(int slotNumber)
+        private void DeleteSaveSlot(int slotNumber)
         {
             int theOffset;
 
@@ -1240,7 +1243,7 @@ namespace MHXXSaveEditor
             Application.Restart();
         }
 
-        private void buttonTransmogrify_Click(object sender, EventArgs e)
+        private void ButtonTransmogrify_Click(object sender, EventArgs e)
         {
             Transmogrify transmogrifyEquip = new Transmogrify(this, listViewEquipment.SelectedItems[0].SubItems[2].Text, listViewEquipment.SelectedItems[0].SubItems[1].Text, Convert.ToInt32(labelTransmogID.Text));
             if (transmogrifyEquip.ShowDialog() == DialogResult.OK)
@@ -1259,7 +1262,7 @@ namespace MHXXSaveEditor
             transmogrifyEquip.Dispose();
         }
 
-        private void buttonTransmogrifyPalico_Click(object sender, EventArgs e)
+        private void ButtonTransmogrifyPalico_Click(object sender, EventArgs e)
         {
             Transmogrify transmogrifyEquip = new Transmogrify(this, listViewPalicoEquipment.SelectedItems[0].SubItems[2].Text, listViewPalicoEquipment.SelectedItems[0].SubItems[1].Text, Convert.ToInt32(labelTransmogPalicoID.Text));
             if (transmogrifyEquip.ShowDialog() == DialogResult.OK)
@@ -1278,7 +1281,7 @@ namespace MHXXSaveEditor
             transmogrifyEquip.Dispose();
         }
 
-        private void importFromToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to import from another item box list?", "Import Item Box", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -1308,15 +1311,15 @@ namespace MHXXSaveEditor
                     else
                         item.SubItems[2].Text = theItem[1];
 
-                    player.itemCount[a] = theItem[1];
-                    player.itemId[a] = theItem[0];
+                    player.ItemCount[a] = theItem[1];
+                    player.ItemId[a] = theItem[0];
 
                     a++;
                 }
             }
         }
 
-        private void exportToToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog exportFile = new SaveFileDialog();
             exportFile.Filter = "MHXX Item Box File (.itemXX) | *.itemXX";
@@ -1340,7 +1343,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void comboBoxEquipName_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquipName_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -1369,7 +1372,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void exportToToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ExportToToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SaveFileDialog exportFile = new SaveFileDialog();
             exportFile.Filter = "MHXX Equipment Box File (.eqpboXX) | *.eqpboXX";
@@ -1382,7 +1385,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void importFromToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ImportFromToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Warning!\nPlease make sure your equipped weapons/armor are only from Box 1-8 or you will likely get crashed in-game.\n\nAre you sure you want to import from another equipment box list?\nOnly equips in Box 9-20 will be imported", "Import Equipment Box", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -1405,7 +1408,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void listViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewPalicoEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPalicoEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -1458,7 +1461,7 @@ namespace MHXXSaveEditor
             }
         }
 
-        private void listViewEquipment_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewEquipment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquipment.SelectedItems.Count == 0) // Check if nothing was selected
                 return;

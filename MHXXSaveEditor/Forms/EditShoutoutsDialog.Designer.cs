@@ -60,7 +60,7 @@
             this.listViewManualShoutouts.TabIndex = 2;
             this.listViewManualShoutouts.UseCompatibleStateImageBehavior = false;
             this.listViewManualShoutouts.View = System.Windows.Forms.View.Details;
-            this.listViewManualShoutouts.SelectedIndexChanged += new System.EventHandler(this.listViewManualShoutouts_SelectedIndexChanged);
+            this.listViewManualShoutouts.SelectedIndexChanged += new System.EventHandler(this.ListViewManualShoutouts_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -102,7 +102,7 @@
             this.buttonManualShoutoutSet.TabIndex = 4;
             this.buttonManualShoutoutSet.Text = "Set";
             this.buttonManualShoutoutSet.UseVisualStyleBackColor = true;
-            this.buttonManualShoutoutSet.Click += new System.EventHandler(this.buttonManualShoutoutSet_Click);
+            this.buttonManualShoutoutSet.Click += new System.EventHandler(this.ButtonManualShoutoutSet_Click);
             // 
             // textBoxManualShoutouts
             // 
@@ -110,7 +110,7 @@
             this.textBoxManualShoutouts.Name = "textBoxManualShoutouts";
             this.textBoxManualShoutouts.Size = new System.Drawing.Size(400, 22);
             this.textBoxManualShoutouts.TabIndex = 3;
-            this.textBoxManualShoutouts.TextChanged += new System.EventHandler(this.textBoxManualShoutouts_TextChanged);
+            this.textBoxManualShoutouts.TextChanged += new System.EventHandler(this.TextBoxManualShoutouts_TextChanged);
             // 
             // tabPage2
             // 
@@ -133,7 +133,7 @@
             this.buttonAutomaticShoutoutSet.TabIndex = 5;
             this.buttonAutomaticShoutoutSet.Text = "Set";
             this.buttonAutomaticShoutoutSet.UseVisualStyleBackColor = true;
-            this.buttonAutomaticShoutoutSet.Click += new System.EventHandler(this.buttonAutomaticShoutoutSet_Click);
+            this.buttonAutomaticShoutoutSet.Click += new System.EventHandler(this.ButtonAutomaticShoutoutSet_Click);
             // 
             // textBoxAutomaticShoutouts
             // 
@@ -141,7 +141,7 @@
             this.textBoxAutomaticShoutouts.Name = "textBoxAutomaticShoutouts";
             this.textBoxAutomaticShoutouts.Size = new System.Drawing.Size(400, 22);
             this.textBoxAutomaticShoutouts.TabIndex = 4;
-            this.textBoxAutomaticShoutouts.TextChanged += new System.EventHandler(this.textBoxAutomaticShoutouts_TextChanged);
+            this.textBoxAutomaticShoutouts.TextChanged += new System.EventHandler(this.TextBoxAutomaticShoutouts_TextChanged);
             // 
             // listViewAutomaticShoutouts
             // 
@@ -157,7 +157,7 @@
             this.listViewAutomaticShoutouts.TabIndex = 3;
             this.listViewAutomaticShoutouts.UseCompatibleStateImageBehavior = false;
             this.listViewAutomaticShoutouts.View = System.Windows.Forms.View.Details;
-            this.listViewAutomaticShoutouts.SelectedIndexChanged += new System.EventHandler(this.listViewAutomaticShoutouts_SelectedIndexChanged);
+            this.listViewAutomaticShoutouts.SelectedIndexChanged += new System.EventHandler(this.ListViewAutomaticShoutouts_SelectedIndexChanged);
             // 
             // columnHeader1
             // 

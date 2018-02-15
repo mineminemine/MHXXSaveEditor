@@ -267,12 +267,12 @@ namespace MHXXSaveEditor.Forms
             listViewLearnedSkills.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void buttonCancel_MouseClick(object sender, MouseEventArgs e)
+        private void ButtonCancel_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        public void updateListViewEquippedActions()
+        public void UpdateListViewEquippedActions()
         {
             int actionSelectedSlot;
             actionSelectedSlot = Convert.ToInt32(listViewEquippedActions.SelectedItems[0].SubItems[0].Text) - 1;
@@ -296,7 +296,7 @@ namespace MHXXSaveEditor.Forms
             comboBoxEquippedActions.SelectedIndex = comboBoxEquippedActions.FindStringExact(listViewEquippedActions.SelectedItems[0].SubItems[1].Text);
         }
 
-        private void listViewEquippedActions_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewEquippedActions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquippedActions.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -308,11 +308,11 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                updateListViewEquippedActions();
+                UpdateListViewEquippedActions();
             }
         }
 
-        private void comboBoxEquippedActions_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquippedActions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquippedActions.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -331,7 +331,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        public void updateListViewEquippedSkills()
+        public void UpdateListViewEquippedSkills()
         {
             comboBoxEquippedSkills.Items.Clear();
 
@@ -340,7 +340,7 @@ namespace MHXXSaveEditor.Forms
             comboBoxEquippedSkills.SelectedIndex = comboBoxEquippedSkills.FindStringExact(listViewEquippedSkills.SelectedItems[0].SubItems[1].Text);
         }
 
-        private void listViewEquippedSkills_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewEquippedSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquippedSkills.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -352,11 +352,11 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                updateListViewEquippedSkills();
+                UpdateListViewEquippedSkills();
             }
         }
 
-        private void comboBoxEquippedSkills_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxEquippedSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewEquippedSkills.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -375,7 +375,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        public void updateListViewLearnedActions()
+        public void UpdateListViewLearnedActions()
         {
             comboBoxLearnedActions.Items.Clear();
             string actionRNG = comboBoxActionRNG.Text;
@@ -474,7 +474,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void listViewLearnedActions_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewLearnedActions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewLearnedActions.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -486,11 +486,11 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                updateListViewLearnedActions();
+                UpdateListViewLearnedActions();
             }
         }
 
-        private void comboBoxLearnedActions_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxLearnedActions_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewLearnedActions.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -506,7 +506,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        public void updateListViewLearnedSkills()
+        public void UpdateListViewLearnedSkills()
         {
             comboBoxLearnedSkills.Items.Clear();
 
@@ -538,7 +538,7 @@ namespace MHXXSaveEditor.Forms
             comboBoxLearnedSkills.SelectedIndex = comboBoxLearnedSkills.FindStringExact(listViewLearnedSkills.SelectedItems[0].SubItems[1].Text);
         }
 
-        private void listViewLearnedSkills_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewLearnedSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewLearnedSkills.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -550,11 +550,11 @@ namespace MHXXSaveEditor.Forms
                     return;
                 }
 
-                updateListViewLearnedSkills();
+                UpdateListViewLearnedSkills();
             }
         }
 
-        private void comboBoxLearnedSkills_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxLearnedSkills_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewLearnedSkills.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -570,7 +570,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             // Name
             byte[] nameByte = new byte[Constants.SIZEOF_NAME];
@@ -676,7 +676,7 @@ namespace MHXXSaveEditor.Forms
             Close();
         }
 
-        private void comboBoxActionRNG_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxActionRNG_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
             if (!cb.Focused)
@@ -704,7 +704,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void comboBoxSkillRNG_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxSkillRNG_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
             if (!cb.Focused)
@@ -719,7 +719,7 @@ namespace MHXXSaveEditor.Forms
 
         }
 
-        private void textBoxGreeting_TextChanged(object sender, EventArgs e)
+        private void TextBoxGreeting_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -728,11 +728,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if(mlc.getMaxLength(textBoxGreeting.Text, 60))
+            if(mlc.GetMaxLength(textBoxGreeting.Text, 60))
                 textBoxGreeting.MaxLength = textBoxGreeting.Text.Length;
         }
 
-        private void textBoxName_TextChanged(object sender, EventArgs e)
+        private void TextBoxName_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -741,11 +741,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(textBoxName.Text, 32))
+            if (mlc.GetMaxLength(textBoxName.Text, 32))
                 textBoxName.MaxLength = textBoxName.Text.Length;
         }
 
-        private void textBoxNameGiver_TextChanged(object sender, EventArgs e)
+        private void TextBoxNameGiver_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -754,11 +754,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(textBoxNameGiver.Text, 32))
+            if (mlc.GetMaxLength(textBoxNameGiver.Text, 32))
                 textBoxNameGiver.MaxLength = textBoxNameGiver.Text.Length;
         }
 
-        private void textBoxPreviousOwner_TextChanged(object sender, EventArgs e)
+        private void TextBoxPreviousOwner_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -767,11 +767,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(textBoxPreviousOwner.Text, 32))
+            if (mlc.GetMaxLength(textBoxPreviousOwner.Text, 32))
                 textBoxPreviousOwner.MaxLength = textBoxPreviousOwner.Text.Length;
         }
 
-        private void buttonExportPalico_Click(object sender, EventArgs e)
+        private void ButtonExportPalico_Click(object sender, EventArgs e)
         {
             byte[] palicoNameByte = new byte[Constants.SIZEOF_NAME];
             byte[] thePalico = new byte[Constants.SIZEOF_PALICO];
@@ -789,7 +789,7 @@ namespace MHXXSaveEditor.Forms
             MessageBox.Show("Palico has been exported", "Export Palico");
         }
 
-        private void buttonImportPalico_Click(object sender, EventArgs e)
+        private void ButtonImportPalico_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to import another palico to this slot?", "Import Palico", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)

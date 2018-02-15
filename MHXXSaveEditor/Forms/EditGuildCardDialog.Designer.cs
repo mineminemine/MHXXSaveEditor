@@ -213,7 +213,7 @@
             this.numericUpDownGCPlayTime.TabIndex = 3;
             this.toolTip1.SetToolTip(this.numericUpDownGCPlayTime, "Changing this won\'t take much effect since it will still follow your actual play " +
         "time");
-            this.numericUpDownGCPlayTime.ValueChanged += new System.EventHandler(this.numericUpDownGCPlayTime_ValueChanged);
+            this.numericUpDownGCPlayTime.ValueChanged += new System.EventHandler(this.NumericUpDownGCPlayTime_ValueChanged);
             // 
             // label2
             // 
@@ -276,7 +276,7 @@
             this.numericUpDownGRank.Name = "numericUpDownGRank";
             this.numericUpDownGRank.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownGRank.TabIndex = 13;
-            this.numericUpDownGRank.ValueChanged += new System.EventHandler(this.numericUpDownGRank_ValueChanged);
+            this.numericUpDownGRank.ValueChanged += new System.EventHandler(this.NumericUpDownGRank_ValueChanged);
             // 
             // label18
             // 
@@ -298,7 +298,7 @@
             this.numericUpDownArena.Name = "numericUpDownArena";
             this.numericUpDownArena.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownArena.TabIndex = 11;
-            this.numericUpDownArena.ValueChanged += new System.EventHandler(this.numericUpDownArena_ValueChanged);
+            this.numericUpDownArena.ValueChanged += new System.EventHandler(this.NumericUpDownArena_ValueChanged);
             // 
             // label16
             // 
@@ -320,7 +320,7 @@
             this.numericUpDownSpecialPermit.Name = "numericUpDownSpecialPermit";
             this.numericUpDownSpecialPermit.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownSpecialPermit.TabIndex = 9;
-            this.numericUpDownSpecialPermit.ValueChanged += new System.EventHandler(this.numericUpDownSpecialPermit_ValueChanged);
+            this.numericUpDownSpecialPermit.ValueChanged += new System.EventHandler(this.NumericUpDownSpecialPermit_ValueChanged);
             // 
             // label17
             // 
@@ -342,7 +342,7 @@
             this.numericUpDownHHHigh.Name = "numericUpDownHHHigh";
             this.numericUpDownHHHigh.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownHHHigh.TabIndex = 7;
-            this.numericUpDownHHHigh.ValueChanged += new System.EventHandler(this.numericUpDownHHHigh_ValueChanged);
+            this.numericUpDownHHHigh.ValueChanged += new System.EventHandler(this.NumericUpDownHHHigh_ValueChanged);
             // 
             // label14
             // 
@@ -364,7 +364,7 @@
             this.numericUpDownHHLow.Name = "numericUpDownHHLow";
             this.numericUpDownHHLow.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownHHLow.TabIndex = 5;
-            this.numericUpDownHHLow.ValueChanged += new System.EventHandler(this.numericUpDownHHLow_ValueChanged);
+            this.numericUpDownHHLow.ValueChanged += new System.EventHandler(this.NumericUpDownHHLow_ValueChanged);
             // 
             // label15
             // 
@@ -386,7 +386,7 @@
             this.numericUpDownVillageHigh.Name = "numericUpDownVillageHigh";
             this.numericUpDownVillageHigh.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownVillageHigh.TabIndex = 3;
-            this.numericUpDownVillageHigh.ValueChanged += new System.EventHandler(this.numericUpDownVillageHigh_ValueChanged);
+            this.numericUpDownVillageHigh.ValueChanged += new System.EventHandler(this.NumericUpDownVillageHigh_ValueChanged);
             // 
             // label13
             // 
@@ -408,7 +408,7 @@
             this.numericUpDownVillageLow.Name = "numericUpDownVillageLow";
             this.numericUpDownVillageLow.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownVillageLow.TabIndex = 1;
-            this.numericUpDownVillageLow.ValueChanged += new System.EventHandler(this.numericUpDownVillageLow_ValueChanged);
+            this.numericUpDownVillageLow.ValueChanged += new System.EventHandler(this.NumericUpDownVillageLow_ValueChanged);
             // 
             // label12
             // 
@@ -448,7 +448,7 @@
             this.numericUpDownArenaCount.Name = "numericUpDownArenaCount";
             this.numericUpDownArenaCount.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownArenaCount.TabIndex = 7;
-            this.numericUpDownArenaCount.ValueChanged += new System.EventHandler(this.numericUpDownArenaCount_ValueChanged);
+            this.numericUpDownArenaCount.ValueChanged += new System.EventHandler(this.NumericUpDownArenaCount_ValueChanged);
             // 
             // numericUpDownHubCount
             // 
@@ -461,7 +461,7 @@
             this.numericUpDownHubCount.Name = "numericUpDownHubCount";
             this.numericUpDownHubCount.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownHubCount.TabIndex = 6;
-            this.numericUpDownHubCount.ValueChanged += new System.EventHandler(this.numericUpDownHubCount_ValueChanged);
+            this.numericUpDownHubCount.ValueChanged += new System.EventHandler(this.NumericUpDownHubCount_ValueChanged);
             // 
             // label8
             // 
@@ -501,7 +501,7 @@
             this.numericUpDownVillageCount.Name = "numericUpDownVillageCount";
             this.numericUpDownVillageCount.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownVillageCount.TabIndex = 2;
-            this.numericUpDownVillageCount.ValueChanged += new System.EventHandler(this.numericUpDownVillageCount_ValueChanged);
+            this.numericUpDownVillageCount.ValueChanged += new System.EventHandler(this.NumericUpDownVillageCount_ValueChanged);
             // 
             // label5
             // 
@@ -519,7 +519,7 @@
             this.comboBoxWeaponType.Name = "comboBoxWeaponType";
             this.comboBoxWeaponType.Size = new System.Drawing.Size(500, 24);
             this.comboBoxWeaponType.TabIndex = 0;
-            this.comboBoxWeaponType.SelectedIndexChanged += new System.EventHandler(this.comboBoxWeaponType_SelectedIndexChanged);
+            this.comboBoxWeaponType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxWeaponType_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -552,7 +552,7 @@
             this.numericUpDownLarge.Name = "numericUpDownLarge";
             this.numericUpDownLarge.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownLarge.TabIndex = 16;
-            this.numericUpDownLarge.ValueChanged += new System.EventHandler(this.numericUpDownLarge_ValueChanged);
+            this.numericUpDownLarge.ValueChanged += new System.EventHandler(this.NumericUpDownLarge_ValueChanged);
             // 
             // label23
             // 
@@ -574,7 +574,7 @@
             this.numericUpDownSmall.Name = "numericUpDownSmall";
             this.numericUpDownSmall.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownSmall.TabIndex = 14;
-            this.numericUpDownSmall.ValueChanged += new System.EventHandler(this.numericUpDownSmall_ValueChanged);
+            this.numericUpDownSmall.ValueChanged += new System.EventHandler(this.NumericUpDownSmall_ValueChanged);
             // 
             // label22
             // 
@@ -596,7 +596,7 @@
             this.numericUpDownCaptureCount.Name = "numericUpDownCaptureCount";
             this.numericUpDownCaptureCount.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownCaptureCount.TabIndex = 12;
-            this.numericUpDownCaptureCount.ValueChanged += new System.EventHandler(this.numericUpDownCaptureCount_ValueChanged);
+            this.numericUpDownCaptureCount.ValueChanged += new System.EventHandler(this.NumericUpDownCaptureCount_ValueChanged);
             // 
             // label9
             // 
@@ -627,7 +627,7 @@
             this.numericUpDownKillCount.Name = "numericUpDownKillCount";
             this.numericUpDownKillCount.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownKillCount.TabIndex = 9;
-            this.numericUpDownKillCount.ValueChanged += new System.EventHandler(this.numericUpDownKillCount_ValueChanged);
+            this.numericUpDownKillCount.ValueChanged += new System.EventHandler(this.NumericUpDownKillCount_ValueChanged);
             // 
             // label11
             // 
@@ -645,7 +645,7 @@
             this.comboBoxMonsters.Name = "comboBoxMonsters";
             this.comboBoxMonsters.Size = new System.Drawing.Size(500, 24);
             this.comboBoxMonsters.TabIndex = 7;
-            this.comboBoxMonsters.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonsters_SelectedIndexChanged);
+            this.comboBoxMonsters.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMonsters_SelectedIndexChanged);
             // 
             // tabPage5
             // 
@@ -688,7 +688,7 @@
             this.comboBoxArenaGrade.Name = "comboBoxArenaGrade";
             this.comboBoxArenaGrade.Size = new System.Drawing.Size(150, 24);
             this.comboBoxArenaGrade.TabIndex = 7;
-            this.comboBoxArenaGrade.SelectedIndexChanged += new System.EventHandler(this.comboBoxArenaGrade_SelectedIndexChanged);
+            this.comboBoxArenaGrade.SelectedIndexChanged += new System.EventHandler(this.ComboBoxArenaGrade_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -707,7 +707,7 @@
             this.comboBoxArenaWeapon.Name = "comboBoxArenaWeapon";
             this.comboBoxArenaWeapon.Size = new System.Drawing.Size(150, 24);
             this.comboBoxArenaWeapon.TabIndex = 5;
-            this.comboBoxArenaWeapon.SelectedIndexChanged += new System.EventHandler(this.comboBoxArenaWeapon_SelectedIndexChanged);
+            this.comboBoxArenaWeapon.SelectedIndexChanged += new System.EventHandler(this.ComboBoxArenaWeapon_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -730,7 +730,7 @@
             this.numericUpDownBestTime.Name = "numericUpDownBestTime";
             this.numericUpDownBestTime.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownBestTime.TabIndex = 3;
-            this.numericUpDownBestTime.ValueChanged += new System.EventHandler(this.numericUpDownBestTime_ValueChanged);
+            this.numericUpDownBestTime.ValueChanged += new System.EventHandler(this.NumericUpDownBestTime_ValueChanged);
             // 
             // label19
             // 
@@ -748,7 +748,7 @@
             this.comboBoxArena.Name = "comboBoxArena";
             this.comboBoxArena.Size = new System.Drawing.Size(250, 24);
             this.comboBoxArena.TabIndex = 1;
-            this.comboBoxArena.SelectedIndexChanged += new System.EventHandler(this.comboBoxArena_SelectedIndexChanged);
+            this.comboBoxArena.SelectedIndexChanged += new System.EventHandler(this.ComboBoxArena_SelectedIndexChanged);
             // 
             // listViewArena
             // 
@@ -766,7 +766,7 @@
             this.listViewArena.TabIndex = 0;
             this.listViewArena.UseCompatibleStateImageBehavior = false;
             this.listViewArena.View = System.Windows.Forms.View.Details;
-            this.listViewArena.SelectedIndexChanged += new System.EventHandler(this.listViewArena_SelectedIndexChanged);
+            this.listViewArena.SelectedIndexChanged += new System.EventHandler(this.ListViewArena_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -794,7 +794,7 @@
             this.buttonOkay.TabIndex = 1;
             this.buttonOkay.Text = "OK";
             this.buttonOkay.UseVisualStyleBackColor = true;
-            this.buttonOkay.Click += new System.EventHandler(this.buttonOkay_Click);
+            this.buttonOkay.Click += new System.EventHandler(this.ButtonOkay_Click);
             // 
             // buttonCancel
             // 
@@ -804,7 +804,7 @@
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // EditGuildCardDialog
             // 

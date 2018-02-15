@@ -270,7 +270,7 @@
             this.toolStripMenuItemSaveSlot1.Name = "toolStripMenuItemSaveSlot1";
             this.toolStripMenuItemSaveSlot1.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot1.Text = "1";
-            this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot1_Click);
+            this.toolStripMenuItemSaveSlot1.Click += new System.EventHandler(this.ToolStripMenuItemSaveSlot1_Click);
             // 
             // toolStripMenuItemSaveSlot2
             // 
@@ -278,7 +278,7 @@
             this.toolStripMenuItemSaveSlot2.Name = "toolStripMenuItemSaveSlot2";
             this.toolStripMenuItemSaveSlot2.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot2.Text = "2";
-            this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot2_Click);
+            this.toolStripMenuItemSaveSlot2.Click += new System.EventHandler(this.ToolStripMenuItemSaveSlot2_Click);
             // 
             // toolStripMenuItemSaveSlot3
             // 
@@ -286,7 +286,7 @@
             this.toolStripMenuItemSaveSlot3.Name = "toolStripMenuItemSaveSlot3";
             this.toolStripMenuItemSaveSlot3.Size = new System.Drawing.Size(92, 26);
             this.toolStripMenuItemSaveSlot3.Text = "3";
-            this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.toolStripMenuItemSaveSlot3_Click);
+            this.toolStripMenuItemSaveSlot3.Click += new System.EventHandler(this.ToolStripMenuItemSaveSlot3_Click);
             // 
             // toolStripSeparator4
             // 
@@ -298,7 +298,7 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -311,7 +311,7 @@
             this.saveToolStripMenuItemSave.Name = "saveToolStripMenuItemSave";
             this.saveToolStripMenuItemSave.Size = new System.Drawing.Size(193, 26);
             this.saveToolStripMenuItemSave.Text = "Save";
-            this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.saveToolStripMenuItemSave_Click);
+            this.saveToolStripMenuItemSave.Click += new System.EventHandler(this.SaveToolStripMenuItemSave_Click);
             // 
             // saveAsToolStripMenuItem
             // 
@@ -319,7 +319,7 @@
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -342,7 +342,7 @@
             this.slot1ToolStripMenuItem.Name = "slot1ToolStripMenuItem";
             this.slot1ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
             this.slot1ToolStripMenuItem.Text = "Slot 1";
-            this.slot1ToolStripMenuItem.Click += new System.EventHandler(this.slot1ToolStripMenuItem_Click);
+            this.slot1ToolStripMenuItem.Click += new System.EventHandler(this.Slot1ToolStripMenuItem_Click);
             // 
             // slot2ToolStripMenuItem
             // 
@@ -350,7 +350,7 @@
             this.slot2ToolStripMenuItem.Name = "slot2ToolStripMenuItem";
             this.slot2ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
             this.slot2ToolStripMenuItem.Text = "Slot 2";
-            this.slot2ToolStripMenuItem.Click += new System.EventHandler(this.slot2ToolStripMenuItem_Click);
+            this.slot2ToolStripMenuItem.Click += new System.EventHandler(this.Slot2ToolStripMenuItem_Click);
             // 
             // slot3ToolStripMenuItem
             // 
@@ -358,7 +358,7 @@
             this.slot3ToolStripMenuItem.Name = "slot3ToolStripMenuItem";
             this.slot3ToolStripMenuItem.Size = new System.Drawing.Size(122, 26);
             this.slot3ToolStripMenuItem.Text = "Slot 3";
-            this.slot3ToolStripMenuItem.Click += new System.EventHandler(this.slot3ToolStripMenuItem_Click);
+            this.slot3ToolStripMenuItem.Click += new System.EventHandler(this.Slot3ToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -370,7 +370,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -402,14 +402,14 @@
             this.maxAmountItemsToolStripMenuItem.Name = "maxAmountItemsToolStripMenuItem";
             this.maxAmountItemsToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.maxAmountItemsToolStripMenuItem.Text = "Max Amount";
-            this.maxAmountItemsToolStripMenuItem.Click += new System.EventHandler(this.maxAmountItemsToolStripMenuItem_Click);
+            this.maxAmountItemsToolStripMenuItem.Click += new System.EventHandler(this.MaxAmountItemsToolStripMenuItem_Click);
             // 
             // setAmountToToolStripMenuItem
             // 
             this.setAmountToToolStripMenuItem.Name = "setAmountToToolStripMenuItem";
             this.setAmountToToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.setAmountToToolStripMenuItem.Text = "Set Amount To";
-            this.setAmountToToolStripMenuItem.Click += new System.EventHandler(this.setAmountToToolStripMenuItem_Click);
+            this.setAmountToToolStripMenuItem.Click += new System.EventHandler(this.SetAmountToToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -421,14 +421,14 @@
             this.removeDuplicatesToolStripMenuItem.Name = "removeDuplicatesToolStripMenuItem";
             this.removeDuplicatesToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.removeDuplicatesToolStripMenuItem.Text = "Remove Duplicates";
-            this.removeDuplicatesToolStripMenuItem.Click += new System.EventHandler(this.removeDuplicatesToolStripMenuItem_Click);
+            this.removeDuplicatesToolStripMenuItem.Click += new System.EventHandler(this.RemoveDuplicatesToolStripMenuItem_Click);
             // 
             // removeAllItemsToolStripMenuItem
             // 
             this.removeAllItemsToolStripMenuItem.Name = "removeAllItemsToolStripMenuItem";
             this.removeAllItemsToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.removeAllItemsToolStripMenuItem.Text = "Remove All Items";
-            this.removeAllItemsToolStripMenuItem.Click += new System.EventHandler(this.removeAllItemsToolStripMenuItem_Click);
+            this.removeAllItemsToolStripMenuItem.Click += new System.EventHandler(this.RemoveAllItemsToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -440,14 +440,14 @@
             this.importFromToolStripMenuItem.Name = "importFromToolStripMenuItem";
             this.importFromToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.importFromToolStripMenuItem.Text = "Import From";
-            this.importFromToolStripMenuItem.Click += new System.EventHandler(this.importFromToolStripMenuItem_Click);
+            this.importFromToolStripMenuItem.Click += new System.EventHandler(this.ImportFromToolStripMenuItem_Click);
             // 
             // exportToToolStripMenuItem
             // 
             this.exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
             this.exportToToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.exportToToolStripMenuItem.Text = "Export To";
-            this.exportToToolStripMenuItem.Click += new System.EventHandler(this.exportToToolStripMenuItem_Click);
+            this.exportToToolStripMenuItem.Click += new System.EventHandler(this.ExportToToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -465,7 +465,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -477,14 +477,14 @@
             this.goToMainThreadToolStripMenuItem.Name = "goToMainThreadToolStripMenuItem";
             this.goToMainThreadToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.goToMainThreadToolStripMenuItem.Text = "Visit main thread";
-            this.goToMainThreadToolStripMenuItem.Click += new System.EventHandler(this.goToMainThreadToolStripMenuItem_Click);
+            this.goToMainThreadToolStripMenuItem.Click += new System.EventHandler(this.GoToMainThreadToolStripMenuItem_Click);
             // 
             // visitGithubPageToolStripMenuItem
             // 
             this.visitGithubPageToolStripMenuItem.Name = "visitGithubPageToolStripMenuItem";
             this.visitGithubPageToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.visitGithubPageToolStripMenuItem.Text = "Visit Github page";
-            this.visitGithubPageToolStripMenuItem.Click += new System.EventHandler(this.visitGithubPageToolStripMenuItem_Click);
+            this.visitGithubPageToolStripMenuItem.Click += new System.EventHandler(this.VisitGithubPageToolStripMenuItem_Click);
             // 
             // tabControlMain
             // 
@@ -542,7 +542,7 @@
             this.buttonEditGuildCard.TabIndex = 22;
             this.buttonEditGuildCard.Text = "Edit Guild Card";
             this.buttonEditGuildCard.UseVisualStyleBackColor = true;
-            this.buttonEditGuildCard.Click += new System.EventHandler(this.buttonEditGuildCard_Click);
+            this.buttonEditGuildCard.Click += new System.EventHandler(this.ButtonEditGuildCard_Click);
             // 
             // buttonEditShoutouts
             // 
@@ -552,7 +552,7 @@
             this.buttonEditShoutouts.TabIndex = 21;
             this.buttonEditShoutouts.Text = "Edit Shoutouts";
             this.buttonEditShoutouts.UseVisualStyleBackColor = true;
-            this.buttonEditShoutouts.Click += new System.EventHandler(this.buttonEditShoutouts_Click);
+            this.buttonEditShoutouts.Click += new System.EventHandler(this.ButtonEditShoutouts_Click);
             // 
             // labelConvTime
             // 
@@ -575,7 +575,7 @@
             this.numericUpDownTime.Name = "numericUpDownTime";
             this.numericUpDownTime.Size = new System.Drawing.Size(160, 22);
             this.numericUpDownTime.TabIndex = 19;
-            this.numericUpDownTime.ValueChanged += new System.EventHandler(this.numericUpDownTime_ValueChanged);
+            this.numericUpDownTime.ValueChanged += new System.EventHandler(this.NumericUpDownTime_ValueChanged);
             // 
             // label10
             // 
@@ -775,7 +775,7 @@
             this.charNameBox.Name = "charNameBox";
             this.charNameBox.Size = new System.Drawing.Size(239, 22);
             this.charNameBox.TabIndex = 1;
-            this.charNameBox.TextChanged += new System.EventHandler(this.charNameBox_TextChanged);
+            this.charNameBox.TextChanged += new System.EventHandler(this.CharNameBox_TextChanged);
             // 
             // label1
             // 
@@ -846,7 +846,7 @@
             this.numericUpDownClothesA.Name = "numericUpDownClothesA";
             this.numericUpDownClothesA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesA.TabIndex = 37;
-            this.numericUpDownClothesA.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
+            this.numericUpDownClothesA.ValueChanged += new System.EventHandler(this.NumericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesB
             // 
@@ -860,7 +860,7 @@
             this.numericUpDownClothesB.Name = "numericUpDownClothesB";
             this.numericUpDownClothesB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesB.TabIndex = 36;
-            this.numericUpDownClothesB.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
+            this.numericUpDownClothesB.ValueChanged += new System.EventHandler(this.NumericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesG
             // 
@@ -874,7 +874,7 @@
             this.numericUpDownClothesG.Name = "numericUpDownClothesG";
             this.numericUpDownClothesG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesG.TabIndex = 35;
-            this.numericUpDownClothesG.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
+            this.numericUpDownClothesG.ValueChanged += new System.EventHandler(this.NumericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownClothesR
             // 
@@ -888,7 +888,7 @@
             this.numericUpDownClothesR.Name = "numericUpDownClothesR";
             this.numericUpDownClothesR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownClothesR.TabIndex = 34;
-            this.numericUpDownClothesR.ValueChanged += new System.EventHandler(this.numericUpDownClothesColor_ValueChanged);
+            this.numericUpDownClothesR.ValueChanged += new System.EventHandler(this.NumericUpDownClothesColor_ValueChanged);
             // 
             // numericUpDownFeaturesA
             // 
@@ -902,7 +902,7 @@
             this.numericUpDownFeaturesA.Name = "numericUpDownFeaturesA";
             this.numericUpDownFeaturesA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesA.TabIndex = 33;
-            this.numericUpDownFeaturesA.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
+            this.numericUpDownFeaturesA.ValueChanged += new System.EventHandler(this.NumericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesB
             // 
@@ -916,7 +916,7 @@
             this.numericUpDownFeaturesB.Name = "numericUpDownFeaturesB";
             this.numericUpDownFeaturesB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesB.TabIndex = 32;
-            this.numericUpDownFeaturesB.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
+            this.numericUpDownFeaturesB.ValueChanged += new System.EventHandler(this.NumericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesG
             // 
@@ -930,7 +930,7 @@
             this.numericUpDownFeaturesG.Name = "numericUpDownFeaturesG";
             this.numericUpDownFeaturesG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesG.TabIndex = 31;
-            this.numericUpDownFeaturesG.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
+            this.numericUpDownFeaturesG.ValueChanged += new System.EventHandler(this.NumericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownFeaturesR
             // 
@@ -944,7 +944,7 @@
             this.numericUpDownFeaturesR.Name = "numericUpDownFeaturesR";
             this.numericUpDownFeaturesR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownFeaturesR.TabIndex = 30;
-            this.numericUpDownFeaturesR.ValueChanged += new System.EventHandler(this.numericUpDownFeaturesColor_ValueChanged);
+            this.numericUpDownFeaturesR.ValueChanged += new System.EventHandler(this.NumericUpDownFeaturesColor_ValueChanged);
             // 
             // numericUpDownHairA
             // 
@@ -958,7 +958,7 @@
             this.numericUpDownHairA.Name = "numericUpDownHairA";
             this.numericUpDownHairA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairA.TabIndex = 29;
-            this.numericUpDownHairA.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
+            this.numericUpDownHairA.ValueChanged += new System.EventHandler(this.NumericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairB
             // 
@@ -972,7 +972,7 @@
             this.numericUpDownHairB.Name = "numericUpDownHairB";
             this.numericUpDownHairB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairB.TabIndex = 28;
-            this.numericUpDownHairB.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
+            this.numericUpDownHairB.ValueChanged += new System.EventHandler(this.NumericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairG
             // 
@@ -986,7 +986,7 @@
             this.numericUpDownHairG.Name = "numericUpDownHairG";
             this.numericUpDownHairG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairG.TabIndex = 27;
-            this.numericUpDownHairG.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
+            this.numericUpDownHairG.ValueChanged += new System.EventHandler(this.NumericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownHairR
             // 
@@ -1000,7 +1000,7 @@
             this.numericUpDownHairR.Name = "numericUpDownHairR";
             this.numericUpDownHairR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownHairR.TabIndex = 26;
-            this.numericUpDownHairR.ValueChanged += new System.EventHandler(this.numericUpDownHairColor_ValueChanged);
+            this.numericUpDownHairR.ValueChanged += new System.EventHandler(this.NumericUpDownHairColor_ValueChanged);
             // 
             // numericUpDownSkinA
             // 
@@ -1014,7 +1014,7 @@
             this.numericUpDownSkinA.Name = "numericUpDownSkinA";
             this.numericUpDownSkinA.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinA.TabIndex = 25;
-            this.numericUpDownSkinA.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
+            this.numericUpDownSkinA.ValueChanged += new System.EventHandler(this.NumericUpDownSkinColor_ValueChanged);
             // 
             // numericUpDownSkinB
             // 
@@ -1028,7 +1028,7 @@
             this.numericUpDownSkinB.Name = "numericUpDownSkinB";
             this.numericUpDownSkinB.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinB.TabIndex = 24;
-            this.numericUpDownSkinB.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
+            this.numericUpDownSkinB.ValueChanged += new System.EventHandler(this.NumericUpDownSkinColor_ValueChanged);
             // 
             // numericUpDownSkinG
             // 
@@ -1042,7 +1042,7 @@
             this.numericUpDownSkinG.Name = "numericUpDownSkinG";
             this.numericUpDownSkinG.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinG.TabIndex = 23;
-            this.numericUpDownSkinG.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
+            this.numericUpDownSkinG.ValueChanged += new System.EventHandler(this.NumericUpDownSkinColor_ValueChanged);
             // 
             // labelClothesColor
             // 
@@ -1122,7 +1122,7 @@
             this.numericUpDownSkinR.Name = "numericUpDownSkinR";
             this.numericUpDownSkinR.Size = new System.Drawing.Size(60, 22);
             this.numericUpDownSkinR.TabIndex = 14;
-            this.numericUpDownSkinR.ValueChanged += new System.EventHandler(this.numericUpDownSkinColor_ValueChanged);
+            this.numericUpDownSkinR.ValueChanged += new System.EventHandler(this.NumericUpDownSkinColor_ValueChanged);
             // 
             // labelSkinColor
             // 
@@ -1373,7 +1373,7 @@
             this.buttonClearItemSlot.TabIndex = 6;
             this.buttonClearItemSlot.Text = "Clear Slot";
             this.buttonClearItemSlot.UseVisualStyleBackColor = true;
-            this.buttonClearItemSlot.Click += new System.EventHandler(this.buttonClearItemSlot_Click);
+            this.buttonClearItemSlot.Click += new System.EventHandler(this.ButtonClearItemSlot_Click);
             // 
             // numericUpDownItemAmount
             // 
@@ -1386,7 +1386,7 @@
             this.numericUpDownItemAmount.Name = "numericUpDownItemAmount";
             this.numericUpDownItemAmount.Size = new System.Drawing.Size(150, 22);
             this.numericUpDownItemAmount.TabIndex = 5;
-            this.numericUpDownItemAmount.ValueChanged += new System.EventHandler(this.numericUpDownItemAmount_ValueChanged);
+            this.numericUpDownItemAmount.ValueChanged += new System.EventHandler(this.NumericUpDownItemAmount_ValueChanged);
             // 
             // label12
             // 
@@ -1413,7 +1413,7 @@
             this.comboBoxItem.Name = "comboBoxItem";
             this.comboBoxItem.Size = new System.Drawing.Size(200, 24);
             this.comboBoxItem.TabIndex = 2;
-            this.comboBoxItem.SelectedIndexChanged += new System.EventHandler(this.comboBoxItem_SelectedIndexChanged);
+            this.comboBoxItem.SelectedIndexChanged += new System.EventHandler(this.ComboBoxItem_SelectedIndexChanged);
             // 
             // listViewItem
             // 
@@ -1431,7 +1431,7 @@
             this.listViewItem.TabIndex = 2;
             this.listViewItem.UseCompatibleStateImageBehavior = false;
             this.listViewItem.View = System.Windows.Forms.View.Details;
-            this.listViewItem.SelectedIndexChanged += new System.EventHandler(this.listViewItem_SelectedIndexChanged);
+            this.listViewItem.SelectedIndexChanged += new System.EventHandler(this.ListViewItem_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -1493,7 +1493,7 @@
             this.buttonTransmogrify.TabIndex = 18;
             this.buttonTransmogrify.Text = "Transmogrify";
             this.buttonTransmogrify.UseVisualStyleBackColor = true;
-            this.buttonTransmogrify.Click += new System.EventHandler(this.buttonTransmogrify_Click);
+            this.buttonTransmogrify.Click += new System.EventHandler(this.ButtonTransmogrify_Click);
             // 
             // comboBoxEquipName
             // 
@@ -1503,7 +1503,7 @@
             this.comboBoxEquipName.Name = "comboBoxEquipName";
             this.comboBoxEquipName.Size = new System.Drawing.Size(180, 24);
             this.comboBoxEquipName.TabIndex = 17;
-            this.comboBoxEquipName.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipName_SelectedIndexChanged);
+            this.comboBoxEquipName.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquipName_SelectedIndexChanged);
             // 
             // numericUpDownEquipLevel
             // 
@@ -1528,7 +1528,7 @@
             0,
             0,
             0});
-            this.numericUpDownEquipLevel.ValueChanged += new System.EventHandler(this.numericUpDownEquipLevel_ValueChanged);
+            this.numericUpDownEquipLevel.ValueChanged += new System.EventHandler(this.NumericUpDownEquipLevel_ValueChanged);
             // 
             // buttonEditTalisman
             // 
@@ -1539,7 +1539,7 @@
             this.buttonEditTalisman.TabIndex = 14;
             this.buttonEditTalisman.Text = "Edit Talisman";
             this.buttonEditTalisman.UseVisualStyleBackColor = true;
-            this.buttonEditTalisman.Click += new System.EventHandler(this.buttonEditTalisman_Click);
+            this.buttonEditTalisman.Click += new System.EventHandler(this.ButtonEditTalisman_Click);
             // 
             // buttonEditKinsect
             // 
@@ -1550,7 +1550,7 @@
             this.buttonEditKinsect.TabIndex = 13;
             this.buttonEditKinsect.Text = "Edit Kinsect";
             this.buttonEditKinsect.UseVisualStyleBackColor = true;
-            this.buttonEditKinsect.Click += new System.EventHandler(this.buttonEditKinsect_Click);
+            this.buttonEditKinsect.Click += new System.EventHandler(this.ButtonEditKinsect_Click);
             // 
             // comboBoxEquipDeco3
             // 
@@ -1561,7 +1561,7 @@
             this.comboBoxEquipDeco3.Size = new System.Drawing.Size(170, 24);
             this.comboBoxEquipDeco3.TabIndex = 12;
             this.toolTip1.SetToolTip(this.comboBoxEquipDeco3, "Please refer to Kiranico for the amount of decoration slots for your equipment");
-            this.comboBoxEquipDeco3.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco3_SelectedIndexChanged);
+            this.comboBoxEquipDeco3.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquipDeco3_SelectedIndexChanged);
             // 
             // label35
             // 
@@ -1581,7 +1581,7 @@
             this.comboBoxEquipDeco2.Size = new System.Drawing.Size(170, 24);
             this.comboBoxEquipDeco2.TabIndex = 10;
             this.toolTip1.SetToolTip(this.comboBoxEquipDeco2, "Please refer to Kiranico for the amount of decoration slots for your equipment");
-            this.comboBoxEquipDeco2.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco2_SelectedIndexChanged);
+            this.comboBoxEquipDeco2.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquipDeco2_SelectedIndexChanged);
             // 
             // label36
             // 
@@ -1601,7 +1601,7 @@
             this.comboBoxEquipDeco1.Size = new System.Drawing.Size(170, 24);
             this.comboBoxEquipDeco1.TabIndex = 8;
             this.toolTip1.SetToolTip(this.comboBoxEquipDeco1, "Please refer to Kiranico for the amount of decoration slots for your equipment");
-            this.comboBoxEquipDeco1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipDeco1_SelectedIndexChanged);
+            this.comboBoxEquipDeco1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquipDeco1_SelectedIndexChanged);
             // 
             // label37
             // 
@@ -1638,7 +1638,7 @@
             this.comboBoxEquipType.Name = "comboBoxEquipType";
             this.comboBoxEquipType.Size = new System.Drawing.Size(180, 24);
             this.comboBoxEquipType.TabIndex = 2;
-            this.comboBoxEquipType.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquipType_SelectedIndexChanged);
+            this.comboBoxEquipType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquipType_SelectedIndexChanged);
             // 
             // label29
             // 
@@ -1664,7 +1664,7 @@
             this.listViewEquipment.TabIndex = 0;
             this.listViewEquipment.UseCompatibleStateImageBehavior = false;
             this.listViewEquipment.View = System.Windows.Forms.View.Details;
-            this.listViewEquipment.SelectedIndexChanged += new System.EventHandler(this.listViewEquipment_SelectedIndexChanged);
+            this.listViewEquipment.SelectedIndexChanged += new System.EventHandler(this.ListViewEquipment_SelectedIndexChanged);
             // 
             // columnHeaderEquipSlot
             // 
@@ -1700,7 +1700,7 @@
             this.buttonEditPalico.TabIndex = 2;
             this.buttonEditPalico.Text = "Edit Palico";
             this.buttonEditPalico.UseVisualStyleBackColor = true;
-            this.buttonEditPalico.Click += new System.EventHandler(this.buttonEditPalico_Click);
+            this.buttonEditPalico.Click += new System.EventHandler(this.ButtonEditPalico_Click);
             // 
             // listViewPalico
             // 
@@ -1717,7 +1717,7 @@
             this.listViewPalico.TabIndex = 1;
             this.listViewPalico.UseCompatibleStateImageBehavior = false;
             this.listViewPalico.View = System.Windows.Forms.View.Details;
-            this.listViewPalico.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPalico_MouseDoubleClick);
+            this.listViewPalico.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewPalico_MouseDoubleClick);
             // 
             // columnHeader4
             // 
@@ -1769,7 +1769,7 @@
             this.buttonTransmogrifyPalico.TabIndex = 19;
             this.buttonTransmogrifyPalico.Text = "Transmogrify";
             this.buttonTransmogrifyPalico.UseVisualStyleBackColor = true;
-            this.buttonTransmogrifyPalico.Click += new System.EventHandler(this.buttonTransmogrifyPalico_Click);
+            this.buttonTransmogrifyPalico.Click += new System.EventHandler(this.ButtonTransmogrifyPalico_Click);
             // 
             // comboBoxPalicoEquip
             // 
@@ -1779,7 +1779,7 @@
             this.comboBoxPalicoEquip.Name = "comboBoxPalicoEquip";
             this.comboBoxPalicoEquip.Size = new System.Drawing.Size(200, 24);
             this.comboBoxPalicoEquip.TabIndex = 10;
-            this.comboBoxPalicoEquip.SelectedIndexChanged += new System.EventHandler(this.comboBoxPalicoEquip_SelectedIndexChanged);
+            this.comboBoxPalicoEquip.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPalicoEquip_SelectedIndexChanged);
             // 
             // label30
             // 
@@ -1798,7 +1798,7 @@
             this.comboBoxPalicoEqpType.Name = "comboBoxPalicoEqpType";
             this.comboBoxPalicoEqpType.Size = new System.Drawing.Size(200, 24);
             this.comboBoxPalicoEqpType.TabIndex = 6;
-            this.comboBoxPalicoEqpType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPalicoEqpType_SelectedIndexChanged);
+            this.comboBoxPalicoEqpType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPalicoEqpType_SelectedIndexChanged);
             // 
             // label31
             // 
@@ -1824,7 +1824,7 @@
             this.listViewPalicoEquipment.TabIndex = 1;
             this.listViewPalicoEquipment.UseCompatibleStateImageBehavior = false;
             this.listViewPalicoEquipment.View = System.Windows.Forms.View.Details;
-            this.listViewPalicoEquipment.SelectedIndexChanged += new System.EventHandler(this.listViewPalicoEquipment_SelectedIndexChanged);
+            this.listViewPalicoEquipment.SelectedIndexChanged += new System.EventHandler(this.ListViewPalicoEquipment_SelectedIndexChanged);
             // 
             // columnHeader7
             // 
@@ -1854,14 +1854,14 @@
             this.exportToToolStripMenuItem1.Name = "exportToToolStripMenuItem1";
             this.exportToToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.exportToToolStripMenuItem1.Text = "Export To";
-            this.exportToToolStripMenuItem1.Click += new System.EventHandler(this.exportToToolStripMenuItem1_Click);
+            this.exportToToolStripMenuItem1.Click += new System.EventHandler(this.ExportToToolStripMenuItem1_Click);
             // 
             // importFromToolStripMenuItem1
             // 
             this.importFromToolStripMenuItem1.Name = "importFromToolStripMenuItem1";
             this.importFromToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.importFromToolStripMenuItem1.Text = "Import From";
-            this.importFromToolStripMenuItem1.Click += new System.EventHandler(this.importFromToolStripMenuItem1_Click);
+            this.importFromToolStripMenuItem1.Click += new System.EventHandler(this.ImportFromToolStripMenuItem1_Click);
             // 
             // MainForm
             // 

@@ -35,12 +35,12 @@ namespace MHXXSaveEditor.Forms
             numericUpDownDragonExp.Value = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 32]);
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
+        private void ButtonOk_Click(object sender, EventArgs e)
         {
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 12] = Convert.ToByte(comboBoxKinsectType.SelectedIndex);
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 13] = Convert.ToByte(numericUpDownLevel.Value - 1);

@@ -71,7 +71,7 @@
             this.comboBoxSkillName2.Name = "comboBoxSkillName2";
             this.comboBoxSkillName2.Size = new System.Drawing.Size(121, 24);
             this.comboBoxSkillName2.TabIndex = 6;
-            this.comboBoxSkillName2.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSkillName2_SelectionChangeCommitted);
+            this.comboBoxSkillName2.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxSkillName2_SelectionChangeCommitted);
             // 
             // comboBoxSkillName1
             // 
@@ -80,7 +80,7 @@
             this.comboBoxSkillName1.Name = "comboBoxSkillName1";
             this.comboBoxSkillName1.Size = new System.Drawing.Size(121, 24);
             this.comboBoxSkillName1.TabIndex = 5;
-            this.comboBoxSkillName1.SelectionChangeCommitted += new System.EventHandler(this.comboBoxSkillName1_SelectionChangeCommitted);
+            this.comboBoxSkillName1.SelectionChangeCommitted += new System.EventHandler(this.ComboBoxSkillName1_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -205,7 +205,7 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // buttonCancel
             // 
@@ -215,7 +215,7 @@
             this.buttonCancel.TabIndex = 9;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // EditTalismanDialog
             // 

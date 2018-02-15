@@ -22,12 +22,12 @@ namespace MHXXSaveEditor.Forms
             LoadArena();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void buttonOkay_Click(object sender, EventArgs e)
+        private void ButtonOkay_Click(object sender, EventArgs e)
         {
             byte[] timeByte = BitConverter.GetBytes((int)numericUpDownGCPlayTime.Value);
             for (int a = 0; a < 4; a++)
@@ -90,34 +90,34 @@ namespace MHXXSaveEditor.Forms
             numericUpDownArenaCount.Value = BitConverter.ToInt16(MainForm.player.GuildCardData, 0x8F6);
         }
 
-        private void numericUpDownGCPlayTime_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownGCPlayTime_ValueChanged(object sender, EventArgs e)
         {
             TimeSpan time = TimeSpan.FromSeconds((double)numericUpDownGCPlayTime.Value);
             labelConvTime.Text = "D.HH:MM:SS - " + time.ToString();
         }
 
-        private void comboBoxWeaponType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxWeaponType_SelectedIndexChanged(object sender, EventArgs e)
         {
             numericUpDownVillageCount.Value = BitConverter.ToInt16(MainForm.player.GuildCardData, 0x8BA + (comboBoxWeaponType.SelectedIndex * 2));
             numericUpDownHubCount.Value = BitConverter.ToInt16(MainForm.player.GuildCardData, 0x8D8 + (comboBoxWeaponType.SelectedIndex * 2));
             numericUpDownArenaCount.Value = BitConverter.ToInt16(MainForm.player.GuildCardData, 0x8F6 + (comboBoxWeaponType.SelectedIndex * 2));
         }
 
-        private void numericUpDownVillageCount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownVillageCount_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownVillageCount.Value);
             MainForm.player.GuildCardData[0x8BA + (comboBoxWeaponType.SelectedIndex * 2)] = numberBytes[0];
             MainForm.player.GuildCardData[0x8BA + (comboBoxWeaponType.SelectedIndex * 2) + 1] = numberBytes[1];
         }
 
-        private void numericUpDownHubCount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownHubCount_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownHubCount.Value);
             MainForm.player.GuildCardData[0x8D8 + (comboBoxWeaponType.SelectedIndex * 2)] = numberBytes[0];
             MainForm.player.GuildCardData[0x8D8 + (comboBoxWeaponType.SelectedIndex * 2) + 1] = numberBytes[1];
         }
 
-        private void numericUpDownArenaCount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownArenaCount_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownArenaCount.Value);
             MainForm.player.GuildCardData[0x8F6 + (comboBoxWeaponType.SelectedIndex * 2)] = numberBytes[0];
@@ -131,7 +131,7 @@ namespace MHXXSaveEditor.Forms
             comboBoxMonsters.SelectedIndex = 0;
         }
 
-        private void comboBoxMonsters_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxMonsters_SelectedIndexChanged(object sender, EventArgs e)
         {
             numericUpDownKillCount.Value = BitConverter.ToInt16(MainForm.player.MonsterKills, (comboBoxMonsters.SelectedIndex * 2));
             numericUpDownCaptureCount.Value = BitConverter.ToInt16(MainForm.player.MonsterCaptures, (comboBoxMonsters.SelectedIndex * 2));
@@ -151,63 +151,63 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void numericUpDownKillCount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownKillCount_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownKillCount.Value);
             MainForm.player.MonsterKills[(comboBoxMonsters.SelectedIndex * 2)] = numberBytes[0];
             MainForm.player.MonsterKills[(comboBoxMonsters.SelectedIndex * 2) + 1] = numberBytes[1];
         }
 
-        private void numericUpDownCaptureCount_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownCaptureCount_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownCaptureCount.Value);
             MainForm.player.MonsterCaptures[(comboBoxMonsters.SelectedIndex * 2)] = numberBytes[0];
             MainForm.player.MonsterCaptures[(comboBoxMonsters.SelectedIndex * 2) + 1] = numberBytes[1];
         }
 
-        private void numericUpDownVillageLow_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownVillageLow_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownVillageLow.Value);
             MainForm.player.GuildCardData[0x85e] = numberBytes[0];
             MainForm.player.GuildCardData[0x85f] = numberBytes[1];
         }
 
-        private void numericUpDownVillageHigh_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownVillageHigh_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownVillageHigh.Value);
             MainForm.player.GuildCardData[0x860] = numberBytes[0];
             MainForm.player.GuildCardData[0x861] = numberBytes[1];
         }
 
-        private void numericUpDownHHLow_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownHHLow_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownHHLow.Value);
             MainForm.player.GuildCardData[0x862] = numberBytes[0];
             MainForm.player.GuildCardData[0x863] = numberBytes[1];
         }
 
-        private void numericUpDownHHHigh_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownHHHigh_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownHHHigh.Value);
             MainForm.player.GuildCardData[0x864] = numberBytes[0];
             MainForm.player.GuildCardData[0x865] = numberBytes[1];
         }
 
-        private void numericUpDownGRank_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownGRank_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownGRank.Value);
             MainForm.player.GuildCardData[0x866] = numberBytes[0];
             MainForm.player.GuildCardData[0x867] = numberBytes[1];
         }
 
-        private void numericUpDownSpecialPermit_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownSpecialPermit_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownSpecialPermit.Value);
             MainForm.player.GuildCardData[0x868] = numberBytes[0];
             MainForm.player.GuildCardData[0x869] = numberBytes[1];
         }
 
-        private void numericUpDownArena_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownArena_ValueChanged(object sender, EventArgs e)
         {
             byte[] numberBytes = BitConverter.GetBytes((int)numericUpDownArena.Value);
             MainForm.player.GuildCardData[0x86A] = numberBytes[0];
@@ -222,7 +222,7 @@ namespace MHXXSaveEditor.Forms
             comboBoxArena.SelectedIndex = 0;
         }
 
-        private void comboBoxArena_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxArena_SelectedIndexChanged(object sender, EventArgs e)
         {
             listViewArena.Items.Clear();
             int selectedArena = comboBoxArena.SelectedIndex * 20;
@@ -261,7 +261,7 @@ namespace MHXXSaveEditor.Forms
             listViewArena.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void listViewArena_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewArena_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewArena.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -298,8 +298,6 @@ namespace MHXXSaveEditor.Forms
                         comboBoxArenaWeapon.SelectedIndex = 0;
                 }
 
-
-
                 if (gradeString == "000")
                     comboBoxArenaGrade.SelectedIndex = 1;
                 else if (gradeString == "001")
@@ -309,10 +307,9 @@ namespace MHXXSaveEditor.Forms
                 else
                     comboBoxArenaGrade.SelectedIndex = 0;
             }
-
         }
 
-        private void numericUpDownBestTime_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownBestTime_ValueChanged(object sender, EventArgs e)
         {
             int selectedArena = comboBoxArena.SelectedIndex * 20;
             int selectedIndex = listViewArena.SelectedIndices[0] * 4;
@@ -333,7 +330,7 @@ namespace MHXXSaveEditor.Forms
                 comboBoxArenaGrade.SelectedIndex = 0;
         }
 
-        private void comboBoxArenaWeapon_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxArenaWeapon_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedArena = comboBoxArena.SelectedIndex * 20;
             int selectedIndex = listViewArena.SelectedIndices[0] * 4;
@@ -371,7 +368,7 @@ namespace MHXXSaveEditor.Forms
             MainForm.player.ArenaData[selectedIndex + 2 + selectedArena] = bytes[1];
         }
 
-        private void comboBoxArenaGrade_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxArenaGrade_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedArena = comboBoxArena.SelectedIndex * 20;
             int selectedIndex = listViewArena.SelectedIndices[0] * 4;
@@ -401,14 +398,14 @@ namespace MHXXSaveEditor.Forms
             listViewArena.SelectedItems[0].SubItems[3].Text = comboBoxArenaGrade.Text;
         }
 
-        private void numericUpDownSmall_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownSmall_ValueChanged(object sender, EventArgs e)
         {
             byte[] sizeBytes = BitConverter.GetBytes((int)numericUpDownSmall.Value);
             MainForm.player.MonsterSizes[(comboBoxMonsters.SelectedIndex * 2) * 2] = sizeBytes[0];
             MainForm.player.MonsterSizes[((comboBoxMonsters.SelectedIndex * 2) * 2) + 1] = sizeBytes[1];
         }
 
-        private void numericUpDownLarge_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownLarge_ValueChanged(object sender, EventArgs e)
         {
             byte[] sizeBytes = BitConverter.GetBytes((int)numericUpDownLarge.Value);
             MainForm.player.MonsterSizes[((comboBoxMonsters.SelectedIndex * 2) * 2) + 2] = sizeBytes[0];

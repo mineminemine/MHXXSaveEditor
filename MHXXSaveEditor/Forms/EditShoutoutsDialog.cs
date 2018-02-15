@@ -57,7 +57,7 @@ namespace MHXXSaveEditor.Forms
             listViewAutomaticShoutouts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void textBoxManualShoutouts_TextChanged(object sender, EventArgs e)
+        private void TextBoxManualShoutouts_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -66,11 +66,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(textBoxManualShoutouts.Text, 60))
+            if (mlc.GetMaxLength(textBoxManualShoutouts.Text, 60))
                 textBoxManualShoutouts.MaxLength = textBoxManualShoutouts.Text.Length;
         }
 
-        private void textBoxAutomaticShoutouts_TextChanged(object sender, EventArgs e)
+        private void TextBoxAutomaticShoutouts_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (!tb.Focused)
@@ -79,11 +79,11 @@ namespace MHXXSaveEditor.Forms
             }
 
             var mlc = new MaxLengthChecker();
-            if (mlc.getMaxLength(textBoxAutomaticShoutouts.Text, 60))
+            if (mlc.GetMaxLength(textBoxAutomaticShoutouts.Text, 60))
                 textBoxAutomaticShoutouts.MaxLength = textBoxAutomaticShoutouts.Text.Length;
         }
 
-        private void listViewAutomaticShoutouts_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewAutomaticShoutouts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewAutomaticShoutouts.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -98,7 +98,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void listViewManualShoutouts_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListViewManualShoutouts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewManualShoutouts.SelectedItems.Count == 0) // Check if nothing was selected
                 return;
@@ -114,7 +114,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void buttonManualShoutoutSet_Click(object sender, EventArgs e)
+        private void ButtonManualShoutoutSet_Click(object sender, EventArgs e)
         {
             int selectedShoutout = Convert.ToInt32(listViewManualShoutouts.SelectedItems[0].SubItems[0].Text) - 1;
 
@@ -127,7 +127,7 @@ namespace MHXXSaveEditor.Forms
             MessageBox.Show("Shoutout has been set");
         }
 
-        private void buttonAutomaticShoutoutSet_Click(object sender, EventArgs e)
+        private void ButtonAutomaticShoutoutSet_Click(object sender, EventArgs e)
         {
             int selectedShoutout = Convert.ToInt32(listViewAutomaticShoutouts.SelectedItems[0].SubItems[0].Text) - 1;
 

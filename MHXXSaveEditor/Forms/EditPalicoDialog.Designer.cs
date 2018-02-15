@@ -178,7 +178,7 @@
             this.comboBoxSkillRNG.Name = "comboBoxSkillRNG";
             this.comboBoxSkillRNG.Size = new System.Drawing.Size(200, 24);
             this.comboBoxSkillRNG.TabIndex = 33;
-            this.comboBoxSkillRNG.SelectedIndexChanged += new System.EventHandler(this.comboBoxSkillRNG_SelectedIndexChanged);
+            this.comboBoxSkillRNG.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSkillRNG_SelectedIndexChanged);
             // 
             // comboBoxActionRNG
             // 
@@ -187,7 +187,7 @@
             this.comboBoxActionRNG.Name = "comboBoxActionRNG";
             this.comboBoxActionRNG.Size = new System.Drawing.Size(200, 24);
             this.comboBoxActionRNG.TabIndex = 32;
-            this.comboBoxActionRNG.SelectedIndexChanged += new System.EventHandler(this.comboBoxActionRNG_SelectedIndexChanged);
+            this.comboBoxActionRNG.SelectedIndexChanged += new System.EventHandler(this.ComboBoxActionRNG_SelectedIndexChanged);
             // 
             // textBoxGreeting
             // 
@@ -196,7 +196,7 @@
             this.textBoxGreeting.Name = "textBoxGreeting";
             this.textBoxGreeting.Size = new System.Drawing.Size(523, 22);
             this.textBoxGreeting.TabIndex = 31;
-            this.textBoxGreeting.TextChanged += new System.EventHandler(this.textBoxGreeting_TextChanged);
+            this.textBoxGreeting.TextChanged += new System.EventHandler(this.TextBoxGreeting_TextChanged);
             // 
             // comboBoxTarget
             // 
@@ -291,7 +291,7 @@
             this.textBoxPreviousOwner.Name = "textBoxPreviousOwner";
             this.textBoxPreviousOwner.Size = new System.Drawing.Size(200, 22);
             this.textBoxPreviousOwner.TabIndex = 19;
-            this.textBoxPreviousOwner.TextChanged += new System.EventHandler(this.textBoxPreviousOwner_TextChanged);
+            this.textBoxPreviousOwner.TextChanged += new System.EventHandler(this.TextBoxPreviousOwner_TextChanged);
             // 
             // label10
             // 
@@ -309,7 +309,7 @@
             this.textBoxNameGiver.Name = "textBoxNameGiver";
             this.textBoxNameGiver.Size = new System.Drawing.Size(200, 22);
             this.textBoxNameGiver.TabIndex = 17;
-            this.textBoxNameGiver.TextChanged += new System.EventHandler(this.textBoxNameGiver_TextChanged);
+            this.textBoxNameGiver.TextChanged += new System.EventHandler(this.TextBoxNameGiver_TextChanged);
             // 
             // label9
             // 
@@ -439,7 +439,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(200, 22);
             this.textBoxName.TabIndex = 1;
-            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            this.textBoxName.TextChanged += new System.EventHandler(this.TextBoxName_TextChanged);
             // 
             // label1
             // 
@@ -705,7 +705,7 @@
             this.comboBoxEquippedActions.Name = "comboBoxEquippedActions";
             this.comboBoxEquippedActions.Size = new System.Drawing.Size(250, 24);
             this.comboBoxEquippedActions.TabIndex = 4;
-            this.comboBoxEquippedActions.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquippedActions_SelectedIndexChanged);
+            this.comboBoxEquippedActions.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquippedActions_SelectedIndexChanged);
             // 
             // listViewEquippedActions
             // 
@@ -722,7 +722,7 @@
             this.listViewEquippedActions.TabIndex = 3;
             this.listViewEquippedActions.UseCompatibleStateImageBehavior = false;
             this.listViewEquippedActions.View = System.Windows.Forms.View.Details;
-            this.listViewEquippedActions.SelectedIndexChanged += new System.EventHandler(this.listViewEquippedActions_SelectedIndexChanged);
+            this.listViewEquippedActions.SelectedIndexChanged += new System.EventHandler(this.ListViewEquippedActions_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -753,7 +753,7 @@
             this.comboBoxEquippedSkills.Name = "comboBoxEquippedSkills";
             this.comboBoxEquippedSkills.Size = new System.Drawing.Size(250, 24);
             this.comboBoxEquippedSkills.TabIndex = 5;
-            this.comboBoxEquippedSkills.SelectedIndexChanged += new System.EventHandler(this.comboBoxEquippedSkills_SelectedIndexChanged);
+            this.comboBoxEquippedSkills.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEquippedSkills_SelectedIndexChanged);
             // 
             // listViewEquippedSkills
             // 
@@ -770,7 +770,7 @@
             this.listViewEquippedSkills.TabIndex = 4;
             this.listViewEquippedSkills.UseCompatibleStateImageBehavior = false;
             this.listViewEquippedSkills.View = System.Windows.Forms.View.Details;
-            this.listViewEquippedSkills.SelectedIndexChanged += new System.EventHandler(this.listViewEquippedSkills_SelectedIndexChanged);
+            this.listViewEquippedSkills.SelectedIndexChanged += new System.EventHandler(this.ListViewEquippedSkills_SelectedIndexChanged);
             // 
             // columnHeader3
             // 
@@ -801,7 +801,7 @@
             this.comboBoxLearnedActions.Name = "comboBoxLearnedActions";
             this.comboBoxLearnedActions.Size = new System.Drawing.Size(250, 24);
             this.comboBoxLearnedActions.TabIndex = 6;
-            this.comboBoxLearnedActions.SelectedIndexChanged += new System.EventHandler(this.comboBoxLearnedActions_SelectedIndexChanged);
+            this.comboBoxLearnedActions.SelectedIndexChanged += new System.EventHandler(this.ComboBoxLearnedActions_SelectedIndexChanged);
             // 
             // listViewLearnedActions
             // 
@@ -818,7 +818,7 @@
             this.listViewLearnedActions.TabIndex = 4;
             this.listViewLearnedActions.UseCompatibleStateImageBehavior = false;
             this.listViewLearnedActions.View = System.Windows.Forms.View.Details;
-            this.listViewLearnedActions.SelectedIndexChanged += new System.EventHandler(this.listViewLearnedActions_SelectedIndexChanged);
+            this.listViewLearnedActions.SelectedIndexChanged += new System.EventHandler(this.ListViewLearnedActions_SelectedIndexChanged);
             // 
             // columnHeader5
             // 
@@ -849,7 +849,7 @@
             this.comboBoxLearnedSkills.Name = "comboBoxLearnedSkills";
             this.comboBoxLearnedSkills.Size = new System.Drawing.Size(250, 24);
             this.comboBoxLearnedSkills.TabIndex = 7;
-            this.comboBoxLearnedSkills.SelectedIndexChanged += new System.EventHandler(this.comboBoxLearnedSkills_SelectedIndexChanged);
+            this.comboBoxLearnedSkills.SelectedIndexChanged += new System.EventHandler(this.ComboBoxLearnedSkills_SelectedIndexChanged);
             // 
             // listViewLearnedSkills
             // 
@@ -866,7 +866,7 @@
             this.listViewLearnedSkills.TabIndex = 4;
             this.listViewLearnedSkills.UseCompatibleStateImageBehavior = false;
             this.listViewLearnedSkills.View = System.Windows.Forms.View.Details;
-            this.listViewLearnedSkills.SelectedIndexChanged += new System.EventHandler(this.listViewLearnedSkills_SelectedIndexChanged);
+            this.listViewLearnedSkills.SelectedIndexChanged += new System.EventHandler(this.ListViewLearnedSkills_SelectedIndexChanged);
             // 
             // columnHeader7
             // 
@@ -885,7 +885,7 @@
             this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // buttonCancel
             // 
@@ -895,7 +895,7 @@
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonCancel_MouseClick);
+            this.buttonCancel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonCancel_MouseClick);
             // 
             // buttonExportPalico
             // 
@@ -905,7 +905,7 @@
             this.buttonExportPalico.TabIndex = 3;
             this.buttonExportPalico.Text = "Export";
             this.buttonExportPalico.UseVisualStyleBackColor = true;
-            this.buttonExportPalico.Click += new System.EventHandler(this.buttonExportPalico_Click);
+            this.buttonExportPalico.Click += new System.EventHandler(this.ButtonExportPalico_Click);
             // 
             // buttonImportPalico
             // 
@@ -915,7 +915,7 @@
             this.buttonImportPalico.TabIndex = 4;
             this.buttonImportPalico.Text = "Import";
             this.buttonImportPalico.UseVisualStyleBackColor = true;
-            this.buttonImportPalico.Click += new System.EventHandler(this.buttonImportPalico_Click);
+            this.buttonImportPalico.Click += new System.EventHandler(this.ButtonImportPalico_Click);
             // 
             // EditPalicoDialog
             // 

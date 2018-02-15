@@ -4,7 +4,7 @@ namespace MHXXSaveEditor.Util
 {
     class MaxLengthChecker
     {
-        public bool getMaxLength(string theText, int maxLength)
+        public bool GetMaxLength(string theText, int maxLength)
         {
             int bytes = Encoding.UTF8.GetByteCount(theText);
             if (bytes >= maxLength)

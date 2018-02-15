@@ -48,7 +48,7 @@ namespace MHXXSaveEditor.Forms
             }
         }
 
-        private void buttonSet_Click(object sender, EventArgs e)
+        private void ButtonSet_Click(object sender, EventArgs e)
         {
             byte[] theID;
             switch (eqpType)
@@ -93,7 +93,7 @@ namespace MHXXSaveEditor.Forms
             Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }

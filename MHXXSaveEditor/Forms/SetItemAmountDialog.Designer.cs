@@ -69,7 +69,7 @@
             this.buttonSet.TabIndex = 2;
             this.buttonSet.Text = "Set";
             this.buttonSet.UseVisualStyleBackColor = true;
-            this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
+            this.buttonSet.Click += new System.EventHandler(this.ButtonSet_Click);
             // 
             // buttonCancel
             // 
@@ -79,7 +79,7 @@
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // SetItemAmountDialog
             // 

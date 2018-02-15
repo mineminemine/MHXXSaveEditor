@@ -7,7 +7,7 @@ namespace MHXXSaveEditor.Util
 {
     class DataExtractor
     {
-        public void getInfo(byte[] saveFile, int slot, Player player)
+        public void GetInfo(byte[] saveFile, int slot, Player player)
         {
             byte[] charNameByte = new byte[32];
             byte[] playTimeByte = new byte[4];
@@ -20,8 +20,8 @@ namespace MHXXSaveEditor.Util
             player.HairColorRGBA = new byte[4];
             player.FeaturesColorRGBA = new byte[4];
             player.ClothingColorRGBA = new byte[4];
-            player.itemId = new string[Constants.TOTAL_ITEM_SLOTS];
-            player.itemCount = new string[Constants.TOTAL_ITEM_SLOTS];
+            player.ItemId = new string[Constants.TOTAL_ITEM_SLOTS];
+            player.ItemCount = new string[Constants.TOTAL_ITEM_SLOTS];
             player.EquipmentInfo = new byte[Constants.SIZEOF_EQUIPBOX];
             player.EquipmentPalico = new byte[Constants.SIZEOF_PALICOEQUIPBOX];
             player.PalicoData = new byte[Constants.SIZEOF_PALICOES];
@@ -105,8 +105,8 @@ namespace MHXXSaveEditor.Util
             result = result.Substring(4,result.Length-4); // To remove the unnecessary/extra '0000'
             for (int a = 2299; a >= 0; a--)
             {
-                player.itemCount[a] = Convert.ToInt32(result.Substring(0, 7), 2).ToString();
-                player.itemId[a] = Convert.ToInt32(result.Substring(7, 12), 2).ToString();
+                player.ItemCount[a] = Convert.ToInt32(result.Substring(0, 7), 2).ToString();
+                player.ItemId[a] = Convert.ToInt32(result.Substring(7, 12), 2).ToString();
                 result = result.Substring(19, result.Length - 19);
             }
 

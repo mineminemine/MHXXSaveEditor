@@ -40,8 +40,8 @@
         public byte[] MonsterSizes { get; set; }
 
         //Item Box
-        public string[] itemId { get; set; }
-        public string[] itemCount { get; set; }
+        public string[] ItemId { get; set; }
+        public string[] ItemCount { get; set; }
 
         //Equipment Box
         public byte[] EquipmentInfo { get; set; }

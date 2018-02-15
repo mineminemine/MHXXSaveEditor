@@ -85,12 +85,6 @@
     <Compile Include="Forms\EditTalismanDialog.Designer.cs">
       <DependentUpon>EditTalismanDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ImportFromBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ImportFromBox.Designer.cs">
-      <DependentUpon>ImportFromBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,9 +123,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditTalismanDialog.resx">
       <DependentUpon>EditTalismanDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ImportFromBox.resx">
-      <DependentUpon>ImportFromBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

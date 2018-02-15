@@ -18,7 +18,7 @@ namespace MHXXSaveEditor.Forms
 
             comboBoxSkillName1.SelectedIndex = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 12]);
             comboBoxSkillName2.SelectedIndex = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 13]);
-            setMaxMinSkills();
+            SetMaxMinSkills();
             try
             {
                 numericUpDownSkillLevel1.Value = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 14]);
@@ -31,7 +31,7 @@ namespace MHXXSaveEditor.Forms
             numericUpDownSlots.Value = Convert.ToInt32(mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 16]);
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 12] = Convert.ToByte(comboBoxSkillName1.SelectedIndex);
             mainForm.player.EquipmentInfo[(mainForm.equipSelectedSlot * 36) + 13] = Convert.ToByte(comboBoxSkillName2.SelectedIndex);
@@ -49,12 +49,12 @@ namespace MHXXSaveEditor.Forms
             Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ButtonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void setMaxMinSkills()
+        private void SetMaxMinSkills()
         {
             string skillMaxMin1 = "";
             string skillMaxMin2 = "";
@@ -87,14 +87,14 @@ namespace MHXXSaveEditor.Forms
             numericUpDownSkillLevel2.Maximum = Convert.ToInt32(skill2MaxMin[1]);
         }
 
-        private void comboBoxSkillName1_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComboBoxSkillName1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            setMaxMinSkills();
+            SetMaxMinSkills();
         }
 
-        private void comboBoxSkillName2_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComboBoxSkillName2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            setMaxMinSkills();
+            SetMaxMinSkills();
         }
     }
 }
