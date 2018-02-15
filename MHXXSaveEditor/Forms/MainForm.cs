@@ -52,7 +52,8 @@ namespace MHXXSaveEditor
                 ofd.Dispose();
                 return;
             }
-
+            Cursor.Current = Cursors.WaitCursor;
+            SplashScreen.ShowSplashScreen();
             filePath = ofd.FileName;
             Text = string.Format("{0} [{1}]", Constants.EDITOR_VERSION, ofd.SafeFileName); // Changes app title
             saveFile = File.ReadAllBytes(ofd.FileName); // Read all bytes from file into memory buffer
@@ -106,6 +107,8 @@ namespace MHXXSaveEditor
             ext.GetInfo(saveFile, currentPlayer, player);
 
             LoadSave(); // Load save file data into editor
+            Cursor.Current = Cursors.Default;
+            SplashScreen.CloseForm();
         }
 
         private void ToolStripMenuItemSaveSlot1_Click(object sender, EventArgs e)
