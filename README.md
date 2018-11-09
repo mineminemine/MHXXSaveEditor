@@ -1,13 +1,13 @@
-# MHXXSaveEditor - 3DS
+# MHXXSaveEditor - 3DS version
 
-This project has been discontinued as I have moved on from MHXX for the 3DS.
-If you are looking for the Switch version, please refer to [this](https://github.com/Dawnshifter/MHXXSwitchSaveEditor)
-And if you're looking for a MHGU save editor, refer to [this](https://gbatemp.net/threads/mhgu-save-editor.515460/) instead. 
+This project has been discontinued as I have moved on from MHXX for the 3DS.  
+If you are looking for a MHXX save editor for the Switch version, please refer to [this](https://github.com/Dawnshifter/MHXXSwitchSaveEditor) instead.  
+And if you're looking for a MHGU save editor, please refer to [this](https://gbatemp.net/threads/mhgu-save-editor.515460/) instead. 
 
 ## Description
 
-A save editor for Monster Hunter XX for the Nintendo 3DS/2DS, not the Switch version.
-However, it *should be possible* to transfer your edited MHXX save file from the 3DS/2DS to the Switch and back. Refer: [Link](https://www.reddit.com/r/MonsterHunter/comments/6vtal5/mhxx_how_to_transfer_your_3ds_save_to_switchwith/)
+A save editor for Monster Hunter XX for the Nintendo 3DS/2DS, not the Switch version.  
+However, it *should be possible* to transfer your edited MHXX save file from the 3DS/2DS to the Switch and back. Refer [here](https://www.reddit.com/r/MonsterHunter/comments/6vtal5/mhxx_how_to_transfer_your_3ds_save_to_switchwith/).
 
 ## Features
 
@@ -22,10 +22,6 @@ However, it *should be possible* to transfer your edited MHXX save file from the
 ---
 
 Looking for a better talisman/charm editor? Look [here](https://gbatemp.net/threads/release-mh-talisman-editor-for-mhxx-mhx-mhgen-mh4g-mh4u.411182)
-
-## Coming soon
-
-- Stuffs? Suggestions are welcome really.
 
 ## Requirements
 
